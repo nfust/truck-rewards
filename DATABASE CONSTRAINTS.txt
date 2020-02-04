@@ -22,4 +22,24 @@ CREATE TABLE driver(email varchar(50) PRIMARY KEY, first varchar(50) NOT NULL, m
 
 
 
+
+
+
+
+
+
 create table catalog(companyName varchar(50) PRIMARY KEY, price INTEGER NOT NULL, image varchar(150) NOT NULL, id INTEGER NOT NULL);
+
+
+
+
+
+
+Sample Test for a password and username combination:
+SELECT username FROM driver WHERE EXISTS (SELECT username FROM driver WHERE ///USERS INPUTTED USERNAME/// = username and ///USERS INPUTTED PASSWORD/// = pass);
+
+
+
+
+GET USERS EMAIL;
+SELECT email FROM driver WHERE (username = ///USERS INPUTTED USERNAME///);
