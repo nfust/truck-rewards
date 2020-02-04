@@ -1,0 +1,16 @@
+﻿CONNECT INSTRUCTIONS:
+
+
+mysql -h database-1.c0pt40lcpl02.us-east-1.rds.amazonaws.com -P 3306 -u admin -p
+
+
+CONSTRAINTS:
+CREATE TABLE manager(email varchar(50) PRIMARY KEY, first varchar(50) NOT NULL, middle varchar(50) NOT NULL, last varchar(50) NOT NULL, phone INTEGER NOT NULL, username varchar(50) NOT NULL, pass varchar(50) NOT NULL);
+
+
+CREATE TABLE sponsor(email varchar(50) PRIMARY KEY, first varchar(50) NOT NULL, middle varchar(50) NOT NULL, last varchar(50) NOT NULL, phone INTEGER NOT NULL, username varchar(50) NOT NULL, pass varchar(50) NOT NULL);
+
+
+
+
+CREATE TABLE driver(email varchar(50) PRIMARY KEY, first varchar(50) NOT NULL, middle varchar(50) NOT NULL, last varchar(50) NOT NULL, phone INTEGER NOT NULL, username varchar(50) NOT NULL, pass varchar(50) NOT NULL, points INTEGER NOT NULL);
