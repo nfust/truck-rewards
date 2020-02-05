@@ -27,11 +27,11 @@ app.use(function(req, res, next) {
 });
 
 
-app.get('/driver/:id', (req, res) => {
-   console.log("Getting user: " + req.params.id);
+app.get('/driver/:Username', (req, res) => {
+   console.log("Getting user: " + req.params.Username);
 
-   const userID = req.params.id;
-   const queryString = "SELECT * FROM driver WHERE email = ?";
+   const userID = req.params.username;
+   const queryString = "SELECT * FROM driver WHERE username = ?";
    connection.query(queryString, [userID],(err, rows, fields) => {
    if(err){
       console.log("Cant find driver " + userID);
@@ -48,7 +48,7 @@ app.get('/driver/:id', (req, res) => {
 })
 
 app.post('/driver', (req,res) => {
-   console.log("zorp");
+
    let input = req.body;
    queryString = "INSERT INTO driver VALUES (\""+input.email+"\", \""+input.first+"\", \""+input.middle+"\", \""+input.last+"\",\""+input.phone+"\", \""+input.username+"\", \""+input.password+"\", 0);"
    console.log(queryString);
@@ -62,6 +62,26 @@ app.post('/driver', (req,res) => {
    else{
       console.log("User added")
       res.json(input);
+   }
+   });
+
+})
+
+app.post('/manager', (req,res) => {
+
+   let input = req.body;
+   queryString = "INSERT INTO manager VALUES (\""+input.email+"\", \""+input.first+"\", \""+input.middle+"\", \""+input.last+"\",\""+input.phone+"\", \""+input.username+"\", \""+input.password+"\");"
+   console.log(queryString);
+
+   connection.query(queryString,(err, rows, fields) => {
+   if(err){
+      console.log("Cant create manager " + input.username);
+      res.sendStatus(400);
+   }
+
+   else{
+      console.log("User added")
+      res.send(input);
    }
    });
 
