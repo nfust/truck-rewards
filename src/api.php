@@ -1,11 +1,11 @@
 <?php
 
-$servername = "mysql1.cs.clemson.edu";
-$username = "FstEdsnClyL_jo4s";
+$servername = "database-1.c0pt40lcpl02.us-east-1.rds.amazonaws.com";
+$username = "admin";
 $dbname = "FustEdsonCooleyLee_oook";
 $password = "wearein4910";
 
-$link = new mysqli($servername, $username, $password, $dbname);
+$link = new mysqli($servername, $username, $password);
 
 if (!$link) {
     echo "Error: Unable to connect to MySQL." . PHP_EOL;
