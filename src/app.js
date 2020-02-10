@@ -27,19 +27,20 @@ app.use(function(req, res, next) {
 });
 
 
-app.get('/driver/:Username', (req, res) => {
+app.get('/user/:Username', (req, res) => {
    console.log("Getting user: " + req.params.Username);
 
    const userID = req.params.username;
-   const queryString = "SELECT * FROM driver WHERE username = ?";
-   connection.query(queryString, [userID],(err, rows, fields) => {
+   const queryString = "SELECT * FROM user WHERE username = \"" + req.params.Username+ "\"";
+   connection.query(queryString,(err, rows, fields) => {
    if(err){
       console.log("Cant find driver " + userID);
       res.sendStatus(400);
    }
 
    else{
-      console.log("I think we got the user")
+      console.log("I think we got the user");
+      console.log(rows);
       res.json(rows)
    }
 
@@ -50,7 +51,7 @@ app.get('/driver/:Username', (req, res) => {
 app.post('/driver', (req,res) => {
 
    let input = req.body;
-   queryString = "INSERT INTO driver VALUES (\""+input.email+"\", \""+input.first+"\", \""+input.middle+"\", \""+input.last+"\",\""+input.phone+"\", \""+input.username+"\", \""+input.password+"\", 0);"
+   queryString = "INSERT INTO user VALUES (\""+input.email+"\", \""+input.first+"\", \""+input.middle+"\", \""+input.last+"\",\"None\", \"Driver\", \""+input.phone+"\", \""+input.username+"\", \""+input.password+"\", 0, 0);"
    console.log(queryString);
 
    connection.query(queryString,(err, rows, fields) => {
@@ -70,7 +71,7 @@ app.post('/driver', (req,res) => {
 app.post('/manager', (req,res) => {
 
    let input = req.body;
-   queryString = "INSERT INTO manager VALUES (\""+input.email+"\", \""+input.first+"\", \""+input.middle+"\", \""+input.last+"\",\""+input.phone+"\", \""+input.username+"\", \""+input.password+"\");"
+   queryString = "INSERT INTO user VALUES (\""+input.email+"\", \""+input.first+"\", \""+input.middle+"\", \""+input.last+"\",\""+input.company+"\", \"Manager\", \""+input.phone+"\", \""+input.username+"\", \""+input.password+"\", 0, 0);"
    console.log(queryString);
 
    connection.query(queryString,(err, rows, fields) => {
@@ -92,11 +93,33 @@ app.get("/", (req,res) => {
    res.send("Hey from root")
 })
 
-app.get("/users", (req, res) =>{
-   var user1 = {firstName: "Nick", lastName: "Fust"}
-   const user2 = {firstName: "Greg", lastName: "Example"}
-   res.json([user1, user2]);
-})
+app.post("/login", (req,res) =>{
+   let logUser = req.body;
+   console.log("Logging in user " + logUser.username);
+   queryString = "SELECT pass FROM user WHERE username = \'" + logUser.username + "\'";
+
+   connection.query(queryString,(err, result, fields) => {
+   if(err){
+      console.log("Cant find user " + logUser.username);
+      res.sendStatus(400);
+   }
+
+   else{
+      if(result[0].pass == logUser.pwd){
+         let redirect = "http://3.83.252.232:3001/user/" + logUser.username;
+         res.redirect(redirect);
+      }
+      else{
+         let message = "Username/Password is incorrect";
+	console.log(message);
+	 res.redirect("http://3.83.252.232/Login.html");
+      }
+   }
+   });
+
+
+});
+
 
 let port = 3001;
 app.listen(port, function () {
