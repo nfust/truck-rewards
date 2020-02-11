@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <title>Edit Profile</title>
+  </head>
+  <body>
+    <h2>Edit Profile</h2>
+    <form class="form" action="profile.html" method="post">
+      <label for="first_name">First Name</label>
+      <input type="text" name="first_name" value="first">
+      <label for="mi_name">Middle Initial</label>
+      <input type="text" name="mi_name" value="mi">
+      <label for="last_name">Last Name</label>
+      <input type="text" name="last_name" value="last"><br>
+      <label for="username">Username</label>
+      <input type="text" name="new_username" value="username"><br>
+      <label for="email">Email Address</label>
+      <input type="text" name="email" value="email"><br>
+      <label for="phone">Phone Number</label>
+      <input type="text" name="phone" value="phone"><br>
+      <button type="submit" name="save">Save</button>
+      <button type="button" name="cancel">Cancel</button>
+    </form>
+
+    <?php
+      define('db_hostname', 'database-1.c0pt40lcpl02.us-east-1.rds.amazonaws.com');
+      define('db_username', 'admin');
+      define('db_password', 'wearein4910');
+      define('db_name', 'main');
+      $db = mysqli_connect(db_hostname, db_username, db_password, db_name);
+
+      if(!$db) {
+        echo "Error: Unable to connect to MySQL." . PHP_EOL;
+        echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL;
+        echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
+        exit;
+      }
+
+      $input_first = $_POST['first_name'];
+      $input_mi = $_POST['mi_name'];
+      $input_last = $POST['last_name'];
+      $input_user = $POST['new_username'];
+      $input_email = $POST['email'];
+      $input_phone = $POST['phone'];
+
+      $query = "UPDATE user SET first = '$input_first' WHERE username = 'username';";
+      mysqli_query($db, $query);
+      $query = "UPDATE user SET middle = '$input_mi' WHERE username = 'username';";
+      mysqli_query($db, $query);
+      $query = "UPDATE user SET last = '$input_last' WHERE username = 'username';";
+      mysqli_query($db, $query);
+      $query = "UPDATE user SET username = '$input_user' WHERE username = 'username';";
+      mysqli_query($db, $query);
+      $query = "UPDATE user SET email = '$input_email' WHERE username = 'username';";
+      mysqli_query($db, $query);
+      $query = "UPDATE user SET phone = '$input_phone' WHERE username = 'username';";
+      mysqli_query($db, $query);
+    ?>
+
+  </body>
+</html>
