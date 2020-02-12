@@ -5,17 +5,21 @@ mysql -h database-1.c0pt40lcpl02.us-east-1.rds.amazonaws.com -P 3306 -u admin -p
 
 
 CONSTRAINTS:
-CREATE TABLE manager(email varchar(50) PRIMARY KEY, first varchar(50) NOT NULL, middle varchar(50) NOT NULL, last varchar(50) NOT NULL, phone varchar(50) NOT NULL, username varchar(50) UNIQUE NOT NULL, pass varchar(50) NOT NULL);
+DONT USE THIS ONECREATE TABLE manager(email varchar(50) PRIMARY KEY, first varchar(50) NOT NULL, middle varchar(50) NOT NULL, last varchar(50) NOT NULL, phone varchar(50) NOT NULL, username varchar(50) UNIQUE NOT NULL, pass varchar(50) NOT NULL);
 
 
-CREATE TABLE sponsor(email varchar(50) PRIMARY KEY, first varchar(50) NOT NULL, middle varchar(50) NOT NULL, last varchar(50) NOT NULL, phone varchar(50) NOT NULL, username varchar(50) UNIQUE NOT NULL, pass varchar(50) NOT NULL);
+DONT USE THIS ONECREATE TABLE sponsor(email varchar(50) PRIMARY KEY, first varchar(50) NOT NULL, middle varchar(50) NOT NULL, last varchar(50) NOT NULL, phone varchar(50) NOT NULL, username varchar(50) UNIQUE NOT NULL, pass varchar(50) NOT NULL);
 
 
 
 
-CREATE TABLE driver(email varchar(50) PRIMARY KEY, first varchar(50) NOT NULL, middle varchar(50) NOT NULL, last varchar(50) NOT NULL, phone varchar(50) NOT NULL, username varchar(50) UNIQUE NOT NULL, pass varchar(50) NOT NULL, points INTEGER NOT NULL);
+DONT USE THIS ONECREATE TABLE driver(email varchar(50) PRIMARY KEY, first varchar(50) NOT NULL, middle varchar(50) NOT NULL, last varchar(50) NOT NULL, phone varchar(50) NOT NULL, username varchar(50) UNIQUE NOT NULL, pass varchar(50) NOT NULL, points INTEGER NOT NULL);
+
+USE THESE ONES:
+CREATE TABLE user(email varchar(50) PRIMARY KEY, first varchar(50) , middle varchar(50), last varchar(50), company varchar(50) NOT NULL, type varchar(10) NOT NULL, phone varchar(50), username varchar(50) UNIQUE NOT NULL, pass varchar(50) NOT NULL, points INTEGER NOT NULL, overTime INTEGER NOT NULL);
 
 
+create table payment(id integer PRIMARY KEY, user varchar(50) NOT NULL,productID INTEGER NOT NULL, status varchar(50) NOT NULL, time varchar(50) NOT NULL);
 
 
 
@@ -34,24 +38,30 @@ create table catalog(companyName varchar(50) PRIMARY KEY, price INTEGER NOT NULL
 Format for adding to the tables is 
 
 
-INSERT INTO (driver/catalog/manager whichever you are using) VALUES (what you are entering in order);
+INSERT INTO (user whichever you are using) VALUES (what you are entering in order);
 
 
 Example:
-INSERT INTO driver VALUES ("jsl4@clemson.edu", "jackson", "S", "Lee", "8439019163", "jsl4", "password", 350);
+INSERT INTO user VALUES ("jsl4@clemson.edu", "jackson", "S", "Lee",”Clemson Corp”, “driver”, "8439019163", "jsl4", "password", 350, 0);
 
 
 Sample Test for a password and username combination:
-SELECT username FROM driver WHERE EXISTS (SELECT username FROM driver WHERE ///USERS INPUTTED USERNAME/// = username and ///USERS INPUTTED PASSWORD/// = pass);
+SELECT username FROM user WHERE EXISTS (SELECT username FROM user WHERE ///USERS INPUTTED USERNAME/// = username and ///USERS INPUTTED PASSWORD/// = pass);
 
 
 
 
 GET USERS EMAIL;
-SELECT email FROM driver WHERE (username = ///USERS INPUTTED USERNAME///);
+SELECT email FROM user WHERE (username = ///USERS INPUTTED USERNAME///);
 
 
 Update information:
-UPDATE driver 
+UPDATE user
 SET ///WHAT NEEDS TO BE UPDATED FOR EXAMPLE PASS/// = //new value//
 WHERE username = ///the user being changed
+
+check contents of database:
+select * from user;
+
+check columns in database
+describe user;

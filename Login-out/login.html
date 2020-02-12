@@ -1,0 +1,48 @@
+<?php
+  include("config.php");
+?>
+
+<html lang="en" dir="ltr">
+
+<style>
+  .form-popup {
+    display : none;
+  }
+
+</style>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Login</title>
+  </head>
+  <body>
+    <h2>Login</h2>
+    <form class="form" action="profile.html" method="post">
+      <label for="username">Username</label>
+      <input type="text" name="username" value=""><br>
+      <label for="pwd">Password</label>
+      <input type="password" name="pwd" value=""><br>
+      <button type="submit" name="login">Login</button>
+      <button type="button" onclick="openForm()" name="forgotpwd">Forgot Password</button>
+    </form>
+
+    <div class="form-popup" id="forgot-form">
+      <form class="form" action="ResetPassword.html" method="post">
+        <h2>Enter Email Address</h2>
+        <label for="email">Email:</label>
+        <input type="email" name="email"  placeholder="Enter Email" required>
+        <button type="submit" class="btn">Send Link</button>
+      </form>
+    </div>
+
+    <script>
+      function openForm() {
+        document.getElementById("forgot-form").style.display = "block";
+      }
+
+      function closeForm() {
+        document.getElementById("forgot-form").style.display = "none";
+      }
+    </script>
+  </body>
+</html>
