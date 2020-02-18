@@ -1,30 +1,5 @@
 <?php
-  define('db_hostname', 'database-1.c0pt40lcpl02.us-east-1.rds.amazonaws.com');
-  define('db_username', 'admin');
-  define('db_password', 'wearein4910');
-  define('db_name', 'main');
-  $db = mysqli_connect(db_hostname, db_username, db_password, db_name);
-
-  if(!$db) {
-    echo "Error: Unable to connect to MySQL." . PHP_EOL;
-    echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL;
-    echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
-    exit;
-  }
-
-  $input_user = $_POST['username'];
-  $input_pwd = $_POST['pwd'];
-
-  $query = "SELECT username FROM user WHERE '$input_user' = username AND '$input_pwd' = pass";
-  $result = mysqli_query($db, $query);
-
-  if(mysqli_num_rows($result) == 1) {
-    header("location: profile.php");
-    exit;
-  }
-  else {
-    echo "Incorrect username or password.";
-  }
+  include("config.php");
 ?>
 
 <html lang="en" dir="ltr">
@@ -33,41 +8,24 @@
   .form-popup {
     display : none;
   }
-
 </style>
 
   <head>
     <meta charset="utf-8">
     <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="login.css">
   </head>
   <body>
-    <h2>Login</h2>
-    <form class="form" action="" method="post">
-      <label for="username">Username</label>
-      <input type="text" name="username" value=""><br>
-      <label for="pwd">Password</label>
-      <input type="password" name="pwd" value=""><br>
-      <button type="Submit" name="login">Login</button>
-      <button type="button" onclick="openForm()" name="forgotpwd">Forgot Password</button>
-    </form>
-
-    <div class="form-popup" id="forgot-form">
-      <form class="form" action="ResetPassword.html" method="post">
-        <h2>Enter Email Address</h2>
-        <label for="email">Email:</label>
-        <input type="email" name="email"  placeholder="Enter Email" required>
-        <button type="submit" class="btn">Send Link</button>
-      </form>
+    <div class="container">
+      <div class="login">
+        <h2>Login</h2>
+        <form class="form" action="profile.html" method="post">
+          <input type="text" name="username" value="" placeholder="Username"><br>
+          <input type="password" name="pwd" value="" placeholder="Password"><br>
+          <button type="submit" name="login">Login</button><br>
+          <a href="ResetPassword.html" name="forgotpwd">Forgot Password</a>
+        </form>
+      </div>
     </div>
-
-    <script>
-      function openForm() {
-        document.getElementById("forgot-form").style.display = "block";
-      }
-
-      function closeForm() {
-        document.getElementById("forgot-form").style.display = "none";
-      }
-    </script>
   </body>
 </html>
