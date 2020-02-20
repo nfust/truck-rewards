@@ -11,32 +11,24 @@
   <head>
     <meta charset="utf-8">
     <title>Manager Signup</title>
+    <link rel="stylesheet" type="text/css" href="signup.css">
   </head>
   <body>
-    <h2>Manager Signup</h2>
-    <form action="http://3.83.252.232:3001/manager" method="post">
-      E-Mail:
-      <input type="text" name="email"><br>
-
-      Name:
-      <input type="text" name="first">
-      <input type="text" name="middle">
-      <input type="text" name="last"><br>
-
-      Company Name:
-      <input type="text" name="company"><br>
-
-      Phone #:
-      <input type="text" name="phone"><br>
-
-      Username:
-      <input type="text" name="username"><br>
-
-      Password:
-      <input type="password" name="password"><br>
-
-      <input type="submit" value="Sign Up" />
-    </form>
-
+    <div class="container">
+      <h2>Manager Signup</h2>
+      <form action="http://3.83.252.232:3001/driver" method="post">
+        <input type="text" name="email" placeholder="Email"><br>
+        <div class="name">
+          <input type="text" name="first" placeholder="First Name">
+          <input type="text" name="middle" placeholder="M.I.">
+          <input type="text" name="last" placeholder="Last Name"><br>
+        </div>
+        <input type="text" name="company" placeholder="Company Name"><br>
+        <input type="text" name="phone" placeholder="Phone Number"><br>
+        <input type="text" name="username" placeholder="Username"><br>
+        <input type="password" name="password" placeholder="Password"><br>
+        <button type="submit" name="signup">Sign Up</button>
+      </form>
+    </div>
   </body>
 </html>
