@@ -1,5 +1,6 @@
 
 const express = require('express');
+var cookieParser = require('cookie-parser');
 const app = express();
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
@@ -12,6 +13,7 @@ const connection = mysql.createConnection({
    password: 'wearein4910'
    });
 
+app.use(cookieParser());
 
 app.use(bodyParser.json());
 
@@ -107,6 +109,7 @@ app.post("/login", (req,res) =>{
    else{
       if(result[0].pass == logUser.pwd){
          let redirect = "http://3.83.252.232:3001/user/" + logUser.username;
+	 res.cookie("username", logUser.username);
          res.redirect(redirect);
       }
       else{
