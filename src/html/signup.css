@@ -15,11 +15,11 @@ body {
   margin: auto;
 }
 
-.login h2{
+.container h2{
   text-align: center;
 }
 
-.login input {
+.container input {
   width: 300px;
   text-align: center;
   padding: 8px 0px;
@@ -27,7 +27,23 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-.login button {
+.container input[name=first],
+.container input[name=last] {
+  width: 120px;
+  text-align: center;
+}
+
+.container input[name=middle] {
+  width: 30px;
+}
+
+.name {
+  display: flex;
+  justify-content: space-between;
+  width: 316px;
+}
+
+.container button {
   width: 300px;
   padding: 8px 0px;
   margin-top: 10px;
@@ -35,10 +51,4 @@ body {
   background: #4690fb;
   color: #ffffff;
   font-family: 'Roboto', sans-serif;
-}
-
-.login,
-.login a {
-  text-align: right;
-  font-size: 11px;
 }
