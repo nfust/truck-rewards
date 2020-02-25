@@ -98,7 +98,7 @@ app.get("/", (req,res) => {
 app.post("/login", (req,res) =>{
    let logUser = req.body;
    console.log("Logging in user " + logUser.username);
-   queryString = "SELECT pass FROM user WHERE username = \'" + logUser.username + "\'";
+   queryString = "SELECT * FROM user WHERE username = \'" + logUser.username + "\'";
 
    connection.query(queryString,(err, result, fields) => {
    if(err){
@@ -108,8 +108,10 @@ app.post("/login", (req,res) =>{
 
    else{
       if(result[0].pass == logUser.pwd){
-         let redirect = "http://3.83.252.232:3001/user/" + logUser.username;
+         let redirect = "http://3.83.252.232/index.php";
+	console.log(result);
 	 res.cookie("username", logUser.username);
+	 res.cookie("type", result[0].type);
          res.redirect(redirect);
       }
       else{

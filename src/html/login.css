@@ -1,0 +1,44 @@
+body {
+  background: #a1cdff;
+  padding-top: 15vh;
+  font-weight: 400;
+  font-family: 'Roboto', sans-serif;
+}
+
+.container {
+  width: 300px;
+  height: auto;
+  padding: 20px 30px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 #000;
+  margin: auto;
+}
+
+.login h2{
+  text-align: center;
+}
+
+.login input {
+  width: 300px;
+  text-align: center;
+  padding: 8px 0px;
+  margin-bottom: 5px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.login button {
+  width: 300px;
+  padding: 8px 0px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background: #4690fb;
+  color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+}
+
+.login,
+.login a {
+  text-align: right;
+  font-size: 11px;
+}
