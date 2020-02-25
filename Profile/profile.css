@@ -49,7 +49,7 @@ img {
   width: 10%;
 }
 
-#changepwd {
+.button {
   display: block;
   text-decoration: none;
   height: 30px;
@@ -61,6 +61,6 @@ img {
   border-radius: 10px;
 }
 
-#changepwd:hover {
+.button:hover {
   opacity: .6;
 }
