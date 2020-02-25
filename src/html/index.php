@@ -18,7 +18,7 @@ if (!isset($_COOKIE['username']))
     <nav>
       <input type="text" name="search" placeholder=" Search...">
       <a href="../Login-out/login.html">Sign In</a>
-      <a href="">Account</a>
+      <a href="profile.php">Account</a>
     </nav>
 
 
