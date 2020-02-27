@@ -28,6 +28,19 @@ app.use(function(req, res, next) {
         next();
 });
 
+function parseCookies (request) {
+    var list = {},
+        rc = request.headers.cookie;
+
+    rc && rc.split(';').forEach(function( cookie ) {
+        var parts = cookie.split('=');
+        list[parts.shift().trim()] = decodeURI(parts.join('='));
+    });
+
+    return list;
+}
+
+
 
 app.get('/user/:Username', (req, res) => {
    console.log("Getting user: " + req.params.Username);
@@ -130,3 +143,23 @@ let port = 3001;
 app.listen(port, function () {
   console.log('Truck Rewards listening on port '+port+'!');
 });
+
+
+app.post('/driver/edit', (req,res) => {
+   var cookies = parseCookies(req);
+   let input = req.body;
+   queryString = "UPDATE user SET first = \""+input.first+"\" , middle = \""+input.middle+"\"  ,last = \""+input.last+"\",username = \""+input.username+"\",email = \""+input.email+"\",phone = \""+input.phone+"\",address = \""+input.address+"\"  WHERE username = \""+cookies.username+"\";"
+   console.log(queryString);
+   connection.query(queryString,(err, rows, fields) => {
+   if(err){
+      console.log("Cant edit driver " + input.username);
+      res.sendStatus(400);
+   }
+   else{
+      console.log("User edited" + input.username);
+      res.cookie("username", input.username);
+      res.json(input);
+   }
+   });
+
+})
