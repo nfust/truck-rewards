@@ -12,7 +12,7 @@ if (!isset($_COOKIE['username']))
   <head>
     <meta charset="utf-8">
     <title>Driver Incentive Program</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="../../Home/index.css">
   </head>
   <body>
     <nav>
