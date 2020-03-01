@@ -12,7 +12,7 @@ if (!isset($_COOKIE['username']))
   <head>
     <meta charset="utf-8">
     <title>Driver Incentive Program</title>
-    <link rel="stylesheet" href="../../Home/index.css">
+    <link rel="stylesheet" href="index.css">
   </head>
   <body>
     <nav>
@@ -22,22 +22,13 @@ if (!isset($_COOKIE['username']))
     </nav>
 
 
-      <section id="title-container">
-        <h1 id="top">Welcome to the</h1>
-        <h1 id="bottom">Good Driver</h1>
-        <h1>Incentive</h1>
-        <h1>Program</h1>
-      </section>
+
+      <h1>Welcome to the Truck Driver Incentive Program</h1>
+      <a class="button" href="../Login-out/signup.html">Get Started</a>
+
 
       <section class="main-content" id="message-container">
-        <p>Welcome to the Good Driver Incentive Program...</p>
-        <a class="button" href="../Login-out/signup.html">Get Started</a>
+        <p>This program...</p>
       </section>
-
-
-
-
-
-
   </body>
 </html>

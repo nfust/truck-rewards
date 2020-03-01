@@ -48,7 +48,6 @@ nav input {
 
 h1 {
   z-index: -1;
-  border-color: white;
   position: fixed;
   height: 200px;
   width: 800px;
@@ -78,19 +77,24 @@ p {
 }
 
 .button {
+  font-size: 14pt;
+  position: fixed;
   display: block;
+  text-align: center;
+  z-index: 1;
   text-decoration: none;
-  margin: auto;
+  height: 50px;
   width: 150px;
-  margin: auto;
+  margin-left: 45%;
+  margin-top: 30%;
   background-color: #FFBD2E;
   color: #444;
   border-radius: 10px;
-  padding: 10px;
+  padding-top: 25px;
 }
 
 .button:hover {
-  opacity: .6;
+  opacity: 0.8;
 }
 
 #title-container {
