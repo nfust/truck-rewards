@@ -146,6 +146,25 @@ app.post("/login", (req,res) =>{
 });
 
 
+app.post('/driver/edit', (req,res) => {
+   var cookies = parseCookies(req);
+   let input = req.body;
+   queryString = "UPDATE user SET first = \""+input.first+"\" , middle = \""+input.middle+"\"  ,last = \""+input.last+"\",username = \""+input.username+"\",email = \""+input.email+"\",phone = \""+inpu$
+   console.log(queryString);
+   connection.query(queryString,(err, rows, fields) => {
+   if(err){
+      console.log("Cant edit driver " + input.username);
+      res.sendStatus(400);
+   }
+   else{
+      console.log("User edited" + input.username);
+      res.cookie("username", input.username);
+      res.json(input);
+   }
+   });
+
+}) 
+
 let port = 3001;
 app.listen(port, function () {
   console.log('Truck Rewards listening on port '+port+'!');
