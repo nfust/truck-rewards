@@ -30,7 +30,7 @@
       <img src="images/profile.png" alt="profile photo">
 	
       <p> Name:</p> <p id="first">[First name]</p> <p id="middle">[MI]</p> <p id="last">[last name]</p> <br>
-      <p> Points: </p><p id="points">Points balance: []</p><br>
+      <p> Points: </p><table id="points">Points balance</table> <br>
       <p> Username: </p><p id="username">[username]</p><br>
       <p> E-Mail: </p><p id="email">[email]</p><br>
       <p> Phone: </p><p id="phone">[phone #]</p><br>
@@ -48,12 +48,26 @@
  		        document.getElementById("first").innerHTML = "" + data["first"];
 			document.getElementById("middle").innerHTML = data["middle"];
 			document.getElementById("last").innerHTML = data["last"];
-			document.getElementById("points").innerHTML = data["overTime"];
 		        document.getElementById("username").innerHTML = data["username"];
 			document.getElementById("email").innerHTML = data["email"];
 			document.getElementById("phone").innerHTML = data["phone"];
                 }
             });
+
+	let getURL = "http://3.83.252.232:3001/points/" + getCookie("username");
+        $.ajax({
+                type: "GET",
+                url: getURL,
+                success: function (data) {
+		let resultString = "<tr><td>Company</td><tr>Points</td></tr>";
+                        for(let i=0; i<data.length; i++)
+				let info = data[i];
+				resultString = resultString + "<tr><td>" + info["companyName"] + "</td><td>" + info["points"] + "</td></tr>";
+                }
+		document.getElementById("points").innerHtml = resultString;
+            });
+
+	
 
 
 function getCookie(cname) {

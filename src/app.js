@@ -50,6 +50,26 @@ app.get('/user/:Username', (req, res) => {
 
 })
 
+app.get('/points/:Username', (req, res) => {
+   console.log("Getting points")
+   const queryString = "SELECT * FROM points WHERE username = \"" + req.params.Username+ "\"";
+   connection.query(queryString,(err, rows, fields) => {
+   if(err){
+      console.log("Cant find driver " + userID);
+      res.sendStatus(400);
+   }
+
+   else{
+      console.log("I we got the points");
+      console.log(rows);
+      res.json(rows)
+   }
+
+   });
+
+})
+
+
 app.post('/driver', (req,res) => {
 
    let input = req.body;
