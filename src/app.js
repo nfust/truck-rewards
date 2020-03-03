@@ -162,7 +162,7 @@ app.post("/login", (req,res) =>{
 app.post('/driver/edit', (req,res) => {
    var cookies = parseCookies(req);
    let input = req.body;
-   queryString = "UPDATE user SET first = \""+input.first+"\" , middle = \""+input.middle+"\"  ,last = \""+input.last+"\",username = \""+input.username+"\",email = \""+input.email+"\",phone = \""+inpu$
+      queryString = "UPDATE user SET first = \""+input.first+"\" , middle = \""+input.middle+"\"  ,last = \""+input.last+"\",username = \""+input.username+"\",email = \""+input.email+"\",phone = \""+input.phone+"\",address = \""+input.address+"\"  WHERE username = \""+cookies.username+"\";"
    console.log(queryString);
    connection.query(queryString,(err, rows, fields) => {
    if(err){

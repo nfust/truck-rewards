@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -11,6 +12,8 @@
       }
 
       p{display: inline}
+
+      table{border:1px;}
 
     </style>
    
@@ -30,7 +33,8 @@
       <img src="images/profile.png" alt="profile photo">
 	
       <p> Name:</p> <p id="first">[First name]</p> <p id="middle">[MI]</p> <p id="last">[last name]</p> <br>
-      <p> Points: </p><table id="points">Points balance</table> <br>
+      <p> Points: </p><br>
+	<table border="1" id="points"></table> 
       <p> Username: </p><p id="username">[username]</p><br>
       <p> E-Mail: </p><p id="email">[email]</p><br>
       <p> Phone: </p><p id="phone">[phone #]</p><br>
@@ -54,17 +58,19 @@
                 }
             });
 
-	let getURL = "http://3.83.252.232:3001/points/" + getCookie("username");
+	getURL = "http://3.83.252.232:3001/points/" + getCookie("username");
         $.ajax({
                 type: "GET",
                 url: getURL,
                 success: function (data) {
-		let resultString = "<tr><td>Company</td><tr>Points</td></tr>";
-                        for(let i=0; i<data.length; i++)
-				let info = data[i];
+		let resultString = "<tr><th>Company</th><th>Points</th></tr>";
+                        for(let i=0; i<data.length; i++){
+				let info  = data[i];
 				resultString = resultString + "<tr><td>" + info["companyName"] + "</td><td>" + info["points"] + "</td></tr>";
+		}
+		console.log(resultString);
+		document.getElementById("points").innerHTML = resultString;
                 }
-		document.getElementById("points").innerHtml = resultString;
             });
 
 	
