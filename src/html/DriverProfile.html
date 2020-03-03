@@ -12,9 +12,18 @@
       }
 
       p{display: inline}
+<<<<<<< HEAD
 
       table{border:1px;}
 
+=======
+	    
+      .logout {
+        position:fixed;
+        right:10px;
+        top:5px;
+      }
+>>>>>>> 8372600e0e757ab5e4317ec9b6e9cc72593ecfb8
     </style>
    
     <link rel="stylesheet" href="profile.css">
@@ -27,6 +36,13 @@
       <a href="purchaseHistory.html">Purchase History</a> |
       <a href="pendingOrders.html">Pending Orders</a> |
       <a href="sponsorInfo.html">Sponsor Info</a>
+	    
+      <form align="right" name="form" method="post" action="Login.html">
+        <label class="logout">
+          <input name="submit" type="submit" id="submit" value="Log Out">
+        </label>
+      </form>
+	    
     </nav>
 
     <div class="profile-container">
@@ -38,6 +54,7 @@
       <p> Username: </p><p id="username">[username]</p><br>
       <p> E-Mail: </p><p id="email">[email]</p><br>
       <p> Phone: </p><p id="phone">[phone #]</p><br>
+      <a href="changeDriverProfile.html">Edit Profile</a><br>
       <a href="truck-rewards/ForgotPwd/ResetPassword.html">Change Password</a>
     </div>
 
