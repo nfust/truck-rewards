@@ -2,6 +2,13 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <style>
+      .logout {
+        position:fixed;
+        right:10px;
+        top:5px;
+      }
+    </style>
     <title>About Driver Program</title>
     <link rel="stylesheet" href="profile.css">
   </head>
@@ -12,6 +19,11 @@
       <a href="DriverOrders.html">Orders</a>
       <a href="SponsorInfo.html">Sponsor Info</a>
       <a href="DriverProfile.html">Account</a>
+      <form align="right" name="form" method="post" action="Login.html">
+        <label class="logout">
+          <input name="submit" type="submit" id="submit" value="Log Out">
+        </label>
+      </form>
     </nav>
 
     <section class="bg-img" id="about-bg-image">
