@@ -9,7 +9,11 @@
         height: 10%;
         width: 10%;
       }
-
+      .logout {
+        position:fixed;
+        right:10px;
+        top:5px;
+      }
     </style>
 
     <title>[Admin's] Profile</title>
@@ -20,6 +24,12 @@
       <a href="#">Sponsors</a> |
       <a href="#">Companies</a> |
       <a href="#">Reports</a>
+      
+      <form align="right" name="form" method="post" action="Login.html">
+        <label class="logout">
+          <input name="submit" type="submit" id="submit" value="Log Out">
+        </label>
+      </form>
     </nav>
 
     <div class="profile-container">
