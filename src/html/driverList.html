@@ -1,0 +1,47 @@
+<html>
+<body>
+
+<nav>
+      <a href="catalog.html">Catalog</a> |
+      <a href="profile.php">Profile</a>
+      <form align="right" name="form" method="post" action="Login.html">
+        <label class="logout">
+          <input name="submit" type="submit" id="submit" value="Log Out">
+        </label>
+      </form>
+    </nav>
+
+
+
+	<h2 align="center" id="header">Drivers for </h2>
+	<table align="center" id="driverTable" border="1"> </table>
+
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script type="text/javascript" src="getCookie.js"></script>
+        <script type="text/javascript"charset="utf-8">
+
+        getURL = "http://3.83.252.232:3001/points/sponsor/" + getCookie("username", document);
+	document.getElementById("header").innerHTML = "Drivers for " + getCookie("username", document);
+        $.ajax({
+                type: "GET",
+                url: getURL,
+                success: function (data) {
+                let resultString = "<tr><th>Driver</th><th>Points</th></tr>";
+                        for(let i=0; i<data.length; i++){
+                                let info  = data[i];
+                                resultString = resultString + "<tr><td>" + info["username"] + "</td><td>" + info["points"] + "</td></tr>";
+                }
+                console.log(resultString);
+                document.getElementById("driverTable").innerHTML = resultString;
+                }
+            });
+
+
+
+        </script>
+
+
+</body>
+</html>

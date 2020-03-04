@@ -17,14 +17,14 @@
       }
     </style>
 
+	<link rel="stylesheet" href="profile.css">
+
     <title>[Sponsor's] Profile</title>
   </head>
   <body>
     <nav>
-      <a href="#">Catalog</a> |
-      <a href="#">Company Info</a> |
-      <a href="#">Sponsor Profiles</a> |
-      <a href="#">Drivers</a>
+      <a href="catalog.html">Catalog</a> |
+      <a href="driverList.html">Drivers</a>
       <form align="right" name="form" method="post" action="Login.html">
         <label class="logout">
           <input name="submit" type="submit" id="submit" value="Log Out">
@@ -45,6 +45,7 @@
 
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script type="type/javascript" src="getCookie.js"></script>
         <script type="text/javascript"charset="utf-8">
         let getURL = "http://3.83.252.232:3001/user/" + getCookie("username");
         $.ajax({
@@ -61,22 +62,6 @@
                 }
             });
 
-
-	function getCookie(cname) {
-  		var name = cname + "=";
-  		var decodedCookie = decodeURIComponent(document.cookie);
-  		var ca = decodedCookie.split(';');
-  		for(var i = 0; i <ca.length; i++) {
-    			var c = ca[i];
-    			while (c.charAt(0) == ' ') {
-      				c = c.substring(1);
-    			}
-    			if (c.indexOf(name) == 0) {
-      			return c.substring(name.length, c.length);
-    			}
-  		}
-  		return "";
-	}        
 
         </script>
 

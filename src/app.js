@@ -82,11 +82,30 @@ app.get('/points/:Username', (req, res) => {
 
 })
 
+app.get('/points/sponsor/:SponsorID', (req, res) => {
+   console.log("Getting points")
+   const queryString = "SELECT * FROM points WHERE sponsor = \"" + req.params.SponsorID+ "\"";
+   connection.query(queryString,(err, rows, fields) => {
+   if(err){
+      console.log("Cant find driver " + userID);
+      res.sendStatus(400);
+   }
+
+   else{
+      console.log("I we got the points");
+      console.log(rows);
+      res.json(rows)
+   }
+
+   });
+
+})
+
 
 app.post('/driver', (req,res) => {
 
    let input = req.body;
-   queryString = "INSERT INTO user VALUES (\""+input.email+"\", \""+input.first+"\", \""+input.middle+"\", \""+input.last+"\",\"None\", \"Driver\", \""+input.phone+"\", \""+input.username+"\", \""+input.password+"\", 0, 0);"
+   queryString = "INSERT INTO user VALUES (\""+input.email+"\", \""+input.first+"\", \""+input.middle+"\", \""+input.last+"\",\"Driver\", \""+input.phone+"\", \""+input.username+"\", \""+input.password+"\", 0);"
    console.log(queryString);
 
    connection.query(queryString,(err, rows, fields) => {
