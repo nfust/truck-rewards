@@ -201,7 +201,7 @@ app.post('/driver/edit', (req,res) => {
    else{
       console.log("User edited" + input.username);
       res.cookie("username", input.username);
-      res.json(input);
+      res.redirect("http://3.83.252.232/profile.php");
    }
    });
 
