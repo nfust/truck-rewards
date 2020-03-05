@@ -227,7 +227,7 @@ app.post('/resetpassword', (req,res) => {
 	console.log(queryString);
    	connection.query(queryString,(err, rows, fields) => {
    	if(err){
-      		console.log("Cant change password of " + recEmail);
+      		console.log("Cant find/change password of " + recEmail);
       		res.sendStatus(400);
    	}
    	else{
