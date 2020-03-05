@@ -3,6 +3,8 @@ const express = require('express');
 var cookieParser = require('cookie-parser');
 const app = express();
 const bodyParser = require('body-parser');
+var nodemailer = require('nodemailer');
+var generator = require('generate-password');
 const mysql = require('mysql');
 
 
@@ -39,6 +41,14 @@ function parseCookies (request) {
 
     return list;
 }
+
+var transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'truckrewardsautoemail@gmail.com',
+    pass: 'wearein4910'
+  }
+});
 
 
 
@@ -105,7 +115,7 @@ app.get('/points/sponsor/:SponsorID', (req, res) => {
 app.post('/driver', (req,res) => {
 
    let input = req.body;
-   queryString = "INSERT INTO user VALUES (\""+input.email+"\", \""+input.first+"\", \""+input.middle+"\", \""+input.last+"\",\"Driver\", \""+input.phone+"\", \""+input.username+"\", \""+input.password+"\", 0);"
+   queryString = "INSERT INTO user VALUES (\""+input.email+"\", \""+input.first+"\", \""+input.middle+"\", \""+input.last+"\",\"Driver\", \""+input.phone+"\", \""+input.username+"\", \""+input.password+"\", 0, NULL, NULL);"
    console.log(queryString);
 
    connection.query(queryString,(err, rows, fields) => {
@@ -195,7 +205,46 @@ app.post('/driver/edit', (req,res) => {
    }
    });
 
-}) 
+})
+
+
+app.post('/resetpassword', (req,res) => {
+	const recEmail = req.body.Email;
+	const newPass = generator.generate({
+   		 length: 10,
+    		numbers: true
+	});
+
+
+	var mailOptions = {
+  		from: 'truckrewardsautoemail@gmail.com',
+  		to: recEmail,
+  		subject: 'Truck Rewards Password Reset',
+ 		text: 'Your new password is: ' + newPass + '\n\nUse this password to login and change it from the profile page'
+	};
+
+	const queryString = "UPDATE user SET pass=\"" + newPass + "\" WHERE email=\"" + recEmail +"\";";
+	console.log(queryString);
+   	connection.query(queryString,(err, rows, fields) => {
+   	if(err){
+      		console.log("Cant change password of " + recEmail);
+      		res.sendStatus(400);
+   	}
+   	else{
+      		console.log("Password changed, Sending Email");
+      		transporter.sendMail(mailOptions, function(error, info){
+  			if (error) {
+    			console.log(error);
+			res.sendStatus(400);}
+			else {
+    			console.log('Email sent: ' + info.response); 
+			res.redirect("http://3.83.252.232/sentEmail.html");}
+		});
+   	}
+   	});
+
+
+});
 
 let port = 3001;
 app.listen(port, function () {
