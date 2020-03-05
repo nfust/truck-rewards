@@ -208,7 +208,7 @@ app.post('/driver/edit', (req,res) => {
 })
 
 
-app.post('/resetpassword', (req,res) => {
+app.post('/forgotpassword', (req,res) => {
 	const recEmail = req.body.Email;
 	const newPass = generator.generate({
    		 length: 10,
@@ -244,6 +244,28 @@ app.post('/resetpassword', (req,res) => {
    	});
 
 
+});
+
+
+app.post('/resetpassword', (req,res) => {
+	const oldPass = req.body.oldpwd;
+	const newPass = req.body.newpwd;
+	const cookies = parseCookies(req);
+
+	queryString = "UPDATE user SET pass=\'"+newPass+ "\' WHERE username=\'" +cookies.username+ "\'";
+   	console.log(queryString);
+
+   	connection.query(queryString,(err, rows, fields) => {
+   	if(err){
+      		console.log("Cant change password driver " + cookies.username);
+      		res.redirect("ResetPassword.html#");
+   	}
+
+   	else{
+      			console.log("Password Changed")
+      			res.redirect("http://3.83.252.232/profile.php");
+   	}
+   	});
 });
 
 let port = 3001;
