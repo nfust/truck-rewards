@@ -187,6 +187,12 @@ app.post("/login", (req,res) =>{
 
 });
 
+app.post("/logout", (req,res) =>{
+	res.clearCookie('username');
+	res.clearCookie('type');
+	res.redirect("http://3.83.252.232/Login.html")
+});
+
 
 app.post('/driver/edit', (req,res) => {
    var cookies = parseCookies(req);
