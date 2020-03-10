@@ -2,6 +2,13 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+     <style>
+      .logout {
+        position:fixed;
+        right:10px;
+        top:5px;
+      }
+    </style>
     <title>Drivers</title>
   </head>
   <body>
@@ -10,6 +17,9 @@
       <a href="CompanyInfo.html">Company Info</a>
       <a href="SponsorDrivers.html">Drivers</a>
       <a href="SponsorProfile.html">Account</a>
+      <form align="right" class="form" method="post" action="http://3.83.252.232:3001/logout">
+        <button name="logout" type="submit">Log Out</button>
+      </form>
     </nav>
 
 
