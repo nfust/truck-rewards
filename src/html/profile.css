@@ -64,3 +64,22 @@ img {
 .button:hover {
   opacity: .6;
 }
+
+.logout button {
+  position:fixed;
+  right: 0px;
+  top: 0px;
+  background-color: #444;
+  color: white;
+  border: 0;
+  font-size: 10px;
+  font-weight: bold;
+  font-family: inherit;
+  padding: 12px;
+}
+
+.logout button:hover {
+  background: #007BC4;
+  color: #444;
+}
+
