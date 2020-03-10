@@ -10,11 +10,6 @@
         width: 10%;
       }
         p {display: inline}
-      .logout {
-        position:fixed;
-        right:10px;
-        top:5px;
-      }
     </style>
 
 	<link rel="stylesheet" href="profile.css">
@@ -27,11 +22,9 @@
       <a href="companyInfo.html">Company Info</a> |
       <a href="sponsorProfiles.html">Sponsor Profiles</a> |
       <a href="sponsoredDrivers.html">Drivers</a>
-      <form align="right" name="form" method="post" action="Login.html">
-        <label class="logout">
-          <input name="submit" type="submit" id="submit" value="Log Out">
-        </label>
-      </form>
+	<form align="right" class="form" method="post" action="http://3.83.252.232:3001/logout">
+		<button name="logout" type="submit">Log Out</button>
+	</form>
     </nav>
 
     <div class="profile-container">
