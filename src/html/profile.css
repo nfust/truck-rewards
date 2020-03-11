@@ -81,5 +81,6 @@ img {
 .logout button:hover {
   background: #007BC4;
   color: #444;
+  cursor: pointer;
 }
 
