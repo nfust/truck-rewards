@@ -12,6 +12,26 @@ if (!isset($_COOKIE['username']))
   <head>
     <meta charset="utf-8">
     <title>Driver Incentive Program</title>
+	 <style>
+    .logout button {
+      position:fixed;
+      right: 0px;
+      top: 0px;
+      background-color: #444;
+      color: white;
+      border: 0;
+      font-size: 10px;
+      font-weight: bold;
+      font-family: inherit;
+      padding: 12px;
+    }
+
+    .logout button:hover {
+      background: #007BC4;
+      color: #444;
+      cursor: pointer;
+    }
+    </style>
     <link rel="stylesheet" href="index.css">
   </head>
   <body>
@@ -21,6 +41,11 @@ if (!isset($_COOKIE['username']))
       <a href="DriverOrders.html">Orders</a>
       <a href="SponsorInfo.html">Sponsor Information</a>
       <a href="profile.php">Account</a>
+	<div class="logout">
+        <form align="right" class="form" method="post" action="http://3.83.252.232:3001/logout">
+          <button name="logout" type="submit">Log Out</button>
+        </form>
+      	</div>
     </nav>
 
 
