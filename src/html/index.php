@@ -20,11 +20,11 @@ if (!isset($_COOKIE['username']))
       <a href="Catalog.html">Catalog</a>
       <a href="DriverOrders.html">Orders</a>
       <a href="SponsorInfo.html">Sponsor Information</a>
-      <a href="DriverProfile.html">Account</a>
+      <a href="profile.php">Account</a>
     </nav>
 
 
-    <h2>Welcome </h2> <h2 id="first">!</h2><br>
+    <h2>Welcome </h2> <h2 id="username">!</h2><br>
 
     <section id="points-table">
       <h2>Current Points</h2><br>
@@ -49,7 +49,6 @@ if (!isset($_COOKIE['username']))
               success: function (data) {
                 data = data[0];
                 document.getElementById("username").innerHTML = data["username"];
-                document.getElementById("points").innerHTML = data["overTime"];
               }
           });
 
