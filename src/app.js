@@ -274,6 +274,66 @@ app.post('/resetpassword', (req,res) => {
    	});
 });
 
+
+app.post('/admin', (req,res) => {
+
+   let input = req.body;
+   queryString = "INSERT INTO user VALUES (\""+input.email+"\", \""+input.first+"\", \""+input.middle+"\", \""+input.last+"\",\"Admin\", \""+input.phone+"\", \""+input.username+"\", \""+input.password+"\", 0, NULL, NULL);"
+   console.log(queryString);
+
+   connection.query(queryString,(err, rows, fields) => {
+   if(err){
+      console.log("Cant create admin " + input.username);
+      res.sendStatus(400);
+   }
+
+   else{
+      console.log("User added")
+      res.json(input);
+   }
+   });
+
+})
+
+
+app.post('/points/edit', (req,res) => {
+  var cookies = parseCookies(req);
+  let input = req.body;
+     queryString = "UPDATE points SET points = \""+input.points+"\" WHERE username = \""+input.driver+"\" , sponsor = \""+cookies.username+"\";"
+  console.log(queryString);
+  connection.query(queryString,(err, rows, fields) => {
+  if(err){
+     console.log("Cant edit points for " + input.driver);
+     res.sendStatus(400);
+  }
+  else{
+     console.log("Driver points edited" + input.driver);
+   }
+   });
+
+})
+
+
+app.get('/points/driver/:SponsorID', (req, res) => {
+   console.log("Getting points")
+   const queryString = "SELECT * FROM points WHERE username = \""+input.driver+"\" , sponsor = \"" + req.params.SponsorID+ "\"";
+   connection.query(queryString,(err, rows, fields) => {
+   if(err){
+      console.log("Cant find points for driver " + input.driver);
+      res.sendStatus(400);
+   }
+
+   else{
+      console.log("I we got the points");
+      console.log(rows);
+      res.json(rows)
+   }
+
+   });
+
+})
+
+
 let port = 3001;
 app.listen(port, function () {
   console.log('Truck Rewards listening on port '+port+'!');
