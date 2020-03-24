@@ -9,14 +9,17 @@
         height: 10%;
         width: 10%;
       }
+      p {display: inline}
     </style>
+
+  	<link rel="stylesheet" href="profile.css">
 
     <title>[Admin's] Profile</title>
   </head>
   <body>
     <nav>
-      <a href="#">Drivers</a> |
-      <a href="#">Sponsors</a> |
+      <a href="Drivers.html">Drivers</a> |
+      <a href="Sponsors.html">Sponsors</a> |
       <a href="#">Companies</a> |
       <a href="#">Reports</a>
       <div class="logout">
@@ -26,12 +29,16 @@
       </div>
     </nav>
 
+    <div class="new-admin" align=right>
+      <a href="signupAdmin.html">New Admin</a>
+    </div>
+
     <div class="profile-container">
       <img src="images/profile.png" alt="profile photo">
-      <p>[Admin Name]</p>
-      <p>[username]</p>
-      <p>[email]</p>
-      <p>[phone #]</p>
+      <p>[Admin Name]</p><br>
+      <p>[username]</p><br>
+      <p>[email]</p><br>
+      <p>[phone #]</p><br>
       <a href="changeAdminProfile.html">Edit Profile</a><br>
       <a href="truck-rewards/ForgotPwd/ResetPassword.html">Change Password</a>
     </div>

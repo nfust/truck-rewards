@@ -1,16 +1,61 @@
-<html>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
   <head>
-    <style>
-      .logout {
-        position:fixed;
-        right:10px;
-        top:5px;
-      }
-    </style>
+    <meta charset="utf-8">
+    <style>p{display: inline}</style>
+    <title>Drivers</title>
   </head>
   <body>
-    <form align="right" class="form" method="post" action="http://3.83.252.232:3001/logout">
-      <button name="logout" type="submit">Log Out</button>
-    </form>
+    <nav>
+      <a href="catalog.html">Catalog</a> |
+      <a href="companyInfo.html">Company Info</a> |
+      <a href="sponsorProfiles.html">Sponsor Profiles</a> |
+      <a href="#">Drivers</a>
+      <div class="logout">
+        <form align="right" class="form" method="post" action="http://3.83.252.232:3001/logout">
+          <button name="logout" type="submit">Log Out</button>
+        </form>
+      </div>
+    </nav>
+
+    <h2>Current Drivers</h2>
+    <ul>
+      <p id="driver">[Driver Username]</p>
+      <form action="http://3.83.252.232:3001/points/edit" method="post">
+        <input type="text" name="points" value="points">
+        <button type="submit" name="save">Save</button>
+      </form>
+      <!-- list of drivers -->
+    </ul>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript"charset="utf-8">
+      let getURL = "http://3.83.252.232:3001/points/driver/" + getCookie("username");
+      $.ajax({
+        type: "GET",
+        url: getURL,
+        success: function (data) {
+          data = data[0];
+          document.getElementById("driver").innerHTML = "" + data["username"];
+          document.getElementById("points").value = data["points"];
+        }
+      });
+
+      function getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for(var i = 0; i <ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return "";
+        }
+
+    </script>
   </body>
-</html>
