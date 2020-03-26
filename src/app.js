@@ -333,6 +333,164 @@ app.get('/points/driver/:SponsorID', (req, res) => {
 
 })
 
+app.post('/apply', (req,res) => {
+   let cookies = parseCookies(req);
+   let input = req.body;
+
+   const queryString = "INSERT IGNORE INTO pendingAccount(sponsor, Driver) VALUES(\""+input.sponsorName+"\" , \"" + cookies.username+ "\");";
+   connection.query(queryString,(err, rows, fields) => {
+   if(err){
+      console.log("Cant insert into pendingAccount " + input.driver);
+      res.sendStatus(400);
+   }
+
+   else{
+      console.log("Application Successful");
+      console.log(rows);
+      res.redirect("http://3.83.252.232/driverApply.html");
+   }
+
+   });
+
+
+})
+
+
+app.get('/apps/sponsor/:SponsorID', (req, res) => {
+   console.log("Getting points")
+   const queryString = "SELECT * FROM pendingAccount WHERE sponsor = \"" + req.params.SponsorID+ "\";";
+   console.log(queryString);
+   connection.query(queryString,(err, rows, fields) => {
+   if(err){
+      console.log("Cant find applications for sponsor" + req.params.SponsorID);
+      res.sendStatus(400);
+   }
+
+   else{
+      console.log("sending applications");
+      console.log(rows);
+      res.json(rows)
+   }
+
+   });
+
+})
+
+
+app.post('/acceptApp/:DriverID', (req,res) => {
+   let cookies = parseCookies(req);
+   let input = req.body;
+
+
+   const queryString = "DELETE FROM pendingAccount WHERE Driver=\""+req.params.DriverID+"\"AND sponsor= \""+cookies.username+ "\";";
+   console.log(queryString);
+   connection.query(queryString,(err, rows, fields) => {
+   if(err){
+      console.log("Cant Delete from pendingAccount ");
+   }
+
+   });
+
+
+   const queryString2 = "INSERT INTO points(username, points, sponsor) VALUES(\""+req.params.DriverID+"\" , 0 , \"" + cookies.username+ "\");";
+   console.log(queryString2);
+   connection.query(queryString2,(err, rows, fields) => {
+   if(err){
+      console.log("Cant insert into pendingAccount ");
+      res.sendStatus(400);
+   }
+
+   else{
+      console.log("Application Accepted Successful");
+      console.log(rows);
+      res.redirect("http://3.83.252.232/pendingApplications.html");
+   }
+
+   });
+
+
+})
+
+
+app.post('/declineApp/:DriverID', (req,res) => {
+   let cookies = parseCookies(req);
+   let input = req.body;
+
+
+   const queryString = "DELETE FROM pendingAccount WHERE Driver=\""+req.params.DriverID+"\"AND sponsor= \""+cookies.username+ "\";";
+   console.log(queryString);
+   connection.query(queryString,(err, rows, fields) => {
+   if(err){
+      console.log("Cant Delete from pendingAccount ");
+   }
+   else{
+      console.log("Application Reject Successful");
+      console.log(rows);
+      res.redirect("http://3.83.252.232/pendingApplications.html");
+   }
+
+   });
+
+})
+
+
+app.post('/deleteSponsor', (req,res) => {
+   let cookies = parseCookies(req);
+
+   const queryString = "DELETE FROM pendingAccount WHERE sponsor= \""+cookies.username+ "\";";
+   console.log(queryString);
+   connection.query(queryString,(err, rows, fields) => {
+   if(err){
+      console.log("Cant Delete from pendingAccount ");
+   }
+   });
+
+   const queryString2 = "DELETE FROM points WHERE sponsor=\""+cookies.username+ "\";";
+   console.log(queryString2);
+   connection.query(queryString2,(err, rows, fields) => {
+   if(err){
+      console.log("Cant Delete from point ");
+   }
+   });
+
+   const queryString3 = "DELETE FROM user WHERE username=\""+cookies.username+ "\";";
+   console.log(queryString3);
+   connection.query(queryString3,(err, rows, fields) => {
+   if(err){
+      console.log("Cant Delete from point ");
+   }
+
+   else{
+        res.clearCookie('username');
+        res.clearCookie('type');
+        res.redirect("http://3.83.252.232/Login.html")
+   }
+   });
+
+})
+
+app.post('/changeVal', (req,res) => {
+   let cookies = parseCookies(req);
+   let input = req.body;
+
+
+   const queryString = "UPDATE points SET value=\""+input.value+"\" WHERE sponsor= \""+cookies.username+ "\";";
+   console.log(queryString);
+   connection.query(queryString,(err, rows, fields) => {
+   if(err){
+      console.log("Cant Change Value ");
+   }
+   else{
+      console.log("Value Change Successful");
+      console.log(rows);
+      res.redirect("http://3.83.252.232/profile.php");
+   }
+
+   });
+
+})
+
+
 
 let port = 3001;
 app.listen(port, function () {

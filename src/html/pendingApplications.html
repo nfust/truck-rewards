@@ -1,0 +1,47 @@
+<html>
+<body>
+
+<nav>
+      <a href="catalog.html">Catalog</a> |
+      <a href="profile.php">Profile</a>
+        <form align="right" class="form" method="post" action="http://3.83.252.232:3001/logout">
+                <button name="logout" type="submit">Log Out</button>
+        </form>
+    </nav>
+
+
+
+        <h2 align="center" id="header">Drivers for </h2>
+        <table align="center" id="driverTable" border="1"> </table>
+
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script type="text/javascript" src="getCookie.js"></script>
+        <script type="text/javascript"charset="utf-8">
+
+        getURL = "http://3.83.252.232:3001/apps/sponsor/" + getCookie("username", document);
+        document.getElementById("header").innerHTML = "Applications For " + getCookie("username", document);
+        $.ajax({
+                type: "GET",
+                url: getURL,
+                success: function (data) {
+                let resultString = "<tr><th>Driver</th><th>Points</th></tr>";
+                        for(let i=0; i<data.length; i++){
+                                let info  = data[i];
+                                resultString = resultString + "<tr><td>" + info["Driver"] + "</td><td><form class=\"form\" action=\"http://3.83.252.232:3001/acceptApp/"+ info["Driver"] +"\" method=\"post\">"+
+					"<button type=\"submit\" name=\"Accept\">Accept</button><br></form>"+
+					"<form class=\"form\" action=\"http://3.83.252.232:3001/declineApp/"+ info["Driver"] +"\" method=\"post\">"+
+                                        "<button type=\"submit\" name=\"Deny\">Deny</button><br></form></td></tr>";
+                }
+                console.log(resultString);
+                document.getElementById("driverTable").innerHTML = resultString;
+                }
+            });
+
+
+
+        </script>
+
+</body>
+</html>
