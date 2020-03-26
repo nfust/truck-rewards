@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+
+    <style>
+      img {
+        margin-top: 1%;
+        height: 10%;
+        width: 10%;
+      }
+
+      p{display: inline}
+<<<<<<< HEAD
+
+      table{border:1px;}
+
+=======
+
+>>>>>>> 8372600e0e757ab5e4317ec9b6e9cc72593ecfb8
+    </style>
+   
+    <link rel="stylesheet" href="catalog.css">
+
+    <title>Catalog</title>
+  </head>
+  <body>
+	
+    <nav>
+      <a href="catalog.html">Catalog</a> |
+      <a href="purchaseHistory.html">Purchase History</a> |
+      <a href="pendingOrders.html">Pending Orders</a> |
+      <a href="sponsorInfo.html">Sponsor Info</a>
+	    
+      <div class="logout">
+        <form align="right" class="form" method="post" action="http://3.83.252.232:3001/logout">
+          <button name="logout" type="submit">Log Out</button>
+        </form>
+      </div>
+	    
+    </nav>
+	<link rel="stylesheet" type="text/css" href="catalog.css">
+</head>
+<ul class="products">
+    <item>
+        <img src="https://www.tactics.com/a/by37/9/brixton-chevrolet-truckin-bumper-sticker-bel-air-black.webp" style="width:300px;height:400px;">
+        <a href="#" style="color:#007BC4">    
+            <h4>Bumper Sticker</h4>
+            <p>10 points</p>
+        </a>
+    </item>
+   <item>
+        <img src="https://images-na.ssl-images-amazon.com/images/I/61rsZ0hVufL._AC_SX425_.jpg" style="width:300px;height:400px;">
+        <a href="#" style="color:#007BC4">   
+            <h4>Windshield Wipers</h4>
+            <p>100 points</p>
+        </a>
+    </item>
+    <item>
+        <img src="https://www.mooneyesusa.com/v/vspfiles/photos/FD001-2.jpg?v-cache=1393002378" style="width:300px;height:400px;">
+        <a href="#" style="color:#007BC4">    
+            <h4>Fuzzy Dice</h4>
+            <p>10 points</p>
+        </a>
+    </item>
+    <item>
+        <img src="https://images-na.ssl-images-amazon.com/images/I/61%2B2M9KwoSL._AC_SL1500_.jpg" style="width:300px;height:400px;">
+        <a href="#" style="color:#007BC4">    
+            <h4>Car Charger</h4>
+            <p>20 points</p>
+        </a>
+    </item>
+</ul>
+    Field2: <input type="text" id="field2"><br><br>
+    <input type="button" id='script' name="scriptbutton" value=" Run Script " onclick="getDataFromPython()">
+
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+    
+        <script type="text/javascript">
+  function getDataFromPython(){
+    $.get( "findbykeywords.py", function( data ) {
+      $( ".result" ).html( data );
+      alert( "Load was performed." );
+    });
+  }
+</script>
+<button onclick="getDataFromPython()" />
+<div class="result">
+Your result will be here
+</div>
+  
+        <!-- 
+ <script>
+        function goPython(){
+            $.ajax({
+              url: "findbykeywords.py",
+	      data: "\"computer\" PricePlusShippingLowest",
+	      context: document.body,
+	      success: function(python)
+        	{
+            	var id = data;
+		document.getElementById("field2").value = data;
+        	}
+            });
+        }
+    </script>
+<img src="https://techcrunch.com/wp-content/uploads/2015/10/screen-shot-2015-10-08-at-4-20-16-pm.png?w=730&crop=1" 
+alt="Cheetah!" />  //-->
+
+	</script>
+  </body>
+</html>
