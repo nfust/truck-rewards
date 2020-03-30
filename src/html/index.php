@@ -1,56 +1,48 @@
 <?php
-
+/*
 if (!isset($_COOKIE['username']))
 {
     header('Location: Login.html');
     exit;
 }
 
+*/
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
     <title>Driver Incentive Program</title>
-	 <style>
-    .logout button {
-      position:fixed;
-      right: 0px;
-      top: 0px;
-      background-color: #444;
-      color: white;
-      border: 0;
-      font-size: 10px;
-      font-weight: bold;
-      font-family: inherit;
-      padding: 12px;
-    }
 
-    .logout button:hover {
-      background: #007BC4;
-      color: #444;
-      cursor: pointer;
-    }
-    </style>
     <link rel="stylesheet" href="index.css">
   </head>
   <body>
     <nav>
-      <input type="text" name="search" placeholder=" Search...">
       <a href="#" class="active">Home</a>
       <a href="Catalog.html">Catalog</a>
       <a href="DriverOrders.html">Orders</a>
       <a href="SponsorInfo.html">Sponsor Information</a>
       <a href="profile.php">Account</a>
-	<div class="logout">
+      <div class="logout">
         <form align="right" class="form" method="post" action="http://3.83.252.232:3001/logout">
           <button name="logout" type="submit">Log Out</button>
         </form>
-      	</div>
+      </div>
+
+      <div class="cart">
+        <button id="cart-button"type="button" name="cart" onclick="openForm()"><img id="cart-img" src="images/cart.png" alt="cart icon"></button>
+        <form id="cart-form" align="right" class="" action="" method="post">
+          <button id="close-button" type="button" name="close-button" onclick="closeForm()">X</button>
+          <h3>Shopping Cart</h3><hr>
+          <p>item1</p>
+          <p>item2</p>
+          <p>item3</p>
+        </form>
+      </div>
     </nav>
 
 
-    <h2>Welcome </h2> <h2 id="username">!</h2><br>
+    <h1>Welcome </h1> <h1 id="username"></h1>
 
     <section id="points-table">
       <h2>Current Points</h2><br>
@@ -63,7 +55,15 @@ if (!isset($_COOKIE['username']))
 
 
 
+    <script type="text/javascript">
+      function openForm() {
+        document.getElementById("cart-form").style.display = "block";
+      }
+      function closeForm() {
+        document.getElementById("cart-form").style.display = "none";
+      }
 
+    </script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script type="text/javascript" src="getCookie.js"></script>
