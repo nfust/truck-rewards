@@ -23,6 +23,11 @@ if (!isset($_COOKIE['username']))
       <a href="CompanyList.html">Companies</a>
       <a href="GenerateReports.html">Reports</a>
       <a href="AdminProfile.html">Account</a>
+      <div class="logout">
+        <form align="right" class="form" method="post" action="http://3.83.252.232:3001/logout">
+          <button name="logout" type="submit">Log Out</button>
+        </form>
+      </div>
     </nav>
 
     <h1>Welcome</h1> <h1 id="username"></h1>
@@ -30,7 +35,7 @@ if (!isset($_COOKIE['username']))
     <section id="statistics">
       <h2>Number of Drivers </h2>
 
-  
+
     </section>
 
 
