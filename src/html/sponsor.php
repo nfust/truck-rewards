@@ -23,6 +23,22 @@ if (!isset($_COOKIE['username']))
       <a href="CompanyInfo.html">Company Info</a>
       <a href="SponsorDrivers.html">Drivers</a>
       <a href="SponsorProfile.html">Account</a>
+      <div class="logout">
+        <form align="right" class="form" method="post" action="http://3.83.252.232:3001/logout">
+          <button name="logout" type="submit">Log Out</button>
+        </form>
+      </div>
+
+      <div class="cart">
+        <button id="cart-button"type="button" name="cart" onclick="openForm()"><img id="cart-img" src="images/cart.png" alt="cart icon"></button>
+        <form id="cart-form" align="right" class="" action="" method="post">
+          <button id="close-button" type="button" name="close-button" onclick="closeForm()">X</button>
+          <h3>Shopping Cart</h3><hr>
+          <p>item1</p>
+          <p>item2</p>
+          <p>item3</p>
+        </form>
+      </div>
     </nav>
 
     <h1>Welcome</h1> <h1 id="username"></h1>
