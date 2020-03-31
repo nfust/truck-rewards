@@ -7,28 +7,58 @@
   </head>
   <body>
     <nav>
-      <a href="About.html">About</a>
-      <a href="#">Catalog</a>
-      <a href="DriverOrders.html">Orders</a>
-      <a href="SponsorInfo.html">Sponsor Info</a>
+      <a href="index.php">Home</a>
+      <a href="Catalog.html">Catalog</a>
+      <a href="#" class="active">Orders</a>
+      <a href="SponsorInfo.html">Sponsor Information</a>
       <a href="DriverProfile.html">Account</a>
+
       <div class="logout">
         <form align="right" class="form" method="post" action="http://3.83.252.232:3001/logout">
           <button name="logout" type="submit">Log Out</button>
         </form>
       </div>
+
+      <div class="cart">
+        <button id="cart-button"type="button" name="cart" onclick="openForm()"><img id="cart-img" src="images/cart.png" alt="cart icon"></button>
+        <form id="cart-form" align="right" class="" action="" method="post">
+          <button id="close-button" type="button" name="close-button" onclick="closeForm()">X</button>
+          <h3>Shopping Cart</h3><hr>
+          <p>item1</p>
+          <p>item2</p>
+          <p>item3</p>
+        </form>
+      </div>
     </nav>
 
-    <section id="pending">
-      <h3>Pending Orders</h3>
-      <p>info about pending orders</p>
+    <div class="container">
+      <section id="pending">
+        <br><br><br><br><br>
+        <h3>Pending Orders</h3>
+        <p>info about pending orders</p>
 
-    </section>
+      </section>
 
-    <section id="history">
-      <h3>Order History</h3>
-      <p>info about previous orders</p>
-    </section>
+      <section id="history">
+        <h3>Order History</h3>
+        <p>info about previous orders</p>
+      </section>
+    </div>
+
+
+
+
+    <script type="text/javascript">
+      function openForm() {
+        document.getElementById("cart-form").style.display = "block";
+        document.getElementById("cart-button").style.background = "#007BC4";
+      }
+      function closeForm() {
+        document.getElementById("cart-form").style.display = "none";
+        document.getElementById("cart-button").style.background = "#444";
+      }
+
+    </script>
 
 
 

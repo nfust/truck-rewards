@@ -7,25 +7,52 @@
   </head>
   <body>
     <nav>
-      <a href="About.html">About</a>
-      <a href="#">Catalog</a>
+      <a href="index.php">Home</a>
+      <a href="Catalog.html">Catalog</a>
       <a href="DriverOrders.html">Orders</a>
-      <a href="SponsorInfo.html">Sponsor Info</a>
+      <a href="SponsorInfo.html" class="active">Sponsor Information</a>
       <a href="DriverProfile.html">Account</a>
       <div class="logout">
         <form align="right" class="form" method="post" action="http://3.83.252.232:3001/logout">
           <button name="logout" type="submit">Log Out</button>
         </form>
       </div>
+
+      <div class="cart">
+        <button id="cart-button"type="button" name="cart" onclick="openForm()"><img id="cart-img" src="images/cart.png" alt="cart icon"></button>
+        <form id="cart-form" align="right" class="" action="" method="post">
+          <button id="close-button" type="button" name="close-button" onclick="closeForm()">X</button>
+          <h3>Shopping Cart</h3><hr>
+          <p>item1</p>
+          <p>item2</p>
+          <p>item3</p>
+        </form>
+      </div>
     </nav>
 
-    <section class="main-content" id="sponsor-info">
-      <h3>[Sponsor 1 name]</h3>
-      <p>[Sponsor 1 info]</p>
-      <h3>[Sponsor 2 name]</h3>
-      <p>[Sponsor 2 info]</p>
-      <h3>[Sponsor 3 name]</h3>
-      <p>[Sponsor 3 info]</p>
-    </section>
+    <div class="container">
+      <section class="main-content" id="sponsor-info">
+        <br><br><br><br><br>
+        <h3>[Sponsor 1 name]</h3>
+        <p>[Sponsor 1 info]</p>
+        <h3>[Sponsor 2 name]</h3>
+        <p>[Sponsor 2 info]</p>
+        <h3>[Sponsor 3 name]</h3>
+        <p>[Sponsor 3 info]</p>
+      </section>
+    </div>
+
+
+    <script type="text/javascript">
+      function openForm() {
+        document.getElementById("cart-form").style.display = "block";
+        document.getElementById("cart-button").style.background = "#007BC4";
+      }
+      function closeForm() {
+        document.getElementById("cart-form").style.display = "none";
+        document.getElementById("cart-button").style.background = "#444";
+      }
+
+    </script>
   </body>
 </html>

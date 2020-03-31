@@ -6,7 +6,6 @@ if (!isset($_COOKIE['username']))
     exit;
 }
 
-
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -23,6 +22,7 @@ if (!isset($_COOKIE['username']))
       <a href="DriverOrders.html">Orders</a>
       <a href="SponsorInfo.html">Sponsor Information</a>
       <a href="profile.php">Account</a>
+
       <div class="logout">
         <form align="right" class="form" method="post" action="http://3.83.252.232:3001/logout">
           <button name="logout" type="submit">Log Out</button>
@@ -58,9 +58,11 @@ if (!isset($_COOKIE['username']))
     <script type="text/javascript">
       function openForm() {
         document.getElementById("cart-form").style.display = "block";
+        document.getElementById("cart-button").style.background = "#007BC4";
       }
       function closeForm() {
         document.getElementById("cart-form").style.display = "none";
+        document.getElementById("cart-button").style.background = "#444";
       }
 
     </script>

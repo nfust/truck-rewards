@@ -115,15 +115,6 @@ nav a:hover {
   color: #444;
 }
 
-nav input {
-  height: 35px;
-  width: 20%;
-  border-radius: 10px;
-  border-style: solid;
-  font-size: 120%;
-  margin-right: 60%;
-}
-
 h1 {
   margin-top: 150px;
   color: rgb(69, 103, 196);
