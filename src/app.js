@@ -1,4 +1,4 @@
-
+const crypto = require('crypto');
 const express = require('express');
 var cookieParser = require('cookie-parser');
 const app = express();
@@ -115,7 +115,12 @@ app.get('/points/sponsor/:SponsorID', (req, res) => {
 app.post('/driver', (req,res) => {
 
    let input = req.body;
-   queryString = "INSERT INTO user VALUES (\""+input.email+"\", \""+input.first+"\", \""+input.middle+"\", \""+input.last+"\",\"Driver\", \""+input.phone+"\", \""+input.username+"\", \""+input.password+"\", 0, NULL, NULL);"
+
+   //Hashing password and storing it
+   const salt = new Date().toString();
+   hash = crypto.createHash('sha256').update(input.password+salt).digest('base64');
+
+   queryString = "INSERT INTO user(email,first,middle,last,type,phone,username,pass,overTime,address,company,hash, salt) VALUES(\""+input.email+"\", \""+input.first+"\", \""+input.middle+"\", \""+input.last+"\",\"Driver\", \""+input.phone+"\", \""+input.username+"\", \""+input.password+"\", 0, NULL, NULL, \""+hash+"\", \""+salt+"\");"
    console.log(queryString);
 
    connection.query(queryString,(err, rows, fields) => {
@@ -161,7 +166,7 @@ app.post("/login", (req,res) =>{
    let logUser = req.body;
    console.log("Logging in user " + logUser.username);
    queryString = "SELECT * FROM user WHERE username = \'" + logUser.username + "\'";
-
+   console.log(queryString);
    connection.query(queryString,(err, result, fields) => {
    if(err){
       console.log("Cant find user " + logUser.username);
@@ -169,12 +174,27 @@ app.post("/login", (req,res) =>{
    }
 
    else{
-      if(result[0].pass == logUser.pwd){
+      if(result[0].pass == logUser.pwd && result[0].hash==null){
          let redirect = "http://3.83.252.232/index.php";
 	console.log(result);
 	 res.cookie("username", logUser.username);
 	 res.cookie("type", result[0].type);
          res.redirect(redirect);
+      }
+      else if(result[0].hash!=null){
+	let hashCheck = crypto.createHash('sha256').update(logUser.pwd+result[0].salt).digest('base64');
+	if (hashCheck==result[0].hash){
+	   let redirect = "http://3.83.252.232/index.php";
+           console.log(result);
+           res.cookie("username", logUser.username);
+           res.cookie("type", result[0].type);
+           res.redirect(redirect);
+	}
+	else{
+         let message = "Username/Password is incorrect";
+        console.log(message);
+         res.redirect("http://3.83.252.232/Login.html");
+      	}
       }
       else{
          let message = "Username/Password is incorrect";
@@ -197,7 +217,7 @@ app.post("/logout", (req,res) =>{
 app.post('/driver/edit', (req,res) => {
    var cookies = parseCookies(req);
    let input = req.body;
-      queryString = "UPDATE user SET first = \""+input.first+"\" , middle = \""+input.middle+"\"  ,last = \""+input.last+"\",username = \""+input.username+"\",email = \""+input.email+"\",phone = \""+input.phone+"\",address = \""+input.address+"\"  WHERE username = \""+cookies.username+"\";"
+      queryString = "UPDATE user SET first = \""+input.first+"\" , middle = \""+input.middle+"\"  ,last = \""+input.last+"\",username = \""+input.username+"\",email = \""+input.email+"\",phone = \""+input.phone+"\",address = \""+input.address+"\"  WHERE username = \""+input.username+"\";"
    console.log(queryString);
    connection.query(queryString,(err, rows, fields) => {
    if(err){
@@ -208,6 +228,23 @@ app.post('/driver/edit', (req,res) => {
       console.log("User edited" + input.username);
       res.cookie("username", input.username);
       res.redirect("http://3.83.252.232/profile.php");
+   }
+   });
+
+})
+
+app.post('/sponsorDriver/edit', (req,res) => {
+   let input = req.body;
+      queryString = "UPDATE user SET first = \""+input.first+"\" , middle = \""+input.middle+"\"  ,last = \""+input.last+"\",username = \""+input.username+"\",email = \""+input.email+"\",phone = \""+input.phone+"\",address = \""+input.address+"\"  WHERE username = \""+input.username+"\";"
+   console.log(queryString);
+   connection.query(queryString,(err, rows, fields) => {
+   if(err){
+      console.log("Cant edit driver " + input.username);
+      res.sendStatus(400);
+   }
+   else{
+      console.log("User edited" + input.username);
+      res.redirect("http://3.83.252.232/driverList.html");
    }
    });
 
@@ -492,7 +529,10 @@ app.post('/changeVal', (req,res) => {
 
 
 
+
+
 let port = 3001;
 app.listen(port, function () {
   console.log('Truck Rewards listening on port '+port+'!');
 });
+
