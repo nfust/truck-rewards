@@ -528,6 +528,27 @@ app.post('/changeVal', (req,res) => {
 })
 
 
+app.post('/removeDriver/:DriverID', (req,res) => {
+   let cookies = parseCookies(req);
+   let input = req.body;
+
+
+   const queryString = "DELETE FROM points WHERE username=\""+req.params.DriverID+"\"AND sponsor= \""+cookies.username+ "\";";
+   console.log(queryString);
+   connection.query(queryString,(err, rows, fields) => {
+   if(err){
+      console.log("Cant Delete from points ");
+   }
+   else{
+      console.log("Application Reject Successful");
+      console.log(rows);
+      res.redirect("http://3.83.252.232/driverList.html");
+   }
+
+   });
+
+})
+
 
 
 

@@ -30,7 +30,8 @@
                         for(let i=0; i<data.length; i++){
                                 let info  = data[i];
 				resultString = resultString + "<tr><td>" + info["username"] + "</td><td>" + info["points"] + "</td> "+
-                                                "<td> <a href=\"http://3.83.252.232/ChangeSponsorDriver.html?username="+info["username"]+"\">Edit Driver</td> </tr>";
+                                                "<td> <a href=\"http://3.83.252.232/ChangeSponsorDriver.html?username="+info["username"]+"\">Edit Driver</td>"+ 
+						"<td><form method=\"post\" action=\"http://3.83.252.232:3001/removeDriver/"+info["username"]+"\"><button name=\"delDriver\" type=\"submit\">Remove Driver</button></form></tr>";
 
                 }
                 console.log(resultString);
