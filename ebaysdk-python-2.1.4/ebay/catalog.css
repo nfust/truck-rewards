@@ -16,7 +16,7 @@ body {
 }
 
 ul.products item {
-	width: 900px; 
+	width: 700px; 
 	display: inline-block;
 	border: 2px solid #000000;
 	border-radius: 10px;  
