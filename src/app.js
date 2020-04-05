@@ -175,20 +175,40 @@ app.post("/login", (req,res) =>{
 
    else{
       if(result[0].pass == logUser.pwd && result[0].hash==null){
-         let redirect = "http://3.83.252.232/index.php";
+        let driver_redirect = "http://3.83.252.232/index.php";
+        let sponsor_redirect = "http://3.83.252.232/sponsor.php";
+        let admin_redirect = "http://3.83.252.232/admin.php";
 	console.log(result);
 	 res.cookie("username", logUser.username);
 	 res.cookie("type", result[0].type);
-         res.redirect(redirect);
+         if (result[0].type == "Driver") {
+           res.redirect(driver_redirect);
+         }
+         else if (result[0].type == 'Sponsor') {
+           res.redirect(sponsor_redirect);
+         }
+         else if (result[0].type == "Admin") {
+           res.redirect(admin_redirect);
+         }
       }
       else if(result[0].hash!=null){
 	let hashCheck = crypto.createHash('sha256').update(logUser.pwd+result[0].salt).digest('base64');
 	if (hashCheck==result[0].hash){
-	   let redirect = "http://3.83.252.232/index.php";
+	   let driver_redirect = "http://3.83.252.232/index.php";
+     let sponsor_redirect = "http://3.83.252.232sponsor.php";
+     let admin_redirect = "http://3.83.252.232/admin.php";
            console.log(result);
            res.cookie("username", logUser.username);
            res.cookie("type", result[0].type);
-           res.redirect(redirect);
+           if (result[0].type == "Driver") {
+             res.redirect(driver_redirect);
+           }
+           else if (result[0].type == 'Sponsor') {
+             res.redirect(sponsor_redirect);
+           }
+           else if (result[0].type == "Admin") {
+             res.redirect(admin_redirect);
+           }
 	}
 	else{
          let message = "Username/Password is incorrect";
@@ -280,7 +300,7 @@ app.post('/forgotpassword', (req,res) => {
     			console.log(error);
 			res.sendStatus(400);}
 			else {
-    			console.log('Email sent: ' + info.response); 
+    			console.log('Email sent: ' + info.response);
 			res.redirect("http://3.83.252.232/sentEmail.html");}
 		});
    	}
@@ -556,4 +576,3 @@ let port = 3001;
 app.listen(port, function () {
   console.log('Truck Rewards listening on port '+port+'!');
 });
-
