@@ -1,11 +1,11 @@
 
 <?php
-
+/*
 if (!isset($_COOKIE['username']))
 {
     header('Location: Login.html');
     exit;
-}
+}*/
  ?>
 
 <!DOCTYPE html>
@@ -41,13 +41,25 @@ if (!isset($_COOKIE['username']))
       </div>
     </nav>
 
-    <h1>Welcome</h1> <h1 id="username"></h1>
+    <h1>Welcome</h1> <h1 id="first"></h1>
 
     <section id="statistics">
       <h2>Current number of drivers</h2>
 
 
     </section>
+
+    <script type="text/javascript">
+      function openForm() {
+        document.getElementById("cart-form").style.display = "block";
+        document.getElementById("cart-button").style.background = "#007BC4";
+      }
+      function closeForm() {
+        document.getElementById("cart-form").style.display = "none";
+        document.getElementById("cart-button").style.background = "#444";
+      }
+
+    </script>
 
 
 
@@ -60,7 +72,7 @@ if (!isset($_COOKIE['username']))
               url: getURL,
               success: function (data) {
                 data = data[0];
-                document.getElementById("username").innerHTML = data["username"];
+                document.getElementById("first").innerHTML = data["first"];
               }
           });
     </script>

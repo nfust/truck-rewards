@@ -30,7 +30,7 @@ if (!isset($_COOKIE['username']))
       </div>
     </nav>
 
-    <h1>Welcome</h1> <h1 id="username"></h1>
+    <h1>Welcome</h1> <h1 id="first"></h1>
 
     <section id="statistics">
       <h2>Number of Drivers </h2>
@@ -49,7 +49,7 @@ if (!isset($_COOKIE['username']))
               url: getURL,
               success: function (data) {
                 data = data[0];
-                document.getElementById("username").innerHTML = data["username"];
+                document.getElementById("first").innerHTML = data["first"];
               }
           });
     </script>
