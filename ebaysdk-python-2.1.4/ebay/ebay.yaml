@@ -1,5 +1,5 @@
 name: ebay_api_config
-sssssssssssssssssssssssssssssssssssssssssss
+
 # Trading API Sandbox - https://www.x.com/developers/ebay/products/trading-api
 api.sandbox.ebay.com:
     compatability: 719
