@@ -1,14 +1,18 @@
 #!/usr/bin/env python3
 from ebaysdk.finding import Connection
 import sys
+import json
 
-keywords = sys.argv[1]
+if (len(sys.argv) >1):
+	keywords = sys.argv[1]
+else:
+	keywords = "bumper sticker"
 if (len(sys.argv) > 2):
 	sortOrder = sys.argv[2]
 else:
 	sortOrder = "BestMatch"
-	if __name__ == '__main__':
-	    	api = Connection(config_file='ebay.yaml', debug=True, siteid="EBAY-US")
+if __name__ == '__main__':
+	api = Connection(config_file='ebay.yaml', debug=True, siteid="EBAY-US")
 
 	request = {
 	        'keywords': keywords,
@@ -25,8 +29,12 @@ else:
 
 
 	response = api.execute('findItemsByKeywords', request)
+	i = 0
+	output = {}
 	for item in response.reply.searchResult.item:
-	    print ("Title: ",item.title,", Price: ",item.sellingStatus.currentPrice.value)
+	    output.update([(str(i) +'title', item.title),(str(i)+ 'price', item.sellingStatus.currentPrice.value),(str(i) +'URL', item.galleryURL)])
+	    i = i + 1
+	print (json.dumps(output))
 
 #print("args", str(sys.argv))
 #print("arg", sys.argv[1])
