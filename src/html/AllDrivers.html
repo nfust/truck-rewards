@@ -3,14 +3,13 @@
   <head>
     <meta charset="utf-8">
     <title>Drivers</title>
-    <link rel="stylesheet" href="../../Profile/profile.css">
   </head>
   <body>
     <nav>
-      <a href="AllDrivers.html">Drivers</a>
-      <a href="AllSponsors.html">Sponsors</a>
-      <a href="CompanyList.html">Companies</a>
-      <a href="GenerateReports.html">Reports</a>
+      <a href="AllDrivers.html">Drivers</a> |
+      <a href="AllSponsors.html">Sponsors</a> |
+      <a href="#">Companies</a> |
+      <a href="#">Reports</a> |
       <a href="AdminProfile.html">Account</a>
       <div class="logout">
         <form align="right" class="form" method="post" action="http://3.83.252.232:3001/logout">
@@ -18,10 +17,27 @@
         </form>
       </div>
     </nav>
-    <h1>All Drivers</h1>
-    <a href="#">John</a>
-    <a href="#">Dan</a>
-    <a href="#">Bob</a>
-    <a href="#">Joe</a>
+
+    <h2 align="center">Drivers</h2>
+    <table align="center" id="driverTable" border="1"> </table>
+    <a href="signupDriver.html">New Driver</a>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+      <script type="text/javascript"charset="utf-8">
+
+      getURL = "http://3.83.252.232:3001/user/driver/admin";
+      $.ajax({
+              type: "GET",
+              url: getURL,
+              success: function (data) {
+              let resultString = "<tr><th>Driver</th></tr>";
+                      for(let i=0; i<data.length; i++){
+                              let info  = data[i];
+                              resultString = resultString + "<tr><td><form action='ViewDriverProfile.html' method='GET'><input type='hidden' name='user' value=" + info["username"] + "/><input type='submit' value=" + info["username"] + "/></form></td></tr>";
+              }
+              console.log(resultString);
+              document.getElementById("driverTable").innerHTML = resultString;
+              }
+          });
+      </script>
   </body>
 </html>
