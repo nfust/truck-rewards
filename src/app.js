@@ -570,6 +570,97 @@ app.post('/removeDriver/:DriverID', (req,res) => {
 })
 
 
+app.get('/user/driver/admin', (req, res) => {
+  console.log("Getting drivers")
+  const queryString = "SELECT username FROM user where type = \""+driver+"\"";
+  connection.query(queryString,(err, rows, fields) => {
+  if(err){
+     console.log("Cant find drivers");
+     res.sendStatus(400);
+  }
+
+  else{
+     console.log("I think we got the drivers");
+     console.log(rows);
+     res.json(rows)
+  }
+
+  });
+})
+
+
+app.get('/user/sponsor/admin', (req, res) => {
+  console.log("Getting sponsors")
+  const queryString = "SELECT username FROM user where type = \""+sponsor+"\"";
+  connection.query(queryString,(err, rows, fields) => {
+  if(err){
+     console.log("Cant find sponsors");
+     res.sendStatus(400);
+  }
+
+  else{
+     console.log("I think we got the sponsors");
+     console.log(rows);
+     res.json(rows)
+  }
+
+  });
+})
+
+
+app.post('/driver/edit/:DriverID', (req,res) => {
+   let input = req.body;
+   queryString = "UPDATE user SET first = \""+input.first+"\" , middle = \""+input.middle+"\"  ,last = \""+input.last+"\",username = \""+input.username+"\",email = \""+input.email+"\",phone = \""+input.phone+"\",address = \""+input.address+"\"  WHERE username = \""+req.params.Username+"\";"
+   console.log(queryString);
+   connection.query(queryString,(err, rows, fields) => {
+   if(err){
+      console.log("Cant edit driver " + input.username);
+      res.sendStatus(400);
+   }
+   else{
+      console.log("User edited" + input.username);
+      res.redirect("http://3.83.252.232/ViewDriverProfile.php");
+   }
+   });
+
+})
+
+
+app.post('/sponsor/edit/:SponsorID', (req,res) => {
+   let input = req.body;
+   queryString = "UPDATE user SET first = \""+input.first+"\" , middle = \""+input.middle+"\"  ,last = \""+input.last+"\",username = \""+input.username+"\",email = \""+input.email+"\",phone = \""+input.phone+"\",address = \""+input.address+"\"  WHERE username = \""+req.params.Username+"\";"
+   console.log(queryString);
+   connection.query(queryString,(err, rows, fields) => {
+   if(err){
+      console.log("Cant edit driver " + input.username);
+      res.sendStatus(400);
+   }
+   else{
+      console.log("User edited" + input.username);
+      res.redirect("http://3.83.252.232/ViewDriverProfile.php");
+   }
+   });
+
+})
+
+
+app.post('/resetpassword/:Username', (req,res) => {
+  let input = req.body;
+	queryString = "UPDATE user SET pass=\'"+input.password+ "\' WHERE username=\'" +req.params.username+ "\'";
+   	console.log(queryString);
+
+   	connection.query(queryString,(err, rows, fields) => {
+   	if(err){
+      		console.log("Cant change password driver " + req.params.username);
+      		res.redirect("ResetPassword.html#");
+   	}
+
+   	else{
+      			console.log("Password Changed")
+      			res.redirect("http://3.83.252.232/profile.php");
+   	}
+   	});
+});
 
 
 let port = 3001;
