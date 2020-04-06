@@ -48,6 +48,7 @@
       <p> Username: </p><p id="username">[username]</p><br>
       <p> E-Mail: </p><p id="email">[email]</p><br>
       <p> Phone: </p><p id="phone">[phone #]</p><br>
+      <p> Shipping address: </p> <p id="address">[address]</p><br>
       <a href="ChangeDriver.html">Edit Profile</a><br>
       <a href="ResetPassword.html">Change Password</a>
     </div>
@@ -67,6 +68,7 @@
 		        document.getElementById("username").innerHTML = data["username"];
 			document.getElementById("email").innerHTML = data["email"];
 			document.getElementById("phone").innerHTML = data["phone"];
+      document.getElementById("address").innerHTML = data["address"];
                 }
             });
 
