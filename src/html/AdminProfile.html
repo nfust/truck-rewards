@@ -18,10 +18,11 @@
   </head>
   <body>
     <nav>
-      <a href="Drivers.html">Drivers</a> |
-      <a href="Sponsors.html">Sponsors</a> |
+      <a href="AllDrivers.html">Drivers</a> |
+      <a href="AllSponsors.html">Sponsors</a> |
       <a href="#">Companies</a> |
-      <a href="#">Reports</a>
+      <a href="#">Reports</a> |
+      <a href="AdminProfile.html">Account</a>
       <div class="logout">
         <form align="right" class="form" method="post" action="http://3.83.252.232:3001/logout">
           <button name="logout" type="submit">Log Out</button>
@@ -35,13 +36,32 @@
 
     <div class="profile-container">
       <img src="images/profile.png" alt="profile photo">
-      <p>[Admin Name]</p><br>
-      <p>[username]</p><br>
-      <p>[email]</p><br>
-      <p>[phone #]</p><br>
-      <a href="changeAdminProfile.html">Edit Profile</a><br>
-      <a href="truck-rewards/ForgotPwd/ResetPassword.html">Change Password</a>
+
+      <p> Name:</p> <p id="first">[First name]</p> <p id="middle">[MI]</p> <p id="last">[last name]</p> <br>
+      <p> Username: </p><p id="username">[username]</p><br>
+      <p> E-Mail: </p><p id="email">[email]</p><br>
+      <p> Phone: </p><p id="phone">[phone #]</p><br>
+      <a href="ChangeDriver.html">Edit Profile</a><br>
+      <a href="ResetPassword.html">Change Password</a>
     </div>
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script type="text/javascript" src="getCookie.js"></script>
+	<script type="text/javascript"charset="utf-8">
+	let getURL = "http://3.83.252.232:3001/user/" + getCookie("username");
+	$.ajax({
+                type: "GET",
+                url: getURL,
+                success: function (data) {
+			data = data[0];
+ 		        document.getElementById("first").innerHTML = "" + data["first"];
+			document.getElementById("middle").innerHTML = data["middle"];
+			document.getElementById("last").innerHTML = data["last"];
+		        document.getElementById("username").innerHTML = data["username"];
+			document.getElementById("email").innerHTML = data["email"];
+			document.getElementById("phone").innerHTML = data["phone"];
+                }
+            });
+	</script>
   </body>
 </html>
