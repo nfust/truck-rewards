@@ -6,6 +6,20 @@ if (!isset($_COOKIE['username']))
     exit;
 }
 
+
+if($_COOKIE['type'] == "Sponsor")
+{
+    header('Location: sponsor.php');
+    exit;
+}
+
+if($_COOKIE['type'] == "admin") 
+{
+    header('Location: admin.php');
+    exit;
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
