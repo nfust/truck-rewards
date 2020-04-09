@@ -19,7 +19,7 @@
     </nav>
 
     <h2 align="center">Sponsors</h2>
-    <table align="center" id="sponsorTable" border="1"> </table>
+    <table align="center" id="SponsorTable" border="1"> </table>
     <a href="signupManager.html">New Sponsor</a>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
       <script type="text/javascript"charset="utf-8">
@@ -32,7 +32,7 @@
               let resultString = "<tr><th>Sponsor</th></tr>";
                       for(let i=0; i<data.length; i++){
                               let info  = data[i];
-                              resultString = resultString + "<tr><td><form action='ViewSponsorProfile.html' method='GET'><input type='hidden' name='user' value=" + info["username"] + "/><input type='submit' value=" + info["username"] + "/></form></td></tr>";
+                              resultString = resultString + "<tr><td><form action='ViewSponsorProfile.html' method='GET'><input type='hidden' name='user' value=" + info["username"] + "/><input type='submit' value=" + info["username"] + "></form></td></tr>";
               }
               console.log(resultString);
               document.getElementById("SponsorTable").innerHTML = resultString;

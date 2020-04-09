@@ -572,7 +572,7 @@ app.post('/removeDriver/:DriverID', (req,res) => {
 
 app.get('/user/driver/admin', (req, res) => {
   console.log("Getting drivers")
-  const queryString = "SELECT username FROM user where type = \""+driver+"\"";
+  const queryString = "SELECT username FROM user WHERE type = \"Driver\";";
   connection.query(queryString,(err, rows, fields) => {
   if(err){
      console.log("Cant find drivers");
@@ -591,7 +591,7 @@ app.get('/user/driver/admin', (req, res) => {
 
 app.get('/user/sponsor/admin', (req, res) => {
   console.log("Getting sponsors")
-  const queryString = "SELECT username FROM user where type = \""+sponsor+"\"";
+  const queryString = "SELECT username FROM user where type = \"Sponsor\"";
   connection.query(queryString,(err, rows, fields) => {
   if(err){
      console.log("Cant find sponsors");
