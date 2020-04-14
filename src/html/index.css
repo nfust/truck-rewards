@@ -1,18 +1,13 @@
 body {
   font-family: Verdana, sans-serif;
+  background-color: #dedede;
   color: #007BC4;
   margin: auto;
-  height: 1000px;
-  background-image: url("../images/truck.jpg");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: left;
 }
 
 nav {
   width: 100%;
-  height: 67px;;
+  height: 67px;
   background-color: #444;
   text-align: center;
   position: fixed;
@@ -21,7 +16,7 @@ nav {
   z-index: 1;
 }
 
-nav a {
+.nav-link {
   display: inline-block;
   text-decoration: none;
   color: white;
@@ -35,7 +30,7 @@ nav a {
 }
 
 #cart-img {
-  height: 20px;
+  height: 22px;
   width: 26px;
   filter: invert(100%);
 }
@@ -43,9 +38,8 @@ nav a {
 #cart-button {
   position:fixed;
   right: 0;
-  top: 28.5px;
+  top: 27px;
   background-color: #444;
-  color: white;
   border: 0;
   font-size: 10px;
   font-weight: bold;
@@ -98,7 +92,7 @@ nav a {
   height: 300px;
   padding: 16px;
   box-shadow: 0 0 10px 1px black;
-  margin-top: 15px;
+  margin-top: 10px;
   margin-left: 75%;
   text-align: center;
   background-color: white;
@@ -116,20 +110,93 @@ nav a:hover {
 }
 
 h1 {
-  margin-top: 150px;
   color: rgb(69, 103, 196);
-  font-family: Impact, sans-serif;
+  font-family: 'century gothic', sans-serif;
   font-size: 500%;
-  transform: scale(1, 1.5);
-  text-align: center;
+  font-weight: 300;
+  top: 70px;
+  position: absolute;
+  background-color: white;
+  padding: 36px;
+  opacity: 0.6;
+}
+
+#username {
+  margin-left: 404px;
+  padding-left: 0;
 }
 
 h2 {
   text-align: center;
 }
 
+section {
+  background-color: white;
+  border: 8px;
+  margin: auto;
+  padding: 50px 0 50px 0;
+  margin: 100px;
+  width: 100%;
+  margin-left: 0;
+  text-align: center;
+}
+
+table {
+  margin: auto;
+}
+
+#truck {
+  width: 100%;
+  height: 92.6%;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.image {
+  position: relative;
+}
+
+
 p {
   color: black;
+}
+
+#checkout-button {
+  color: white;
+  font-size: 16px;
+  background-color: #007BC4;
+  padding: 10px;
+  margin: 24px;
+  text-decoration: none;
+}
+
+#checkout-button:hover {
+  background-color: #8dd1f0;
+}
+
+#checkout-button:active {
+  background-color: #3e5f85;
+}
+
+#clear-button {
+  color: white;
+  font-size: 17px;
+  background-color: #ff6161;
+  text-decoration: none;
+  padding: 10px;
+  margin: 24px;
+  border: none;
+  margin-left: 0;
+}
+
+#clear-button:hover {
+  background-color: #ffb0b0;
+}
+
+#clear-button:active {
+  background-color: #821515;
 }
 
 .active {
@@ -137,3 +204,49 @@ p {
   color: #444;
 }
 
+@keyframes slideFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideFromRight {
+  0% {
+    transform: translateX(250%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+#left {
+  animation: 1s ease-out 0s 1 slideFromLeft;
+}
+
+#username {
+  animation: 1s ease-out 0s 1 slideFromRight;
+}
+
+@keyframes bounce {
+	0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+	40% {
+    transform: translateY(-30px);
+  }
+	60% {
+    transform: translateY(-15px);
+  }
+}
+
+#arrow {
+  bottom: 30px;
+  position: absolute;
+  filter: invert(100%);
+  height: 6%;
+  width: 6%;
+  animation: bounce 2s infinite;
+}

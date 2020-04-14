@@ -1,5 +1,5 @@
 <?php
-
+/*
 if (!isset($_COOKIE['username']))
 {
     header('Location: Login.html');
@@ -7,13 +7,14 @@ if (!isset($_COOKIE['username']))
 }
 
 
+*/
 if($_COOKIE['type'] == "Sponsor")
 {
     header('Location: sponsor.php');
     exit;
 }
 
-if($_COOKIE['type'] == "admin") 
+if($_COOKIE['type'] == "admin")
 {
     header('Location: admin.php');
     exit;
@@ -21,6 +22,7 @@ if($_COOKIE['type'] == "admin")
 
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -31,11 +33,11 @@ if($_COOKIE['type'] == "admin")
   </head>
   <body>
     <nav>
-      <a href="#" class="active">Home</a>
-      <a href="Catalog.html">Catalog</a>
-      <a href="DriverOrders.html">Orders</a>
-      <a href="SponsorInfo.html">Sponsor Information</a>
-      <a href="profile.php">Account</a>
+      <a class="nav-link" href="#" class="active">Home</a>
+      <a class="nav-link" href="Catalog.html">Catalog</a>
+      <a class="nav-link" href="DriverOrders.html">Orders</a>
+      <a class="nav-link" class="nav" href="SponsorInfo.html">Sponsor Information</a>
+      <a class="nav-link" href="profile.php">Account</a>
 
       <div class="logout">
         <form align="right" class="form" method="post" action="http://3.83.252.232:3001/logout">
@@ -48,25 +50,52 @@ if($_COOKIE['type'] == "admin")
         <form id="cart-form" align="right" class="" action="" method="post">
           <button id="close-button" type="button" name="close-button" onclick="closeForm()">X</button>
           <h3>Shopping Cart</h3><hr>
-          <p>item1</p>
-          <p>item2</p>
-          <p>item3</p>
+          <table id="items-table">
+            <tr>
+              <td>Name</td>
+              <td>ID</td>
+              <td>Price</td>
+            </tr>
+            <tr>
+              <td>tire</td>
+              <td>45252</td>
+              <td>$135.99</td>
+            </tr>
+          </table>
+          <a id="checkout-button" href="Checkout.html">Checkout</a>
+          <button id="clear-button" type="button" name="button">Clear Cart</button>
         </form>
       </div>
     </nav>
 
-
-    <h1>Welcome </h1> <h1 id="username"></h1>
+    <div class="image">
+      <img id="truck" src="images/truck.jpg" alt="truck"/>
+      <h1 id="left">Welcome</h1><h1 id="username">!</h1>
+      <img id="arrow" src="images/arrow.png" alt="arrow down">
+    </div>
 
     <section id="points-table">
       <h2>Current Points</h2><br>
-      <table id="points"></table>
+      <table id="points">
+        <tr>
+          <td>Sponsor</td>
+          <td>Points</td>
+        </tr>
+        <tr>
+          <td>sponsor1</td>
+          <td>45252</td>
+        </tr>
+      </table>
     </section>
 
     <section id="sponsor-list">
       <h2>Active Sponsorships</h2><br>
+      <ul>
+        <li>sponsor1</li>
+        <li>sponsor2</li>
+        <li>sponsor3</li>
+      </ul>
     </section>
-
 
 
     <script type="text/javascript">
@@ -85,7 +114,7 @@ if($_COOKIE['type'] == "admin")
     <script type="text/javascript" src="getCookie.js"></script>
     <script type="text/javascript"charset="utf-8">
   let getURL = "http://3.83.252.232:3001/user/" + getCookie("username");
-  $.ajax({
+    $.ajax({
               type: "GET",
               url: getURL,
               success: function (data) {
@@ -95,8 +124,8 @@ if($_COOKIE['type'] == "admin")
           });
 
 
-    getURL = "http://3.83.252.232:3001/user/" + getCookie("username", document)
-    $.ajax({
+    getURL = "http://3.83.252.232:3001/points/" + getCookie("username", document)
+      $.ajax({
                 type: "GET",
                 url: getURL,
                 success: function (data) {
@@ -109,6 +138,20 @@ if($_COOKIE['type'] == "admin")
 		               document.getElementById("points").innerHTML = resultString;
                 }
             });
+
+      getURL = "http://3.83.252.232:3001/cart" + getCookie("username");
+        $.ajax({
+                        type: "GET",
+                        url: getURL,
+                        success: function (data) {
+                          for (let i=0; i < data.length; i++) {
+                            let info = data[i];
+                            resultString = info ["img "] + info["item_name "] + info["qty"] + info["price"];
+                          }
+                          console.log(resultString);
+                          document.getElementById("items").innerHTML = resultString;
+                        }
+                    });
       </script>
 
 
