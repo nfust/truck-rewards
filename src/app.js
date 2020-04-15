@@ -662,6 +662,65 @@ app.post('/resetpassword/:Username', (req,res) => {
    	});
 });
 
+app.get('/cart/:Username', (req, res) => {
+   console.log("Getting cart")
+   const queryString = "SELECT * FROM cart WHERE username = \"" + req.params.Username+ "\"";
+   connection.query(queryString,(err, rows, fields) => {
+   if(err){
+      console.log("Cant get " + userID + "'s cart'");
+      res.sendStatus(400);
+   }
+
+   else{
+      console.log("Cart fetch successful");
+      console.log(rows);
+      res.json(rows)
+   }
+
+ });
+
+});
+
+
+app.post('/addCart', (req, res) => {
+  let cookies = parseCookies(req);
+  let input = req.body;
+
+  const queryString = "INSERT INTO cart(username, item_name, qty) VALUES(\""+cookies.username+"\" , \""+req.params.item_name+"\" , \"" + req.params.qty+ "\");";
+  console.log(queryString);
+  connection.query(queryString,(err, rows, fields) => {
+  if(err){
+     console.log("Cannot add to cart");
+     res.sendStatus(400);
+  }
+
+  else{
+     console.log("Item added to cart");
+     console.log(rows);
+  }
+
+  });
+});
+
+app.post('/clearCart', (req, res) => {
+  let cookies = parseCookies(req);
+  let input = req.body;
+
+  const queryString = "DELETE * FROM cart WHERE username = \"" + cookies.username+ "\"";
+  console.log(queryString);
+  connection.query(queryString,(err, rows, fields) => {
+  if(err){
+     console.log("Cannot clear cart");
+     res.sendStatus(400);
+  }
+
+  else{
+     console.log("Cart cleared");
+     console.log(rows);
+  }
+
+  });
+});
 
 let port = 3001;
 app.listen(port, function () {
