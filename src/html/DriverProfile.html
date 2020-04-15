@@ -2,58 +2,70 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-
-    <style>
-      img {
-        margin-top: 1%;
-        height: 10%;
-        width: 10%;
-      }
-
-      p{display: inline}
-<<<<<<< HEAD
-
-      table{border:1px;}
-
-=======
-
->>>>>>> 8372600e0e757ab5e4317ec9b6e9cc72593ecfb8
-    </style>
-
     <link rel="stylesheet" href="profile.css">
-
-    <title>[Driver's] Profile</title>
+    <title>Profile</title>
   </head>
   <body>
     <nav>
-      <a href="index.php">Home</a> |
-      <a href="catalog.html">Catalog</a> |
-      <a href="purchaseHistory.html">Purchase History</a> |
-      <a href="sponsorInfo.html">Sponsor Info</a> |
-      <a href="earnPoints.html">Earn Points</a> |
-      <a href="driverApply.html">Apply for Sponsor</a>
-
+      <a href="index.php">Home</a>
+      <a href="Catalog.html">Catalog</a>
+      <a href="DriverOrders.html">Orders</a>
+      <a href="SponsorInfo.html">Sponsor Information</a>
+      <a href="earnPoints.html">Earn Points</a>
+      <a href="DriverProfile.html" class="active">Account</a>
       <div class="logout">
         <form align="right" class="form" method="post" action="http://3.83.252.232:3001/logout">
           <button name="logout" type="submit">Log Out</button>
         </form>
       </div>
 
+      <div class="cart">
+        <button id="cart-button"type="button" name="cart" onclick="openForm()"><img id="cart-img" src="images/cart.png" alt="cart icon"></button>
+        <form id="cart-form" align="right" class="" action="" method="post">
+          <button id="close-button" type="button" name="close-button" onclick="closeForm()">X</button>
+          <h3>Shopping Cart</h3><hr>
+          <table id="items-table">
+            <tr>
+              <td>Name</td>
+              <td>ID</td>
+              <td>Price</td>
+            </tr>
+            <tr>
+              <td>tire</td>
+              <td>45252</td>
+              <td>$135.99</td>
+            </tr>
+          </table>
+          <a id="checkout-button" href="Checkout.html">Checkout</a>
+          <button id="clear-button" type="button" name="button">Clear Cart</button>
+        </form>
+      </div>
     </nav>
 
-    <div class="profile-container">
-      <img src="images/profile.png" alt="profile photo">
-
-      <p> Name:</p> <p id="first">[First name]</p> <p id="middle">[MI]</p> <p id="last">[last name]</p> <br>
+    <div class="container">
+      <img id="profile-img" src="images/profile.png" alt="profile photo"><br>
+      <p> Name:</p> <p id="first"></p> <p id="middle"></p> <p id="last"></p> <br>
       <p> Points: </p><br>
 	<table border="1" id="points"></table>
-      <p> Username: </p><p id="username">[username]</p><br>
-      <p> E-Mail: </p><p id="email">[email]</p><br>
-      <p> Phone: </p><p id="phone">[phone #]</p><br>
-      <p> Shipping address: </p> <p id="address">[address]</p><br>
-      <a href="ChangeDriver.html">Edit Profile</a><br>
-      <a href="ResetPassword.html">Change Password</a>
+      <p> Username: </p><p id="username"></p><br>
+      <p> E-Mail: </p><p id="email"></p><br>
+      <p> Phone: </p><p id="phone"></p><br>
+      <p> Shipping address: </p> <p id="address"></p><br>
+      <a class="account-button" href="ChangeDriver.html">Edit Profile</a><br>
+      <a class="account-button" href="ResetPassword.html">Change Password</a>
     </div>
+
+    <script type="text/javascript">
+      function openForm() {
+        document.getElementById("cart-form").style.display = "block";
+        document.getElementById("cart-button").style.background = "#007BC4";
+      }
+      function closeForm() {
+        document.getElementById("cart-form").style.display = "none";
+        document.getElementById("cart-button").style.background = "#444";
+      }
+
+    </script>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script type="text/javascript" src="getCookie.js"></script>

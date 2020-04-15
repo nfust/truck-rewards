@@ -1,10 +1,12 @@
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
-
   <head>
     <meta charset="utf-8">
     <title>Edit Profile</title>
+    <link rel="stylesheet" href="ResetPassword.css">
   </head>
   <body>
+    <div class=container>
     <h2>Edit Profile</h2>
     <form action="http://3.83.252.232:3001/driver/edit" method="post">
       <label for="first">First Name</label>
@@ -22,18 +24,19 @@
       <label for="shipping">Shipping Address</label>
       <input id="address" type="text" name="address" value="shipping"><br>
       <button type="submit" name="save">Save</button>
-      <button type="button" name="cancel">Cancel</button>
+      <a href="DriverProfile.html">Cancel</a>
     </form>
+  </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script type="text/javascript"charset="utf-8">
     const queryParamsString = window.location.search.substr(1);
     console.log(queryParamsString);
     const queryParams = queryParamsString.split('&').reduce((accumulator, singleQueryParam) => {
-  	const [key, value] = singleQueryParam.split('=');
-  	accumulator[key] = value;
-  	return accumulator;
-	}, {})
+    const [key, value] = singleQueryParam.split('=');
+    accumulator[key] = value;
+    return accumulator;
+  }, {})
     console.log(queryParams.username);
       let getURL = "http://3.83.252.232:3001/user/" + queryParams.username;
       $.ajax({
@@ -69,4 +72,6 @@
 
     </script>
   </body>
+
+
 </html>

@@ -27,7 +27,7 @@ if($_COOKIE['type'] == "admin")
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Driver Incentive Program</title>
+    <title>Dashboard</title>
 
     <link rel="stylesheet" href="index.css">
   </head>
@@ -37,6 +37,7 @@ if($_COOKIE['type'] == "admin")
       <a class="nav-link" href="Catalog.html">Catalog</a>
       <a class="nav-link" href="DriverOrders.html">Orders</a>
       <a class="nav-link" class="nav" href="SponsorInfo.html">Sponsor Information</a>
+      <a class="nav-link" href="earnPoints.html">Earn Points</a>
       <a class="nav-link" href="profile.php">Account</a>
 
       <div class="logout">
@@ -50,18 +51,7 @@ if($_COOKIE['type'] == "admin")
         <form id="cart-form" align="right" class="" action="" method="post">
           <button id="close-button" type="button" name="close-button" onclick="closeForm()">X</button>
           <h3>Shopping Cart</h3><hr>
-          <table id="items-table">
-            <tr>
-              <td>Name</td>
-              <td>ID</td>
-              <td>Price</td>
-            </tr>
-            <tr>
-              <td>tire</td>
-              <td>45252</td>
-              <td>$135.99</td>
-            </tr>
-          </table>
+          <table id="items-table"></table>
           <a id="checkout-button" href="Checkout.html">Checkout</a>
           <button id="clear-button" type="button" name="button">Clear Cart</button>
         </form>
@@ -139,7 +129,7 @@ if($_COOKIE['type'] == "admin")
                 }
             });
 
-      getURL = "http://3.83.252.232:3001/cart" + getCookie("username");
+      getURL = "http://3.83.252.232:3001/cart/" + getCookie("username", document);
         $.ajax({
                         type: "GET",
                         url: getURL,

@@ -41,7 +41,7 @@ nav a {
 }
 
 #cart-img {
-  height: 20px;
+  height: 21px;
   width: 26px;
   filter: invert(100%);
 }
@@ -49,9 +49,8 @@ nav a {
 #cart-button {
   position:fixed;
   right: 0;
-  top: 28.5px;
+  top: 28px;
   background-color: #444;
-  color: white;
   border: 0;
   font-size: 10px;
   font-weight: bold;
@@ -121,10 +120,11 @@ nav a:hover {
   color: #444;
 }
 
-img {
-  margin-top: 1%;
-  height: 10%;
-  width: 10%;
+#profile-img {
+  margin-top: 7%;
+  margin-bottom: 2%;
+  height: 150px;
+  width: 150px;
 }
 
 .active {
@@ -132,7 +132,91 @@ img {
   color: #444;
 }
 
+form input {
+  margin-top: 10px;
+  padding: 4px;
+  font-size: 16px;
+  text-align: center;
+}
+
+#apply-button {
+  margin-top: 12px;
+  background-color: #FFBD2E;
+  border: none;
+  height: 40px;
+  width: 80px;
+  border-radius: 3px;
+  font-size: 16px;
+  color: #444;
+}
+
+#apply-button:hover {
+  background-color: #ffde69
+}
+
+#apply-button:active {
+  color: white;
+  background-color: #444
+}
+
+p {
+  display: inline;
+}
 
 
-h3 {
+#checkout-button {
+  color: white;
+  font-size: 16px;
+  font-weight: 300;
+  background-color: #007BC4;
+  padding: 10px;
+  margin: 24px;
+  text-decoration: none;
+}
+
+#checkout-button:hover {
+  background-color: #8dd1f0;
+}
+
+#checkout-button:active {
+  background-color: #3e5f85;
+}
+
+#clear-button {
+  color: white;
+  font-size: 17px;
+  background-color: #ff6161;
+  text-decoration: none;
+  padding: 10px;
+  margin: 24px;
+  border: none;
+  margin-left: 0;
+}
+
+#clear-button:hover {
+  background-color: #ffb0b0;
+}
+
+#clear-button:active {
+  background-color: #821515;
+}
+
+.account-button {
+  text-decoration: none;
+  border-radius: 3px;
+  padding: 10px 24px;
+  display: inline-block;
+  margin-top: 14px;
+  background-color: #FFBD2E;
+  border: none;
+  color: #444;
+}
+
+.account-button:hover {
+  background-color: #ffde69
+}
+
+.account-button:active {
+  color: white;
+  background-color: #444
 }

@@ -3,11 +3,64 @@
   <head>
     <meta charset="utf-8">
     <title>Earn Points</title>
+    <link rel="stylesheet" href="profile.css">
   </head>
   <body>
-    <h2>Earn Points</h2>
-    <ul>
-      <li>[List of ways to earn points]</li>
-    </ul>
+    <nav>
+      <a href="index.php">Home</a>
+      <a href="Catalog.html">Catalog</a>
+      <a href="DriverOrders.html">Orders</a>
+      <a href="SponsorInfo.html">Sponsor Information</a>
+      <a href="#" class="active">Earn Points</a>
+      <a href="DriverProfile.html">Account</a>
+      <div class="logout">
+        <form align="right" class="form" method="post" action="http://3.83.252.232:3001/logout">
+          <button name="logout" type="submit">Log Out</button>
+        </form>
+      </div>
+
+      <div class="cart">
+        <button id="cart-button"type="button" name="cart" onclick="openForm()"><img id="cart-img" src="images/cart.png" alt="cart icon"></button>
+        <form id="cart-form" align="right" class="" action="" method="post">
+          <button id="close-button" type="button" name="close-button" onclick="closeForm()">X</button>
+          <h3>Shopping Cart</h3><hr>
+          <table id="items-table">
+            <tr>
+              <td>Name</td>
+              <td>ID</td>
+              <td>Price</td>
+            </tr>
+            <tr>
+              <td>tire</td>
+              <td>45252</td>
+              <td>$135.99</td>
+            </tr>
+          </table>
+          <a id="checkout-button" href="Checkout.html">Checkout</a>
+          <button id="clear-button" type="button" name="button">Clear Cart</button>
+        </form>
+      </div>
+    </nav>
+    <div class="container">
+      <section id="earnPoints">
+        <br><br><br><br><br>
+        <h3>How to earn points</h3>
+        <p>safe driving</p><br><br>
+        <p>more safe driving</p><br><br>
+        <p>even more</p><br><br>
+
+      </section>
+    </div>
+    <script type="text/javascript">
+      function openForm() {
+        document.getElementById("cart-form").style.display = "block";
+        document.getElementById("cart-button").style.background = "#007BC4";
+      }
+      function closeForm() {
+        document.getElementById("cart-form").style.display = "none";
+        document.getElementById("cart-button").style.background = "#444";
+      }
+
+    </script>
   </body>
 </html>
