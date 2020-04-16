@@ -120,7 +120,7 @@ app.post('/driver', (req,res) => {
    const salt = new Date().toString();
    hash = crypto.createHash('sha256').update(input.password+salt).digest('base64');
 
-   queryString = "INSERT INTO user(email,first,middle,last,type,phone,username,pass,overTime,address,company,hash, salt) VALUES(\""+input.email+"\", \""+input.first+"\", \""+input.middle+"\", \""+input.last+"\",\"Driver\", \""+input.phone+"\", \""+input.username+"\", \""+input.password+"\", 0, NULL, NULL, \""+hash+"\", \""+salt+"\");"
+   queryString = "INSERT INTO user(email,first,middle,last,type,phone,username,pass,overTime,address,company,hash, salt) VALUES(\""+input.email+"\", \""+input.first+"\", \""+input.middle+"\", \""+input.last+"\",\"Driver\", \""+input.phone+"\", \""+input.username+"\", \""+input.password+"\", 0, NULL, NULL, \""+hash+"\", \""+salt+"\") ;"
    console.log(queryString);
 
    connection.query(queryString,(err, rows, fields) => {
@@ -131,7 +131,7 @@ app.post('/driver', (req,res) => {
 
    else{
       console.log("User added")
-      res.json(input);
+      res.redirect("http://3.83.252.232/Login.html");
    }
    });
 
@@ -151,7 +151,7 @@ app.post('/manager', (req,res) => {
 
    else{
       console.log("User added")
-      res.send(input);
+      res.redirect("http://3.83.252.232/Login.html");
    }
    });
 
@@ -170,7 +170,14 @@ app.post("/login", (req,res) =>{
    connection.query(queryString,(err, result, fields) => {
    if(err){
       console.log("Cant find user " + logUser.username);
-      res.sendStatus(400);
+      res.cookie("message", "Incorrect Username or Password");
+      res.redirect("http://3.83.252.232/Login.html");
+   }
+
+   if(result.length < 1){
+      console.log("Cant find user " + logUser.username);
+      res.cookie("message", "Incorrect Username or Password");
+      res.redirect("http://3.83.252.232/Login.html");
    }
 
    else{
@@ -184,19 +191,20 @@ app.post("/login", (req,res) =>{
          if (result[0].type == "Driver") {
            res.redirect(driver_redirect);
          }
-         else if (result[0].type == 'Sponsor') {
+         if (result[0].type == 'Sponsor') {
            res.redirect(sponsor_redirect);
          }
-         else if (result[0].type == "Admin") {
+         if (result[0].type == "Admin") {
            res.redirect(admin_redirect);
          }
       }
-      else if(result[0].hash!=null){
+
+     if(result[0].hash!=null){
 	let hashCheck = crypto.createHash('sha256').update(logUser.pwd+result[0].salt).digest('base64');
 	if (hashCheck==result[0].hash){
 	   let driver_redirect = "http://3.83.252.232/index.php";
-     let sponsor_redirect = "http://3.83.252.232sponsor.php";
-     let admin_redirect = "http://3.83.252.232/admin.php";
+           let sponsor_redirect = "http://3.83.252.232sponsor.php";
+           let admin_redirect = "http://3.83.252.232/admin.php";
            console.log(result);
            res.cookie("username", logUser.username);
            res.cookie("type", result[0].type);
@@ -216,12 +224,7 @@ app.post("/login", (req,res) =>{
          res.redirect("http://3.83.252.232/Login.html");
       	}
       }
-      else{
-         let message = "Username/Password is incorrect";
-	console.log(message);
-	 res.redirect("http://3.83.252.232/Login.html");
-      }
-   }
+}
    });
 
 
@@ -394,21 +397,26 @@ app.post('/apply', (req,res) => {
    let cookies = parseCookies(req);
    let input = req.body;
 
-   const queryString = "INSERT IGNORE INTO pendingAccount(sponsor, Driver) VALUES(\""+input.sponsorName+"\" , \"" + cookies.username+ "\");";
-   connection.query(queryString,(err, rows, fields) => {
-   if(err){
-      console.log("Cant insert into pendingAccount " + input.driver);
-      res.sendStatus(400);
-   }
+     let queryString= "INSERT INTO pendingAccount(sponsor,Driver) SELECT \""+input.sponsorName+"\", 'r' WHERE EXISTS (SELECT username FROM user WHERE username=\""+input.sponsorName+"\" AND type='Sponsor');"
+     console.log(queryString);
+     connection.query(queryString,(err, rows, fields) => {
+        if(err){
+        res.sendStatus(400);
+        }
 
-   else{
-      console.log("Application Successful");
-      console.log(rows);
-      res.redirect("http://3.83.252.232/driverApply.html");
-   }
+	if(rows.affectedRows < 1){
+          console.log(rows.affectedRows);
+	  res.cookie("message", "Could not find Sponsor with the name " + input.sponsorName);
+         res.redirect("http://3.83.252.232/SponsorInfo.html");
+	}
 
-   });
+        else{
 
+         res.cookie("message", "Application Successful");
+         res.redirect("http://3.83.252.232/SponsorInfo.html");
+
+     }
+     });
 
 })
 

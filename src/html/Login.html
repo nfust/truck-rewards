@@ -20,6 +20,7 @@
     <div class="container">
       <div class="login">
         <h2>Login</h2>
+	<div id="message"> </div>
 	<form class="form" action="http://3.83.252.232:3001/login" method="post">
           <input type="text" name="username" value="" placeholder="Username"><br>
           <input type="password" name="pwd" value="" placeholder="Password"><br>
@@ -33,5 +34,16 @@
         </form>
       </div>
     </div>
+
+    <script type="text/javascript" src="getCookie.js"></script>
+    <script type="text/javascript">
+
+     window.onload = function() {
+      console.log("running");
+        document.getElementById("message").innerHTML = "<p>"+getCookie("message")+"</p>";
+        document.cookie = "message=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+     };
+    </script>
+
   </body>
 </html>

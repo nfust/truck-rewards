@@ -45,7 +45,7 @@
     <div class="container">
       <br><br><br><br><br>
       <h2>Apply for sponsor</h2>
-
+      <div id="message"> </div>
       <form class="form" action="http://3.83.252.232:3001/apply" method="post">
         <input type="text" name="sponsorName" value="" placeholder="Sponsor Username"><br>
         <button id="apply-button" type="submit" name="Apply">Apply</button><br>
@@ -57,7 +57,7 @@
       </section>
     </div>
 
-
+    <script type="text/javascript" src="getCookie.js"></script>
     <script type="text/javascript">
       function openForm() {
         document.getElementById("cart-form").style.display = "block";
@@ -68,6 +68,11 @@
         document.getElementById("cart-button").style.background = "#444";
       }
 
+     window.onload = function() {
+      console.log("running");
+        document.getElementById("message").innerHTML = "<p>"+getCookie("message")+"</p>";
+        document.cookie = "message=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+     };
     </script>
   </body>
 </html>
