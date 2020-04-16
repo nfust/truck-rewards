@@ -1,3 +1,4 @@
+
 <?php
 /*
 if (!isset($_COOKIE['username']))
@@ -11,22 +12,21 @@ if (!isset($_COOKIE['username']))
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Sponsor Profile</title>
+    <title>Dashboard</title>
     <link rel="stylesheet" href="index.css">
   </head>
   <body>
 
     <nav>
-      <a href="#" class="active">Home</a>
-      <a href="Catalog.html">Catalog</a>
-      <a href="CompanyInfo.html">Company Info</a>
-      <a href="sponsoredDrivers.html">Drivers</a>
-        <a href="Sponsors.html">Sponsors</a>
-      <a href="SponsorProfile.html">Account</a>
+      <a class="nav-link" href="#" id="nav-active">Home</a>
+      <a class="nav-link" href="Catalog.html">Catalog</a>
+      <a class="nav-link" href="sponsoredDrivers.html">Drivers</a>
+      <a class="nav-link" href="Sponsors.html">Sponsors</a>
+      <a class="nav-link" href="SponsorProfile.html">Account</a>
       <div class="logout">
         <form align="right" class="form" method="post" action="http://3.83.252.232:3001/logout">
           <button name="logout" type="submit">Log Out</button>
-        </form>
+        </form >
       </div>
 
       <div class="cart">
@@ -41,7 +41,11 @@ if (!isset($_COOKIE['username']))
       </div>
     </nav>
 
-    <h1>Welcome</h1> <h1 id="first"></h1>
+    <div class="image">
+      <img style="height:780px" id="truck" src="images/building2.jpg" alt="truck"/>
+      <h1 id="left">Welcome</h1><h1 id="username">!</h1>
+      <img id="arrow" src="images/arrow.png" alt="arrow down">
+    </div>
 
     <section id="statistics">
       <h2>Current number of drivers</h2>
@@ -72,7 +76,7 @@ if (!isset($_COOKIE['username']))
               url: getURL,
               success: function (data) {
                 data = data[0];
-                document.getElementById("first").innerHTML = data["first"];
+                document.getElementById("username").innerHTML = data["username"];
               }
           });
     </script>

@@ -2,17 +2,18 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="profile.css">
     <style>h{display: inline}</style>
-    <title>Manager Profile</title>
-    <link rel="stylesheet" href="index.css">
+    <title>Sponsors</title>
+
   </head>
   <body>
 
     <nav>
-      <a href="#" class="active">Home</a>
+      <a href="sponsor.php">Home</a>
       <a href="Catalog.html">Catalog</a>
-      <a href="CompanyInfo.html">Company Info</a>
-      <a href="Sponsors.html">Sponsors</a>
+      <a href="sponsoredDrivers.html">Drivers</a>
+      <a href="#" class="active">Sponsors</a>
       <a href="SponsorProfile.html">Account</a>
       <div class="logout">
         <form align="right" class="form" method="post" action="http://3.83.252.232:3001/logout">
@@ -20,9 +21,13 @@
         </form>
       </div>
     </nav>
-    <h2 align="center">Sponsors for</h2><h2 align="center" id="company">[Company]</h2>
-    <table align="center" id="SponsorTable" border="1"> </table>
-    <a href="signupSponsor.html">New Sponsor</a>
+    <div class="container">
+      <br><br><br><br><br>
+      <h2 align="center">Sponsors for</h2><h2 align="center" id="company"></h2>
+      <table align="center" id="SponsorTable" border="1"> </table>
+      <a class="account-button" href="signupSponsor.html">New Sponsor</a>
+    </div>
+
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
       <script type="text/javascript"charset="utf-8">
 
