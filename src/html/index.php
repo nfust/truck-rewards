@@ -1,5 +1,5 @@
 <?php
-/*
+
 if (!isset($_COOKIE['username']))
 {
     header('Location: Login.html');
@@ -7,7 +7,7 @@ if (!isset($_COOKIE['username']))
 }
 
 
-*/
+
 if($_COOKIE['type'] == "Sponsor")
 {
     header('Location: sponsor.php');
