@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+
+    <style>
+      img {
+        margin-top: 1%;
+        height: 10%;
+        width: 10%;
+      }
+
+      p{display: inline}
+<<<<<<< HEAD
+
+      table{border:1px;}
+
+=======
+
+>>>>>>> 8372600e0e757ab5e4317ec9b6e9cc72593ecfb8
+    </style>
+
+    <link rel="stylesheet" href="profile.css">
+
+    <title>[Driver's] Profile</title>
+  </head>
+  <body>
+    <nav>
+      <a href="sponsor.php">Home</a>
+      <a href="Catalog.html">Catalog</a> |
+      <a href="CompanyInfo.html">Company Info</a> |
+      <a href="#">Drivers</a> |
+      <a href="sponsorProfile.html">Account</a>
+      <div class="logout">
+        <form align="right" class="form" method="post" action="http://3.83.252.232:3001/logout">
+          <button name="logout" type="submit">Log Out</button>
+        </form>
+      </div>
+    </nav>
+
+    <div class="profile-container">
+      <img src="images/profile.png" alt="profile photo">
+
+      <p> Name:</p> <p id="first">[First name]</p> <p id="middle">[MI]</p> <p id="last">[last name]</p> <br>
+      <p> Points: </p> <p id="points">[points]</p><br>
+      <p> Username: </p><p id="username">[username]</p><br>
+      <p> E-Mail: </p><p id="email">[email]</p><br>
+      <p> Phone: </p><p id="phone">[phone #]</p><br>
+      <p> Shipping address: </p> <p id="address">[address]</p><br>
+      <form action="UserChangeDriver.html" method="GET">
+        <input type="hidden" name="user" value="username"/>
+        <input type="submit" value="Edit Profile"/>
+      </form>
+      <br>
+      <a href="ResetUserPassword.html">Change Password</a>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  	<script type="text/javascript" src="getUser.js"></script>
+  	<script type="text/javascript"charset="utf-8">
+  	let getURL = "http://3.83.252.232:3001/user/" + getUser();
+  	$.ajax({
+        type: "GET",
+        url: getURL,
+        success: function (data) {
+      			data = data[0];
+       		  document.getElementById("first").innerHTML = "" + data["first"];
+      			document.getElementById("middle").innerHTML = data["middle"];
+      			document.getElementById("last").innerHTML = data["last"];
+      		  document.getElementById("username").innerHTML = data["username"];
+      			document.getElementById("email").innerHTML = data["email"];
+      			document.getElementById("phone").innerHTML = data["phone"];
+            document.getElementById("address").innerHTML = data["address"];
+        }
+    });
+
+  	getURL = "http://3.83.252.232:3001/points/driver/" + getUser();
+    $.ajax({
+        type: "GET",
+        url: getURL,
+        success: function (data) {
+            data = data[0];
+            document.getElementById("points").innerHTML = "" + data["points"];
+        }
+    });
+
+	</script>
+  </body>
+</html>
