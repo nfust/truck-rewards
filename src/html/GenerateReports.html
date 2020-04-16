@@ -3,14 +3,15 @@
   <head>
     <meta charset="utf-8">
     <title>Reports</title>
-    <link rel="stylesheet" href="../../Profile/profile.css">
+    <link rel="stylesheet" href="profile.css">
   </head>
   <body>
     <nav>
+      <a href="admin.php">Home</a>
       <a href="AllDrivers.html">Drivers</a>
       <a href="AllSponsors.html">Sponsors</a>
       <a href="CompanyList.html">Companies</a>
-      <a href="GenerateReports.html">Reports</a>
+      <a href="GenerateReports.html" class="active">Reports</a>
       <a href="AdminProfile.html">Account</a>
       <div class="logout">
         <form align="right" class="form" method="post" action="http://3.83.252.232:3001/logout">
@@ -18,12 +19,15 @@
         </form>
       </div>
     </nav>
-    <section>
-      <h2>Maybe some charts</h2>
-    </section>
-    <section>
-      <h2>Maybe graphs here</h2>
-    </section>
-    <button type="submit" name="button">Generate Reports</button>
+
+    <div class="container">
+      <section>
+        <h2>Maybe some charts</h2>
+      </section>
+      <section>
+        <h2>Maybe graphs here</h2>
+      </section>
+      <button type="submit" name="button">Generate Reports</button>
+    </div>
   </body>
 </html>
