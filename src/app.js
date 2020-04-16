@@ -690,6 +690,82 @@ app.get('/cart/:Username', (req, res) => {
 });
 
 
+app.post('/driver/edit/:DriverID', (req,res) => {
+   let input = req.body;
+   queryString = "UPDATE user SET first = \""+input.first+"\" , middle = \""+input.middle+"\"  ,last = \""+input.last+"\",username = \""+input.username+"\",email = \""+input.email+"\",phone = \""+input.phone+"\",address = \""+input.address+"\"  WHERE username = \""+req.params.Username+"\";"
+   console.log(queryString);
+   connection.query(queryString,(err, rows, fields) => {
+   if(err){
+      console.log("Cant edit driver " + input.username);
+      res.sendStatus(400);
+   }
+   else{
+      console.log("User edited" + input.username);
+      res.redirect("http://3.83.252.232/ViewDriverProfile.php");
+   }
+   });
+
+})
+
+
+app.get('/user/sponsor/:CompanyID', (req, res) => {
+  console.log("Getting sponsors")
+  const queryString = "SELECT username FROM user where type = \""+sponsor+"\", company = \""+req.params.CompanyID+"\";"
+  connection.query(queryString,(err, rows, fields) => {
+  if(err){
+     console.log("Cant find sponsors");
+     res.sendStatus(400);
+  }
+
+  else{
+     console.log("I think we got the sponsors");
+     console.log(rows);
+     res.json(rows)
+  }
+
+  });
+})
+
+
+app.post('/sponsor', (req,res) => {
+
+   let input = req.body;
+   queryString = "INSERT INTO user VALUES (\""+input.email+"\", \""+input.first+"\", \""+input.middle+"\", \""+input.last+"\",\""+input.company+"\", \"Manager\", \""+input.phone+"\", \""+input.username+"\", \""+input.password+"\", 0, 0);"
+   console.log(queryString);
+
+   connection.query(queryString,(err, rows, fields) => {
+   if(err){
+      console.log("Cant create manager " + input.username);
+      res.sendStatus(400);
+   }
+
+   else{
+      console.log("User added")
+      res.send(input);
+   }
+   });
+
+})
+
+
+app.post('/points/edit/:DriverID/:SponsorID', (req,res) => {
+  var cookies = parseCookies(req);
+  let input = req.body;
+     queryString = "UPDATE points SET points = \""+input.points+"\" WHERE username = \""+req.params.DriverID+"\" , sponsor = \""+req.params.SponsorID+"\";"
+  console.log(queryString);
+  connection.query(queryString,(err, rows, fields) => {
+  if(err){
+     console.log("Cant edit points for " + req.params.DriverID);
+     res.sendStatus(400);
+  }
+  else{
+     console.log("Driver points edited" + req.params.DriverID);
+   }
+   });
+
+})
+
+
 app.post('/addCart', (req, res) => {
   let cookies = parseCookies(req);
   let input = req.body;
