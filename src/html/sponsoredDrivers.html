@@ -7,10 +7,11 @@
   </head>
   <body>
     <nav>
-      <a href="catalog.html">Catalog</a> |
-      <a href="companyInfo.html">Company Info</a> |
-      <a href="sponsorProfiles.html">Sponsor Profiles</a> |
-      <a href="#">Drivers</a>
+      <a href="sponsor.php">Home</a>
+      <a href="Catalog.html">Catalog</a> |
+      <a href="CompanyInfo.html">Company Info</a> |
+      <a href="#">Drivers</a> |
+      <a href="sponsorProfile.html">Account</a>
       <div class="logout">
         <form align="right" class="form" method="post" action="http://3.83.252.232:3001/logout">
           <button name="logout" type="submit">Log Out</button>
@@ -18,44 +19,33 @@
       </div>
     </nav>
 
-    <h2>Current Drivers</h2>
-    <ul>
-      <p id="driver">[Driver Username]</p>
-      <form action="http://3.83.252.232:3001/points/edit" method="post">
-        <input type="text" name="points" value="points">
-        <button type="submit" name="save">Save</button>
-      </form>
-      <!-- list of drivers -->
-    </ul>
+    <h2 align="center" id="header">Drivers for </h2>
+  	<table align="center" id="driverTable" border="1"> </table>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script type="text/javascript"charset="utf-8">
-      let getURL = "http://3.83.252.232:3001/points/driver/" + getCookie("username");
-      $.ajax({
-        type: "GET",
-        url: getURL,
-        success: function (data) {
-          data = data[0];
-          document.getElementById("driver").innerHTML = "" + data["username"];
-          document.getElementById("points").value = data["points"];
-        }
-      });
+  	<a href="http://3.83.252.232/signupDriver.html">Create Driver</a>
 
-      function getCookie(cname) {
-        var name = cname + "=";
-        var decodedCookie = decodeURIComponent(document.cookie);
-        var ca = decodedCookie.split(';');
-        for(var i = 0; i <ca.length; i++) {
-          var c = ca[i];
-          while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-          }
-          if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-          }
-        }
-        return "";
-        }
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+          <script type="text/javascript" src="getCookie.js"></script>
+          <script type="text/javascript"charset="utf-8">
 
-    </script>
-  </body>
+          getURL = "http://3.83.252.232:3001/points/sponsor/" + getCookie("username", document);
+  	document.getElementById("header").innerHTML = "Drivers for " + getCookie("username", document);
+          $.ajax({
+                  type: "GET",
+                  url: getURL,
+                  success: function (data) {
+                  let resultString = "<tr><th>Driver</th><th>Points</th></tr>";
+                          for(let i=0; i<data.length; i++){
+                                  let info  = data[i];
+                                  resultString = resultString + "<tr><td><form action='SponsorViewDriverProfile.html' method='GET'><input type='hidden' name='user' value=" + info["username"] + "/><input type='submit' value=" + info["username"] + "></form></td><td>" + info["points"] + "</td></tr>";
+                  }
+                  console.log(resultString);
+                  document.getElementById("driverTable").innerHTML = resultString;
+                  }
+              });
+
+
+
+          </script>
+</body>
+</html>
