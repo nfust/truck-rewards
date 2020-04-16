@@ -1,11 +1,11 @@
 
 <?php
-/*
+
 if (!isset($_COOKIE['username']))
 {
     header('Location: Login.html');
     exit;
-}*/
+}
  ?>
 
 <!DOCTYPE html>
