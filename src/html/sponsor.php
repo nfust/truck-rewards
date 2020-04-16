@@ -1,4 +1,3 @@
-
 <?php
 /*
 if (!isset($_COOKIE['username']))
@@ -21,7 +20,8 @@ if (!isset($_COOKIE['username']))
       <a href="#" class="active">Home</a>
       <a href="Catalog.html">Catalog</a>
       <a href="CompanyInfo.html">Company Info</a>
-      <a href="SponsorDrivers.html">Drivers</a>
+      <a href="sponsoredDrivers.html">Drivers</a>
+        <a href="Sponsors.html">Sponsors</a>
       <a href="SponsorProfile.html">Account</a>
       <div class="logout">
         <form align="right" class="form" method="post" action="http://3.83.252.232:3001/logout">
