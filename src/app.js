@@ -730,7 +730,7 @@ app.get('/user/sponsor/:CompanyID', (req, res) => {
 app.post('/sponsor', (req,res) => {
 
    let input = req.body;
-   queryString = "INSERT INTO user VALUES (\""+input.email+"\", \""+input.first+"\", \""+input.middle+"\", \""+input.last+"\",\""+input.company+"\", \"Manager\", \""+input.phone+"\", \""+input.username+"\", \""+input.password+"\", 0, 0);"
+   queryString = "INSERT INTO user VALUES (\""+input.email+"\", \""+input.first+"\", \""+input.middle+"\", \""+input.last+"\",\""+input.company+"\", \"Sponsor\", \""+input.phone+"\", \""+input.username+"\", \""+input.password+"\", 0, 0);"
    console.log(queryString);
 
    connection.query(queryString,(err, rows, fields) => {
