@@ -7,7 +7,7 @@ body {
 
 .container {
   width: 90%;
-  height: 600px;
+  padding-bottom: 50px;
   background-color: white;
   box-shadow: 0 0 5px 0 #000;
   margin: auto;
@@ -110,7 +110,7 @@ nav a {
   border-radius: 5px;
 }
 
-a:active {
+nav a:active {
   background: #FFBD2E;
   color: #444;
 }

@@ -2,27 +2,37 @@
   <head>
     <meta charset="utf-8">
     <title>Edit Profile</title>
+    <link rel="stylesheet" href="ResetPassword.css">
   </head>
   <body>
-    <h2>Edit Profile</h2>
-    <form action="http://3.83.252.232:3001/sponsorDriver/edit" method="post">
-      <label for="first">First Name</label>
-      <input id="first" type="text" name="first" value="first">
-      <label for="mi_name">Middle Initial</label>
-      <input id="middle" type="text" name="middle" value="mi">
-      <label for="last_name">Last Name</label>
-      <input type="text" id="last" name="last" value="last"><br>
-      <label for="username">Username</label>
-      <input id="username" type="text" READONLY name="username" value="username"><br>
-      <label for="email">Email Address</label>
-      <input id="email" type="text" name="email" value="email"><br>
-      <label for="phone">Phone Number</label>
-      <input id="phone" type="text" name="phone" value="phone"><br>
-      <label for="shipping">Shipping Address</label>
-      <input id="address" type="text" name="address" value="shipping"><br>
-      <button type="submit" name="save">Save</button>
-      <button type="button" name="cancel">Cancel</button>
-    </form>
+
+    <div class="container">
+      <h2>Edit Profile</h2>
+      <form action="http://3.83.252.232:3001/sponsorDriver/edit" method="post">
+        <label for="first">First Name</label>
+        <input id="first" type="text" name="first" value="first">
+        <label for="mi_name">Middle Initial</label>
+        <input id="middle" type="text" name="middle" value="mi">
+        <label for="last_name">Last Name</label>
+        <input type="text" id="last" name="last" value="last"><br>
+        <label for="username">Username</label>
+        <input id="username" type="text" READONLY name="username" value="username"><br>
+        <label for="email">Email Address</label>
+        <input id="email" type="text" name="email" value="email"><br>
+        <label for="phone">Phone Number</label>
+        <input id="phone" type="text" name="phone" value="phone"><br>
+        <label for="shipping">Shipping Address</label>
+        <input id="address" type="text" name="address" value="shipping"><br>
+        <button type="submit" name="save">Save</button>
+        <button type="button" name="cancel" onclick="goBack()">Cancel</button>
+      </form>
+
+    </div>
+    <script type="text/javascript">
+      function goBack() {
+        window.history.back();
+      }
+    </script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script type="text/javascript"charset="utf-8">
