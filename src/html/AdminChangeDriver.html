@@ -3,8 +3,15 @@
   <head>
     <meta charset="utf-8">
     <title>Edit Driver Profile</title>
+    <style>
+      .cancel {
+        display: inline;
+      }
+    </style>
   </head>
   <body>
+
+
     <h2>Edit Driver Profile</h2>
     <form action="'http://3.83.252.232:3001/driver/edit' + getUser()" method="post">
       <label for="first">First Name</label>
@@ -22,8 +29,16 @@
       <label for="shipping">Shipping Address</label>
       <input type="text" name="address" value="shipping"><br>
       <button type="submit" name="save">Save</button>
-      <button type="button" name="cancel" onclick="goBack()">Cancel</button>
+      <div class="cancel">
+        <form align="left" action="AdminViewDriverProfile.html" method="GET">
+          <input type="hidden" name="user" value="getUser()"/>
+          <input type="submit" value="Cancel"/>
+        </form>
+      </div>
     </form>
+
+    <p>Points</p><br>
+    <table border="1" id="points"></table>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script type="text/javascript" src="getUser.js"></script>
@@ -41,6 +56,21 @@
             document.getElementById("email").value = data["email"];
             document.getElementById("phone").value = data["phone"];
             document.getElementById("address").value = data["address"];
+          }
+      });
+
+      getURL = "http://3.83.252.232:3001/points/" + getUser();
+      $.ajax({
+          type: "GET",
+          url: getURL,
+          success: function (data) {
+              let resultString = "<tr><th>Sponsor</th><th>Points</th></tr>";
+                  for(let i=0; i<data.length; i++){
+                        let info  = data[i];
+                        resultString = resultString + "<tr><td>" + info["sponsor"] + "</td><td><form action='http://3.83.252.232:3001/points/edit'><input type='int' name='points' value=" + info["points"] + "/><button type='submit' name='save'>Save</button></form></td></tr>";
+                  }
+          		console.log(resultString);
+          		document.getElementById("points").innerHTML = resultString;
           }
       });
 
