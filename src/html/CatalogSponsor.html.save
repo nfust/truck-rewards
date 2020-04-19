@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+
+    <style>
+      img {
+        margin-top: 1%;
+        height: 10%;
+        width: 10%;
+      }
+
+      p{display: inline}
+<<<<<<< HEAD
+
+      table{border:1px;}
+
+=======
+
+>>>>>>> 8372600e0e757ab5e4317ec9b6e9cc72593ecfb8
+    </style>
+   
+    <link rel="stylesheet" href="catalog.css">
+
+    <title>Catalog</title>
+  </head>
+  <body>
+	
+    <nav>
+      
+	<!--<a href="catalog.html"><?php echo $output->{'9URL'}; ?></a>-->
+      <a href="Catalog.php">Catalog</a> |
+      <a href="purchaseHistory.html">Purchase History</a> |
+      <a href="pendingOrders.html">Pending Orders</a> |
+	
+      <a href="sponsorInfo.html">Sponsor Info</a>
+      
+	    
+      <div class="logout">
+        <form align="right" class="form" method="post" action="http://3.83.252.232:3001/logout">
+          <button name="logout" type="submit">Log Out</button>
+        </form>
+      </div>
+	    
+    </nav>
+	<link rel="stylesheet" type="text/css" href="catalog.css">
+</head>
+<body>  
+
+<form class="choosesponsor" action="/Catalog.php" enctype="multipart/form-data">
+      <label for="sort" style = color:#FFFFFF >Search Type:</label>
+      <select id="sort" name = "sort">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="getCookie.js"></script>
+<script type="text/javascript"charset="utf-8">
+getURL = "http://3.83.252.232:3001/points/" + getCookie("username", document);
+        $.ajax({
+                type: "GET",
+                url: getURL,
+                success: function (data) {
+		let resultString = "";
+                        for(let i=0; i<data.length; i++){
+				let info  = data[i];
+				resultString = resultString + "<option value=\"" + info["sponsor"] + "\">" + info["sponsor"] + "</option>";
+		}
+		console.log(resultString);
+		document.getElemen
+                }
+            });  
+</script>
+      <option value="BestMatch">Best Match</option>
+      <option value="PricePlusShippingHighest">High to Low</option>
+      <option value="PricePlusShippingLowest">Low to High</option>
+      </select> 
+      <input type="submit" value="Submit">
+      </form>
+
+</body>
+
+

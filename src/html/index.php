@@ -34,7 +34,7 @@ if($_COOKIE['type'] == "admin")
   <body>
     <nav>
       <a class="nav-link" href="#" id="nav-active">Home</a>
-      <a class="nav-link" href="Catalog.html">Catalog</a>
+      <a class="nav-link" href="Catalog.php">Catalog</a>
       <a class="nav-link" href="DriverOrders.html">Orders</a>
       <a class="nav-link" class="nav" href="SponsorInfo.html">Sponsor Information</a>
       <a class="nav-link" href="earnPoints.html">Earn Points</a>

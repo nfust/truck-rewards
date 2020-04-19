@@ -65,7 +65,7 @@ $output = json_decode(shell_exec($command));
       <option value="PricePlusShippingLowest">Low to High</option>
       </select> 
       <input type="text" placeholder="Explore the Catalog.." name="search">
-	<input type = "text"READONLY value =  "<?php echo $sponsor; ?>" name = "sponsor">
+	<input type = "text"READONLY value =  "<?php echo $sponsor; ?>" name = <input type = "text"READONLY value =  "<?php echo $sponsor; ?>" name = "sponsor"> <input type = "text"READONLY value =  "<?php echo $sponsor; ?>" name = "sponsor"> <input type = "text"READONLY value =  "<?php echo $sponsor; ?>" name = "sponsor"> "sponsor">
       <input type="submit" value="Submit">
       </form>
 	<!--<a href="catalog.html"><?php echo $output->{'9URL'}; ?></a>-->
@@ -96,7 +96,7 @@ $output = json_decode(shell_exec($command));
         <label for="item_name">Item Name</label>
       <input id="item_name" type="text"READONLY name="item_name" value="<?php echo $output->{'0title'}; ?>"><br/>
         <label for="qty">How many would you like?</label>
-      <input id="qty" type="int" name="qty" value="1"><br/>
+      <input id="qty" type="int" name="qty" value="0"><br/>
         <label for="points">Cost</label>
         <input id="points" type="int"READONLY name="points" value="<?php echo $output->{'0price'}; ?>">
 	<input id="sponsor" type="hidden" name="sponsor" value="">
@@ -114,11 +114,9 @@ $output = json_decode(shell_exec($command));
         <label for="item_name">Item Name</label>
       <input id="item_name" type="text"READONLY name="item_name" value="<?php echo $output->{'1title'}; ?>"><br/>
         <label for="qty">How many would you like?</label>
-      <input id="qty" type="int" name="qty" value="1"><br/>
+      <input id="qty" type="int" name="qty" value="0"><br/>
         <label for="points">Cost</label>
-        <input id="1points" type="int"READONLY name="points" value="<?php echo $output->{'1price'}; ?>">
-	<input id="sponsor" type="hidden" name="sponsor" value="">
-        <input id="driver" type="hidden" name="driver" value="">
+        <input id="points" type="int"READONLY name="points" value="<?php echo $output->{'1price'}; ?>">
       <button id="submit" type="submit" name="save">Add To Cart</button>
         </form>
     </item>
@@ -132,11 +130,9 @@ $output = json_decode(shell_exec($command));
         <label for="item_name">Item Name</label>
       <input id="item_name" type="text"READONLY name="item_name" value="<?php echo $output->{'2title'}; ?>"><br/>
         <label for="qty">How many would you like?</label>
-      <input id="qty" type="int" name="qty" value="1"><br/>
+      <input id="qty" type="int" name="qty" value="0"><br/>
         <label for="points">Cost</label>
-        <input id="2points" type="int"READONLY name="points" value="<?php echo $output->{'2price'}; ?>">
-	<input id="sponsor" type="hidden" name="sponsor" value="">
-        <input id="driver" type="hidden" name="driver" value="">
+        <input id="points" type="int"READONLY name="points" value="<?php echo $output->{'2price'}; ?>">
       <button id="submit" type="submit" name="save">Add To Cart</button>
         </form>
     </item><item>
@@ -149,11 +145,9 @@ $output = json_decode(shell_exec($command));
         <label for="item_name">Item Name</label>
       <input id="item_name" type="text"READONLY name="item_name" value="<?php echo $output->{'3title'}; ?>"><br/>
         <label for="qty">How many would you like?</label>
-      <input id="qty" type="int" name="qty" value="1"><br/>
+      <input id="qty" type="int" name="qty" value="0"><br/>
         <label for="points">Cost</label>
-        <input id="3points" type="int"READONLY name="points" value="<?php echo $output->{'3price'}; ?>">
-	<input id="sponsor" type="hidden" name="sponsor" value="">
-        <input id="driver" type="hidden" name="driver" value="">
+        <input id="points" type="int"READONLY name="points" value="<?php echo $output->{'3price'}; ?>">
       <button id="submit" type="submit" name="save">Add To Cart</button>
         </form>
     </item><item>
@@ -166,11 +160,9 @@ $output = json_decode(shell_exec($command));
         <label for="item_name">Item Name</label>
       <input id="item_name" type="text"READONLY name="item_name" value="<?php echo $output->{'4title'}; ?>"><br/>
         <label for="qty">How many would you like?</label>
-      <input id="qty" type="int" name="qty" value="1"><br/>
+      <input id="qty" type="int" name="qty" value="0"><br/>
         <label for="points">Cost</label>
-        <input id="4points" type="int"READONLY name="points" value="<?php echo $output->{'4price'}; ?>">
-	<input id="sponsor" type="hidden" name="sponsor" value="">
-        <input id="driver" type="hidden" name="driver" value="">
+        <input id="points" type="int"READONLY name="points" value="<?php echo $output->{'4price'}; ?>">
       <button id="submit" type="submit" name="save">Add To Cart</button>
         </form>
     </item><item>
@@ -183,11 +175,9 @@ $output = json_decode(shell_exec($command));
         <label for="item_name">Item Name</label>
       <input id="item_name" type="text"READONLY name="item_name" value="<?php echo $output->{'5title'}; ?>"><br/>
         <label for="qty">How many would you like?</label>
-      <input id="qty" type="int" name="qty" value="1"><br/>
+      <input id="qty" type="int" name="qty" value="0"><br/>
         <label for="points">Cost</label>
-        <input id="5points" type="int"READONLY name="points" value="<?php echo $output->{'5price'}; ?>">
-	<input id="sponsor" type="hidden" name="sponsor" value="">
-        <input id="driver" type="hidden" name="driver" value="">
+        <input id="points" type="int"READONLY name="points" value="<?php echo $output->{'5price'}; ?>">
       <button id="submit" type="submit" name="save">Add To Cart</button>
         </form>
     </item><item>
@@ -200,12 +190,10 @@ $output = json_decode(shell_exec($command));
         <label for="item_name">Item Name</label>
       <input id="item_name" type="text"READONLY name="item_name" value="<?php echo $output->{'6title'}; ?>"><br/>
         <label for="qty">How many would you like?</label>
-      <input id="qty" type="int" name="qty" value="1"><br/>
+      <input id="qty" type="int" name="qty" value="0"><br/>
         <label for="points">Cost</label>
-        <input id="6points" type="int"READONLY name="points" value="<?php echo $output->{'6price'}; ?>">
-	<input id="sponsor" type="hidden" name="sponsor" value="">
-        <input id="driver" type="hidden" name="driver" value=""> 
-     <button id="submit" type="submit" name="save">Add To Cart</button>
+        <input id="points" type="int"READONLY name="points" value="<?php echo $output->{'6price'}; ?>">
+      <button id="submit" type="submit" name="save">Add To Cart</button>
         </form>
     </item><item>
         <img src= "<?php echo $output->{'7URL'}; ?>" style="width:300px;height:300px;">
@@ -217,12 +205,10 @@ $output = json_decode(shell_exec($command));
         <label for="item_name">Item Name</label>
       <input id="item_name" type="text"READONLY name="item_name" value="<?php echo $output->{'7title'}; ?>"><br/>
         <label for="qty">How many would you like?</label>
-      <input id="qty" type="int" name="qty" value="1"><br/>
+      <input id="qty" type="int" name="qty" value="0"><br/>
         <label for="points">Cost</label>
-        <input id="7points" type="int"READONLY name="points" value="<?php echo $output->{'7price'}; ?>">
-	<input id="sponsor" type="hidden" name="sponsor" value="">
-        <input id="driver" type="hidden" name="driver" value="">
-	<button id="submit" type="submit" name="save">Add To Cart</button>
+        <input id="points" type="int"READONLY name="points" value="<?php echo $output->{'7price'}; ?>">
+      <button id="submit" type="submit" name="save">Add To Cart</button>
         </form>
     </item><item>
         <img src= "<?php echo $output->{'8URL'}; ?>" style="width:300px;height:300px;">
@@ -234,11 +220,9 @@ $output = json_decode(shell_exec($command));
         <label for="item_name">Item Name</label>
       <input id="item_name" type="text"READONLY name="item_name" value="<?php echo $output->{'8title'}; ?>"><br/>
         <label for="qty">How many would you like?</label>
-      <input id="qty" type="int" name="qty" value="1"><br/>
+      <input id="qty" type="int" name="qty" value="0"><br/>
         <label for="points">Cost</label>
-        <input id="8points" type="int"READONLY name="points" value="<?php echo $output->{'8price'}; ?>">
-	<input id="sponsor" type="hidden" name="sponsor" value="">
-        <input id="driver" type="hidden" name="driver" value="">
+        <input id="points" type="int"READONLY name="points" value="<?php echo $output->{'8price'}; ?>">
       <button id="submit" type="submit" name="save">Add To Cart</button>
         </form>
     </item><item>
@@ -251,11 +235,9 @@ $output = json_decode(shell_exec($command));
         <label for="item_name">Item Name</label>
       <input id="item_name" type="text"READONLY name="item_name" value="<?php echo $output->{'9title'}; ?>"><br/>
         <label for="qty">How many would you like?</label>
-      <input id="qty" type="int" name="qty" value="1"><br/>
+      <input id="qty" type="int" name="qty" value="0"><br/>
         <label for="points">Cost</label>
-        <input id="9points" type="int"READONLY name="points" value="<?php echo $output->{'9price'}; ?>">
-	<input id="sponsor" type="hidden" name="sponsor" value="">
-	<input id="driver" type="hidden" name="driver" value="">
+        <input id="points" type="int"READONLY name="points" value="<?php echo $output->{'9price'}; ?>">
       <button id="submit" type="submit" name="save">Add To Cart</button>
         </form>
     </item>
@@ -273,18 +255,7 @@ $output = json_decode(shell_exec($command));
     console.log(queryParams.sponsor);
 
     let pointval = <?php echo $output->{'0price'}; ?>;
-let pointval1 = <?php echo $output->{'1price'}; ?>;
-let pointval2 = <?php echo $output->{'2price'}; ?>;
-let pointval3 = <?php echo $output->{'3price'}; ?>;
-let pointval4 = <?php echo $output->{'4price'}; ?>;
-let pointval5 = <?php echo $output->{'5price'}; ?>;
-let pointval6 = <?php echo $output->{'6price'}; ?>;
-let pointval7 = <?php echo $output->{'7price'}; ?>;
-let pointval8 = <?php echo $output->{'8price'}; ?>;
-let pointval9 = <?php echo $output->{'9price'}; ?>;
     console.log(pointval);
-    $("input[id=sponsor]").val(queryParams.sponsor);
-    $("input[id=driver]").val(queryParams.driver);
     let getURL = "http://3.83.252.232:3001/points/sponsor/" + queryParams.sponsor;
     $.ajax({
         type: "GET",
@@ -292,29 +263,12 @@ let pointval9 = <?php echo $output->{'9price'}; ?>;
         success: function (data) {
           data = data[0];
 	  finalPoints = (pointval * data["value"]).toFixed(2);
-	  finalPoints1 = (pointval1 * data["value"]).toFixed(2);
-          finalPoints2 = (pointval2 * data["value"]).toFixed(2);
-          finalPoints3 = (pointval3 * data["value"]).toFixed(2);
-          finalPoints4 = (pointval4 * data["value"]).toFixed(2);
-          finalPoints5 = (pointval5 * data["value"]).toFixed(2);
-          finalPoints6 = (pointval6 * data["value"]).toFixed(2);
-          finalPoints7 = (pointval7 * data["value"]).toFixed(2);
-          finalPoints8 = (pointval8 * data["value"]).toFixed(2);
-          finalPoints9 = (pointval9 * data["value"]).toFixed(2);
           document.getElementById("points").value = "" + finalPoints;
-          document.getElementById("1points").value = "" + finalPoints1;
-          document.getElementById("2points").value = "" + finalPoints2;
-          document.getElementById("3points").value = "" + finalPoints3;
-          document.getElementById("4points").value = "" + finalPoints4;
-          document.getElementById("5points").value = "" + finalPoints5;
-          document.getElementById("6points").value = "" + finalPoints6;
-          document.getElementById("7points").value = "" + finalPoints7;
-          document.getElementById("8points").value = "" + finalPoints8;
-          document.getElementById("9points").value = "" + finalPoints9;
+	  document.getElementById("sponsor").value = queryParams.sponsor;
         }
       });
 
 </script>
-
+	
   </body>
 </html>

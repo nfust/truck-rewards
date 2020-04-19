@@ -2,8 +2,11 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="profile.css">
-    <title>Profile</title>
+
+   
+    <link rel="stylesheet" href="catalog.css">
+
+    <title>Catalog</title>
   </head>
   <body>
     <nav>
@@ -25,36 +28,18 @@
           <button id="close-button" type="button" name="close-button" onclick="closeForm()">X</button>
           <h3>Shopping Cart</h3><hr>
           <table id="items-table" style="overflow-y:scroll;height:145px;display:block;">
-            <tr>
-              <td>Name</td>
-              <td>ID</td>
-              <td>Price</td>
-            </tr>
-            <tr>
-              <td>tire</td>
-              <td>45252</td>
-              <td>$135.99</td>
-            </tr>
           </table>
           <a id="checkout-button" href="Checkout.html">Checkout</a>
-	  <a id="clear-button" href="http://3.83.252.232:3001/clearCart">Clear Cart</a>
-	  </form>
+          <a id="clear-button" href="http://3.83.252.232:3001/clearCart">Clear Cart</a>
+          </form>
         </form>
       </div>
-    </nav>
+    </nav>	
 
-    <div class="container">
-      <img id="profile-img" src="images/profile.png" alt="profile photo"><br>
-      <p> Name:</p> <p id="first"></p> <p id="middle"></p> <p id="last"></p> <br>
-      <p> Points: </p><br>
-	<table id="points" align="center"></table>
-      <p> Username: </p><p id="username"></p><br>
-      <p> E-Mail: </p><p id="email"></p><br>
-      <p> Phone: </p><p id="phone"></p><br>
-      <p> Shipping address: </p> <p id="address"></p><br>
-      <a class="account-button" href="ChangeDriver.html">Edit Profile</a><br>
-      <a class="account-button" href="ResetPassword.html">Change Password</a>
-    </div>
+<div class="container">
+<p> Select sponsor's catalog </p>
+<table id="sponsortable"></table>
+</div>
 
     <script type="text/javascript">
       function openForm() {
@@ -67,43 +52,25 @@
       }
 
     </script>
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-	<script type="text/javascript" src="getCookie.js"></script>
-	<script type="text/javascript"charset="utf-8">
-
-	let getURL = "http://3.83.252.232:3001/user/" + getCookie("username");
-	$.ajax({
-                type: "GET",
-                url: getURL,
-                success: function (data) {
-			data = data[0];
- 		        document.getElementById("first").innerHTML = "" + data["first"];
-			document.getElementById("middle").innerHTML = data["middle"];
-			document.getElementById("last").innerHTML = data["last"];
-		        document.getElementById("username").innerHTML = data["username"];
-			document.getElementById("email").innerHTML = data["email"];
-			document.getElementById("phone").innerHTML = data["phone"];
-      document.getElementById("address").innerHTML = data["address"];
-                }
-            });
-
-	getURL = "http://3.83.252.232:3001/points/" + getCookie("username", document);
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="getCookie.js"></script>
+<script type="text/javascript"charset="utf-8">
+getURL = "http://3.83.252.232:3001/points/" + getCookie("username", document);
         $.ajax({
                 type: "GET",
                 url: getURL,
                 success: function (data) {
-		let resultString = "<tr><th>Sponsor</th><th>Points</th></tr>";
+		let resultString = "";
                         for(let i=0; i<data.length; i++){
 				let info  = data[i];
-				resultString = resultString + "<tr><td>" + info["sponsor"] + "</td><td>" + info["points"] + "</td></tr>";
+				resultString = resultString + "<tr><td><a href=\"http://3.83.252.232/Catalog.php?sponsor=" + info["sponsor"] + "&driver="+info["username"]+"\" > " + info["sponsor"]+"</a></td></tr>";
 		}
 		console.log(resultString);
-		document.getElementById("points").innerHTML = resultString;
+		document.getElementById("sponsortable").innerHTML = resultString;
                 }
-            });
+            });  
 
-	getURL = "http://3.83.252.232:3001/getCart/" + getCookie("username", document);
+getURL = "http://3.83.252.232:3001/getCart/" + getCookie("username", document);
         $.ajax({
                 type: "GET",
                 url: getURL,
@@ -117,7 +84,8 @@
                 document.getElementById("items-table").innerHTML = resultString;
                 }
             });
+</script>
 
-	</script>
-  </body>
+</body>
+
 </html>

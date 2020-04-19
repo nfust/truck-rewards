@@ -729,16 +729,13 @@ app.get('/user/sponsor/:CompanyID', (req, res) => {
 app.post('/sponsor', (req,res) => {
 
    let input = req.body;
-<<<<<<< HEAD
 
       //Hashing password and storing it
    const salt = new Date().toString();
    hash = crypto.createHash('sha256').update(input.password+salt).digest('base64');
 
    queryString = "INSERT INTO user VALUES (\""+input.email+"\", \""+input.first+"\", \""+input.middle+"\", \""+input.last+"\", \"Manager\", \""+input.phone+"\", \""+input.username+"\", \""+input.password+"\", 0, NULL, \""+input.company+"\", \""+hash+"\", \""+salt+"\") ;"
-=======
    queryString = "INSERT INTO user VALUES (\""+input.email+"\", \""+input.first+"\", \""+input.middle+"\", \""+input.last+"\",\""+input.company+"\", \"Sponsor\", \""+input.phone+"\", \""+input.username+"\", \""+input.password+"\", 0, 0);"
->>>>>>> 1f9eef81cff478c262c1bbbb0096bfa571b544db
    console.log(queryString);
 
    connection.query(queryString,(err, rows, fields) => {
@@ -778,8 +775,11 @@ app.post('/addCart', (req, res) => {
   let cookies = parseCookies(req);
   let input = req.body;
 
-  const queryString = "INSERT INTO cart(username, item_name, qty, points) VALUES(\""+cookies.username+"\" , \""+req.params.item_name+"\" , \"" + req.params.qty+"\" , \"" + req.params.points+"\");";
+
+  const queryString = "INSERT INTO cart(username, item_name, qty, points, sponsor) VALUES(\""+input.driver+"\" , \""+input.item_name+"\" , \"" + input.qty+"\" ,\" " + input.points+"\", \""+input.sponsor+"\");";
   console.log(queryString);
+   console.log(input.qty);
+
   connection.query(queryString,(err, rows, fields) => {
   if(err){
      console.log("Cannot add to cart");
@@ -789,16 +789,17 @@ app.post('/addCart', (req, res) => {
   else{
      console.log("Item added to cart");
      console.log(rows);
+     res.redirect("http://3.83.252.232/Catalog.php?sponsor=" + input.sponsor+"&driver=" + input.driver);
   }
 
   });
-});
+})
 
-app.post('/clearCart', (req, res) => {
+app.get('/clearCart', (req, res) => {
   let cookies = parseCookies(req);
   let input = req.body;
 
-  const queryString = "DELETE * FROM cart WHERE username = \"" + cookies.username+ "\"";
+  const queryString = "DELETE FROM cart WHERE username = \"" + cookies.username+ "\";";
   console.log(queryString);
   connection.query(queryString,(err, rows, fields) => {
   if(err){
@@ -809,10 +810,32 @@ app.post('/clearCart', (req, res) => {
   else{
      console.log("Cart cleared");
      console.log(rows);
+     res.redirect('back');
   }
 
   });
-});
+})
+
+app.get('/getCart/:DriverID', (req, res) => {
+  let cookies = parseCookies(req);
+  let input = req.body;
+
+  const queryString = "SELECT * FROM cart WHERE username = \"" + req.params.DriverID + "\"";
+  console.log(queryString);
+  connection.query(queryString,(err, rows, fields) => {
+  if(err){
+     console.log("Cannot get cart");
+     res.sendStatus(400);
+  }
+
+  else{
+     console.log("Cart gotten");
+     console.log(rows);
+     res.json(rows);
+  }
+
+  });
+})
 
 let port = 3001;
 app.listen(port, function () {
