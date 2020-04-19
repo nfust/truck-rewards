@@ -2,14 +2,16 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Drivers</title>
+    <link rel="stylesheet" href="profile.css">
+    <title>Sponsors</title>
   </head>
   <body>
     <nav>
-      <a href="AllDrivers.html">Drivers</a> |
-      <a href="AllSponsors.html">Sponsors</a> |
-      <a href="#">Companies</a> |
-      <a href="#">Reports</a> |
+      <a href="admin.php">Home</a>
+      <a href="AllDrivers.html">Drivers</a>
+      <a href="AllSponsors.html" class="active">Sponsors</a>
+      <a href="CompanyList.html">Companies</a>
+      <a href="GenerateReports.thml">Reports</a>
       <a href="AdminProfile.html">Account</a>
       <div class="logout">
         <form align="right" class="form" method="post" action="http://3.83.252.232:3001/logout">
@@ -18,9 +20,14 @@
       </div>
     </nav>
 
-    <h2 align="center">Sponsors</h2>
-    <table align="center" id="SponsorTable" border="1"> </table>
-    <a href="signupManager.html">New Sponsor</a>
+    <div class="container">
+      <br><br><br><br>
+      <h2 align="center">Sponsors</h2>
+      <table align="center" id="SponsorTable" border="1"> </table>
+      <a class="account-button" href="signupManager.html">New Sponsor</a>
+
+    </div>
+
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
       <script type="text/javascript"charset="utf-8">
 
@@ -29,7 +36,7 @@
               type: "GET",
               url: getURL,
               success: function (data) {
-              let resultString = "<tr><th>Sponsor</th></tr>";
+              let resultString = "<tr><th>Sponsor Username</th></tr>";
                       for(let i=0; i<data.length; i++){
                               let info  = data[i];
                               resultString = resultString + "<tr><td><form action='ViewSponsorProfile.html' method='GET'><input type='hidden' name='user' value=" + info["username"] + "/><input type='submit' value=" + info["username"] + "></form></td></tr>";

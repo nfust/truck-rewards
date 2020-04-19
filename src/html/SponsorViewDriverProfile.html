@@ -2,35 +2,16 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-
-    <style>
-      img {
-        margin-top: 1%;
-        height: 10%;
-        width: 10%;
-      }
-
-      p{display: inline}
-<<<<<<< HEAD
-
-      table{border:1px;}
-
-=======
-
->>>>>>> 8372600e0e757ab5e4317ec9b6e9cc72593ecfb8
-    </style>
-
     <link rel="stylesheet" href="profile.css">
-
-    <title>[Driver's] Profile</title>
+    <title id="username"> Profile</title>
   </head>
   <body>
     <nav>
       <a href="sponsor.php">Home</a>
-      <a href="Catalog.html">Catalog</a> |
-      <a href="CompanyInfo.html">Company Info</a> |
-      <a href="#">Drivers</a> |
-      <a href="sponsorProfile.html">Account</a>
+      <a href="Catalog.html">Catalog</a>
+      <a href="sponsoredDrivers.html" class="active">Drivers</a>
+      <a href="Sponsors.html">Sponsors</a>
+      <a href="SponsorProfile.html">Account</a>
       <div class="logout">
         <form align="right" class="form" method="post" action="http://3.83.252.232:3001/logout">
           <button name="logout" type="submit">Log Out</button>
@@ -38,21 +19,23 @@
       </div>
     </nav>
 
-    <div class="profile-container">
-      <img src="images/profile.png" alt="profile photo">
+    <div class="container">
+      <br><br><br><br>
+      <a href="sponsoredDrivers.html">Drivers</a> > <p id="username"></p> <br>
+      <img id="profile-img" src="images/profile.png" alt="profile photo"><br>
 
-      <p> Name:</p> <p id="first">[First name]</p> <p id="middle">[MI]</p> <p id="last">[last name]</p> <br>
-      <p> Points: </p> <p id="points">[points]</p><br>
-      <p> Username: </p><p id="username">[username]</p><br>
-      <p> E-Mail: </p><p id="email">[email]</p><br>
-      <p> Phone: </p><p id="phone">[phone #]</p><br>
-      <p> Shipping address: </p> <p id="address">[address]</p><br>
-      <form action="UserChangeDriver.html" method="GET">
+      <p> Name:</p> <p id="first"></p> <p id="middle"></p> <p id="last"></p> <br>
+      <p> Points: </p> <p id="points"></p><br>
+      <p> Username: </p><p id="username"></p><br>
+      <p> E-Mail: </p><p id="email"></p><br>
+      <p> Phone: </p><p id="phone"></p><br>
+      <p> Shipping address: </p> <p id="address"></p><br>
+      <form action="ChangeSponsorDriver.html" method="GET">
         <input type="hidden" name="user" value="username"/>
-        <input type="submit" value="Edit Profile"/>
+        <input id="apply-button" type="submit" value="Edit Profile"/>
       </form>
       <br>
-      <a href="ResetUserPassword.html">Change Password</a>
+      <a class="account-button" href="ResetUserPassword.html">Change Password</a>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>

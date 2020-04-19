@@ -1,5 +1,5 @@
 <?php
-/*
+
 if (!isset($_COOKIE['username']))
 {
     header('Location: Login.html');
@@ -7,7 +7,7 @@ if (!isset($_COOKIE['username']))
 }
 
 
-*/
+
 if($_COOKIE['type'] == "Sponsor")
 {
     header('Location: sponsor.php');
@@ -33,8 +33,8 @@ if($_COOKIE['type'] == "admin")
   </head>
   <body>
     <nav>
-      <a class="nav-link" href="#" class="active">Home</a>
-      <a class="nav-link" href="Catalog.php">Catalog</a>
+      <a class="nav-link" href="#" id="nav-active">Home</a>
+      <a class="nav-link" href="Catalog.html">Catalog</a>
       <a class="nav-link" href="DriverOrders.html">Orders</a>
       <a class="nav-link" class="nav" href="SponsorInfo.html">Sponsor Information</a>
       <a class="nav-link" href="earnPoints.html">Earn Points</a>
@@ -59,23 +59,14 @@ if($_COOKIE['type'] == "admin")
     </nav>
 
     <div class="image">
-      <img id="truck" src="images/truck.jpg" alt="truck"/>
+      <img style="height: 780px;" id="truck" src="images/truck.jpg" alt="truck"/>
       <h1 id="left">Welcome</h1><h1 id="username">!</h1>
       <img id="arrow" src="images/arrow.png" alt="arrow down">
     </div>
 
     <section id="points-table">
       <h2>Current Points</h2><br>
-      <table id="points">
-        <tr>
-          <td>Sponsor</td>
-          <td>Points</td>
-        </tr>
-        <tr>
-          <td>sponsor1</td>
-          <td>45252</td>
-        </tr>
-      </table>
+      <table id="points"></table>
     </section>
 
     <section id="sponsor-list">

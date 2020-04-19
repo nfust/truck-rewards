@@ -2,27 +2,18 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-
-    <style>
-      img {
-        margin-top: 1%;
-        height: 10%;
-        width: 10%;
-      }
-      p {display: inline}
-    </style>
-
   	<link rel="stylesheet" href="profile.css">
 
-    <title>[Admin's] Profile</title>
+    <title>Profile</title>
   </head>
   <body>
     <nav>
-      <a href="AllDrivers.html">Drivers</a> |
-      <a href="AllSponsors.html">Sponsors</a> |
-      <a href="#">Companies</a> |
-      <a href="#">Reports</a> |
-      <a href="AdminProfile.html">Account</a>
+      <a href="admin.php">Home</a>
+      <a href="AllDrivers.html">Drivers</a>
+      <a href="AllSponsors.html">Sponsors</a>
+      <a href="CompanyList.html">Companies</a>
+      <a href="GenerateReports.html">Reports</a>
+      <a href="AdminProfile.html" class="active">Account</a>
       <div class="logout">
         <form align="right" class="form" method="post" action="http://3.83.252.232:3001/logout">
           <button name="logout" type="submit">Log Out</button>
@@ -30,19 +21,18 @@
       </div>
     </nav>
 
-    <div class="new-admin" align=right>
-      <a href="signupAdmin.html">New Admin</a>
-    </div>
+    <div class="container">
+      <div class="new-admin" align=right>
+        <a href="signupAdmin.html">New Admin</a>
+      </div>
+        <img id="profile-img" src="images/profile.png" alt="profile photo"><br>
 
-    <div class="profile-container">
-      <img src="images/profile.png" alt="profile photo">
-
-      <p> Name:</p> <p id="first">[First name]</p> <p id="middle">[MI]</p> <p id="last">[last name]</p> <br>
-      <p> Username: </p><p id="username">[username]</p><br>
-      <p> E-Mail: </p><p id="email">[email]</p><br>
-      <p> Phone: </p><p id="phone">[phone #]</p><br>
-      <a href="ChangeDriver.html">Edit Profile</a><br>
-      <a href="ResetPassword.html">Change Password</a>
+        <p> Name:</p> <p id="first"></p> <p id="middle"></p> <p id="last"></p> <br>
+        <p> Username: </p><p id="username"></p><br>
+        <p> E-Mail: </p><p id="email"></p><br>
+        <p> Phone: </p><p id="phone"></p><br>
+        <a class="account-button" href="ChangeDriver.html">Edit Profile</a><br>
+        <a class="account-button" href="ResetPassword.html">Change Password</a>
     </div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>

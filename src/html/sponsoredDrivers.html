@@ -4,13 +4,14 @@
     <meta charset="utf-8">
     <style>p{display: inline}</style>
     <title>Drivers</title>
+    <link rel="stylesheet" href="profile.css">
   </head>
   <body>
     <nav>
       <a href="sponsor.php">Home</a>
-      <a href="Catalog.html">Catalog</a> |
-      <a href="CompanyInfo.html">Company Info</a> |
-      <a href="#">Drivers</a> |
+      <a href="Catalog.html">Catalog</a>
+      <a href="#" class="active">Drivers</a>
+      <a href="Sponsors.html">Sponsors</a>
       <a href="sponsorProfile.html">Account</a>
       <div class="logout">
         <form align="right" class="form" method="post" action="http://3.83.252.232:3001/logout">
@@ -19,10 +20,12 @@
       </div>
     </nav>
 
-    <h2 align="center" id="header">Drivers for </h2>
-  	<table align="center" id="driverTable" border="1"> </table>
-
-  	<a href="http://3.83.252.232/signupDriver.html">Create Driver</a>
+    <div class="container">
+      <br><br><br><br><br>
+      <h2 align="center" id="header">Drivers for </h2>
+    	<table align="center" id="driverTable" border="1"></table>
+      <a class="account-button" href="http://3.83.252.232/signupDriver.html">Create Driver</a>
+    </div>
 
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
           <script type="text/javascript" src="getCookie.js"></script>

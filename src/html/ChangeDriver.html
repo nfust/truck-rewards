@@ -23,10 +23,17 @@
       <input id="phone" type="text" name="phone" value="phone"><br>
       <label for="shipping">Shipping Address</label>
       <input id="address" type="text" name="address" value="shipping"><br>
-      <button type="submit" name="save">Save</button>
-      <a href="DriverProfile.html">Cancel</a>
+      <button id="submit" type="submit" name="save">Save</button>
+      <button id="submit" type="button" name="cancel" onclick="goBack()">Cancel</button>
+
     </form>
   </div>
+
+  <script type="text/javascript">
+    function goBack() {
+      window.history.back();
+    }
+  </script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script type="text/javascript"charset="utf-8">

@@ -199,7 +199,7 @@ p {
   background-color: #821515;
 }
 
-.active {
+#nav-active {
   background: #FFBD2E;
   color: #444;
 }
