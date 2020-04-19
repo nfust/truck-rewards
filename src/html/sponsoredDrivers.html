@@ -11,7 +11,6 @@
       <a href="sponsor.php">Home</a>
       <a href="Catalog.html">Catalog</a>
       <a href="#" class="active">Drivers</a>
-      <a href="Sponsors.html">Sponsors</a>
       <a href="sponsorProfile.html">Account</a>
       <div class="logout">
         <form align="right" class="form" method="post" action="http://3.83.252.232:3001/logout">
@@ -40,7 +39,7 @@
                   let resultString = "<tr><th>Driver</th><th>Points</th></tr>";
                           for(let i=0; i<data.length; i++){
                                   let info  = data[i];
-                                  resultString = resultString + "<tr><td><form action='SponsorViewDriverProfile.html' method='GET'><input type='hidden' name='user' value=" + info["username"] + "><input type='submit' value=" + info["username"] + "></form></td><td>" + info["points"] + "</td>" 
+                                  resultString = resultString + "<tr><td><form action='SponsorViewDriver.html' method='GET'><input type='hidden' name='user' value=" + info["username"] + "><input type='submit' value=" + info["username"] + "></form></td><td>" + info["points"] + "</td>" 
 					+ "<td> <a href=\"http://3.83.252.232/ChangeSponsorDriver.html?username="+info["username"]+"\">Edit Driver</td></tr>";
                   }
                   console.log(resultString);

@@ -17,14 +17,15 @@ if (!isset($_COOKIE['username']))
   <body>
 
     <nav>
-      <a class="nav-link" href="#" id="nav-active">Home</a>
-      <a class="nav-link" href="Catalog.html">Catalog</a>
-      <a class="nav-link" href="sponsoredDrivers.html">Drivers</a>
-      <a class="nav-link" href="SponsorProfile.html">Account</a>
+      <a href="#" class="active">Home</a>
+      <a href="Catalog.html">Catalog</a>
+      <a href="CompanyInfo.html">Company Info</a>
+      <a href="Sponsors.html">Sponsors</a>
+      <a href="ManagerProfile.html">Account</a>
       <div class="logout">
         <form align="right" class="form" method="post" action="http://3.83.252.232:3001/logout">
           <button name="logout" type="submit">Log Out</button>
-        </form >
+        </form>
       </div>
 
       <div class="cart">
@@ -39,15 +40,11 @@ if (!isset($_COOKIE['username']))
       </div>
     </nav>
 
-    <div class="image">
-      <img style="height:780px" id="truck" src="images/building2.jpg" alt="truck"/>
-      <h1 id="left">Welcome</h1><h1 id="username">!</h1>
-      <img id="arrow" src="images/arrow.png" alt="arrow down">
-    </div>
+    <h1>Welcome</h1> <h1 id="first"></h1>
 
     <section id="statistics">
-      <h2>Current number of drivers</h2>
-      <p id="drivers">[number]</p>
+      <h2>Current number of sponsors</h2>
+      <p id="sponsors">[number]</p>
     </section>
 
     <script type="text/javascript">
@@ -73,23 +70,22 @@ if (!isset($_COOKIE['username']))
               url: getURL,
               success: function (data) {
                 data = data[0];
-                document.getElementById("username").innerHTML = data["username"];
+                document.getElementById("first").innerHTML = data["first"];
               }
           });
-
-  getURL = "http://3.83.252.232:3001/points/sponsor/" + getCookie("username");
-  $.ajax({
-      type: "GET",
-      url: getURL,
-      success: function (data) {
-          let num = 0;
-              for(let i=0; i<data.length; i++){
-                    let info  = data[i];
-                    num += 1;
-              }
-      		document.getElementById("drivers").innerHTML = num;
-      }
-  });
+    getURL = "http://3.83.252.232:3001/user/sponsor/" + document.getElementById("company").innerHTML;
+    $.ajax({
+        type: "GET",
+        url: getURL,
+        success: function (data) {
+            let num = 0;
+                for(let i=0; i<data.length; i++){
+                      let info  = data[i];
+                      num += 1;
+                }
+            document.getElementById("sponsors").innerHTML = num;
+        }
+    });
     </script>
 
   </body>
