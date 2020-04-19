@@ -48,7 +48,7 @@
       <p> Phone: </p><p id="phone">[phone #]</p><br>
       <p> Drivers: </p><br>
       <table border="1" id="drivers"</table>
-      <form action="UserChangeSponsor.html" method="GET">
+      <form action="ManagerChangeSponsor.html" method="GET">
         <input type="hidden" name="user" value="username"/>
         <input type="submit" value="Edit Profile"/>
       </form>
@@ -83,9 +83,14 @@
         type: "GET",
         url: getURL,
         success: function (data) {
-            data = data[0];
-            document.getElementById("points").innerHTML = "" + data["points"];
-        }
+          let resultString = "<tr><th>Driver</th></tr>";
+                  for(let i=0; i<data.length; i++){
+                          let info  = data[i];
+                          resultString = resultString + "<tr><td><form action='ViewDriverProfile.html' method='GET'><input type='hidden' name='user' value=" + info["username"] + "/><input type='submit' value=" + info["username"] + "></form></td></tr>";
+          }
+          console.log(resultString);
+          document.getElementById("drivers").innerHTML = resultString;
+          }
     });
 
 	</script>
