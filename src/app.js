@@ -729,12 +729,16 @@ app.get('/user/sponsor/:CompanyID', (req, res) => {
 app.post('/sponsor', (req,res) => {
 
    let input = req.body;
+<<<<<<< HEAD
 
       //Hashing password and storing it
    const salt = new Date().toString();
    hash = crypto.createHash('sha256').update(input.password+salt).digest('base64');
 
    queryString = "INSERT INTO user VALUES (\""+input.email+"\", \""+input.first+"\", \""+input.middle+"\", \""+input.last+"\", \"Manager\", \""+input.phone+"\", \""+input.username+"\", \""+input.password+"\", 0, NULL, \""+input.company+"\", \""+hash+"\", \""+salt+"\") ;"
+=======
+   queryString = "INSERT INTO user VALUES (\""+input.email+"\", \""+input.first+"\", \""+input.middle+"\", \""+input.last+"\",\""+input.company+"\", \"Sponsor\", \""+input.phone+"\", \""+input.username+"\", \""+input.password+"\", 0, 0);"
+>>>>>>> 1f9eef81cff478c262c1bbbb0096bfa571b544db
    console.log(queryString);
 
    connection.query(queryString,(err, rows, fields) => {
