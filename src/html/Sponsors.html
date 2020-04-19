@@ -12,7 +12,6 @@
     <nav>
       <a href="sponsor.php">Home</a>
       <a href="Catalog.html">Catalog</a>
-      <a href="sponsoredDrivers.html">Drivers</a>
       <a href="#" class="active">Sponsors</a>
       <a href="SponsorProfile.html">Account</a>
       <div class="logout">
@@ -49,7 +48,7 @@
               let resultString = "<tr><th>Sponsor</th></tr>";
                       for(let i=0; i<data.length; i++){
                               let info  = data[i];
-                              resultString = resultString + "<tr><td><form action='ViewSponsorProfile.html' method='GET'><input type='hidden' name='user' value=" + info["username"] + "/><input type='submit' value=" + info["username"] + "></form></td></tr>";
+                              resultString = resultString + "<tr><td><form action='ManagerViewSponsor.html' method='GET'><input type='hidden' name='user' value=" + info["username"] + "/><input type='submit' value=" + info["username"] + "></form></td></tr>";
               }
               console.log(resultString);
               document.getElementById("SponsorTable").innerHTML = resultString;
