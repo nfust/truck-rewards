@@ -1,4 +1,3 @@
-
 <?php
 
 if (!isset($_COOKIE['username']))
@@ -21,7 +20,6 @@ if (!isset($_COOKIE['username']))
       <a class="nav-link" href="#" id="nav-active">Home</a>
       <a class="nav-link" href="Catalog.html">Catalog</a>
       <a class="nav-link" href="sponsoredDrivers.html">Drivers</a>
-      <a class="nav-link" href="Sponsors.html">Sponsors</a>
       <a class="nav-link" href="SponsorProfile.html">Account</a>
       <div class="logout">
         <form align="right" class="form" method="post" action="http://3.83.252.232:3001/logout">
@@ -49,8 +47,7 @@ if (!isset($_COOKIE['username']))
 
     <section id="statistics">
       <h2>Current number of drivers</h2>
-
-
+      <p id="drivers">[number]</p>
     </section>
 
     <script type="text/javascript">
@@ -79,6 +76,20 @@ if (!isset($_COOKIE['username']))
                 document.getElementById("username").innerHTML = data["username"];
               }
           });
+
+  getURL = "http://3.83.252.232:3001/points/sponsor/" + getCookie("username");
+  $.ajax({
+      type: "GET",
+      url: getURL,
+      success: function (data) {
+          let num = 0;
+              for(let i=0; i<data.length; i++){
+                    let info  = data[i];
+                    num += 1;
+              }
+      		document.getElementById("drivers").innerHTML = num;
+      }
+  });
     </script>
 
   </body>
