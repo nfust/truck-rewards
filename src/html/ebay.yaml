@@ -20,6 +20,7 @@ api.ebay.com:
 svcs.ebay.com:
     appid: JacksonL-c-PRD-769e8f59f-de8291f6
     version: 1.0.0
+    https: 1
 
 # Shopping API - https://www.x.com/developers/ebay/products/shopping-api
 open.api.ebay.com:

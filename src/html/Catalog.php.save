@@ -1,12 +1,6 @@
+
 <?php 
-if (isset($_COOKIE['username']))
-{
-   $username = $_COOKIE['username'];
-}
-else
-{
-   header("Location: Login.html");
-}
+
 if ($_GET['search'] && $_GET['sort'])
 	$command = escapeshellcmd('python3 findbykeywords.py \"'.$_GET['search'].'\" '.$_GET['sort']);
 
@@ -46,7 +40,7 @@ $output = json_decode(shell_exec($command));
   <body>
 	
     <nav>
-      <form class="search" action="/Catalog.php" enctype="multipart/form-data">
+      <form class="example" action="/Catalog.php" enctype="multipart/form-data">
       <label for="sort" style = color:#FFFFFF >Search Type:</label>
 
       <select id="sort" name = "sort">
@@ -81,11 +75,6 @@ $output = json_decode(shell_exec($command));
             <h4><?php echo $output->{'0title'}; ?></h4>
             <p><?php echo $output->{'0price'}; ?> Points </p>
         </a>
-	<form action="http://3.83.252.232:3001/addCart" method="post" enctype="multipart/form-data">
-      <input id="item_name" type="text" name="item_name" value="<?php echo $output->{'0title'}; ?>">
-      <input id="qty" type="int" name="qty" value="0">
-	<input id="points" type="int" name="points" value="<?php echo $output->{'0price'}; ?>">
-      <button id="submit" type="submit" name="save">Add To Cart</button>
     </item><item>
         <img src= "<?php echo $output->{'1URL'}; ?>" style="width:300px;height:300px;">
         <a href="#" style="color:#007BC4">    

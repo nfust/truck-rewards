@@ -219,8 +219,7 @@ app.post("/login", (req,res) =>{
            }
 	}
 	else{
-         let message = "Username/Password is incorrect";
-        console.log(message);
+	res.cookie("message", "Incorrect Username or Password");
          res.redirect("http://3.83.252.232/Login.html");
       	}
       }
@@ -570,7 +569,7 @@ app.post('/removeDriver/:DriverID', (req,res) => {
    else{
       console.log("Application Reject Successful");
       console.log(rows);
-      res.redirect("http://3.83.252.232/driverList.html");
+      res.redirect("http://3.83.252.232/sponsoredDrivers.html");
    }
 
    });
@@ -730,7 +729,12 @@ app.get('/user/sponsor/:CompanyID', (req, res) => {
 app.post('/sponsor', (req,res) => {
 
    let input = req.body;
-   queryString = "INSERT INTO user VALUES (\""+input.email+"\", \""+input.first+"\", \""+input.middle+"\", \""+input.last+"\",\""+input.company+"\", \"Manager\", \""+input.phone+"\", \""+input.username+"\", \""+input.password+"\", 0, 0);"
+
+      //Hashing password and storing it
+   const salt = new Date().toString();
+   hash = crypto.createHash('sha256').update(input.password+salt).digest('base64');
+
+   queryString = "INSERT INTO user VALUES (\""+input.email+"\", \""+input.first+"\", \""+input.middle+"\", \""+input.last+"\", \"Manager\", \""+input.phone+"\", \""+input.username+"\", \""+input.password+"\", 0, NULL, \""+input.company+"\", \""+hash+"\", \""+salt+"\") ;"
    console.log(queryString);
 
    connection.query(queryString,(err, rows, fields) => {
@@ -770,7 +774,7 @@ app.post('/addCart', (req, res) => {
   let cookies = parseCookies(req);
   let input = req.body;
 
-  const queryString = "INSERT INTO cart(username, item_name, qty) VALUES(\""+cookies.username+"\" , \""+req.params.item_name+"\" , \"" + req.params.qty+ "\");";
+  const queryString = "INSERT INTO cart(username, item_name, qty, points) VALUES(\""+cookies.username+"\" , \""+req.params.item_name+"\" , \"" + req.params.qty+"\" , \"" + req.params.points+"\");";
   console.log(queryString);
   connection.query(queryString,(err, rows, fields) => {
   if(err){
