@@ -24,7 +24,7 @@
       <br><br><br><br>
       <h2 align="center">Sponsors</h2>
       <table align="center" id="SponsorTable" border="1"> </table>
-      <a class="account-button" href="signupManager.html">New Sponsor</a>
+      <a class="account-button" href="signupSponsor.html">New Sponsor</a>
 
     </div>
 
@@ -39,7 +39,7 @@
               let resultString = "<tr><th>Sponsor Username</th></tr>";
                       for(let i=0; i<data.length; i++){
                               let info  = data[i];
-                              resultString = resultString + "<tr><td><form action='ViewSponsorProfile.html' method='GET'><input type='hidden' name='user' value=" + info["username"] + "/><input type='submit' value=" + info["username"] + "></form></td></tr>";
+                              resultString = resultString + "<tr><td><form action='AdminViewSponsor.html' method='GET'><input type='hidden' name='user' value=" + info["username"] + "/><input type='submit' value=" + info["username"] + "></form></td></tr>";
               }
               console.log(resultString);
               document.getElementById("SponsorTable").innerHTML = resultString;
