@@ -47,8 +47,6 @@
       <p> Username: </p><p id="username">[username]</p><br>
       <p> E-Mail: </p><p id="email">[email]</p><br>
       <p> Phone: </p><p id="phone">[phone #]</p><br>
-      <p> Drivers: </p><br>
-      <table border="1" id="drivers"</table>
       <form action="UserChangeSponsor.html" method="GET">
         <input type="hidden" name="user" value="username"/>
         <input type="submit" value="Edit Profile"/>
@@ -77,21 +75,6 @@
       			document.getElementById("phone").innerHTML = data["phone"];
             document.getElementById("username").value = data["username"];
         }
-    });
-
-  	getURL = "http://3.83.252.232:3001/points/driver/" + getUser();
-    $.ajax({
-        type: "GET",
-        url: getURL,
-        success: function (data) {
-          let resultString = "<tr><th>Driver</th></tr>";
-                  for(let i=0; i<data.length; i++){
-                          let info  = data[i];
-                          resultString = resultString + "<tr><td><form action='ViewDriverProfile.html' method='GET'><input type='hidden' name='user' value=" + info["username"] + "/><input type='submit' value=" + info["username"] + "></form></td></tr>";
-          }
-          console.log(resultString);
-          document.getElementById("drivers").innerHTML = resultString;
-          }
     });
 
 	</script>
