@@ -20,6 +20,7 @@ if (!isset($_COOKIE['username']))
       <a class="nav-link" href="#" id="nav-active">Home</a>
       <a class="nav-link" href="Catalog.html">Catalog</a>
       <a class="nav-link" href="sponsoredDrivers.html">Drivers</a>
+              <a class="nav-link" href="Sponsors.html">Sponsors</a>
       <a class="nav-link" href="SponsorProfile.html">Account</a>
       <div class="logout">
         <form align="right" class="form" method="post" action="http://3.83.252.232:3001/logout">
