@@ -18,7 +18,7 @@
     </div>
     <div class="container">
       <h2>Items</h2>
-      <table id="items-table"></table>
+      <table id="items-table" align="center"></table>
       <h2>Total: </h2><h2 id="totals"></h2>
       <button id="apply-button" type="button" name="button">Confirm</button>
       <button id="clear-button" type="button" name="button" onclick="goBack()">Cancel</button>
@@ -54,14 +54,16 @@ $.ajax({
                           type: "GET",
                           url: getURL,
                           success: function (data) {
+			  let total = 0.0;
+			   let resultString="<tr><td>Item</td><td>Qty</td><td>Points</td></tr>"
                             for (let i=0; i < data.length; i++) {
                               let info = data[i];
-                              resultString = info["item_name "] + info["qty"] + info["points"];
-                              var total += info["points"];
+                              resultString += "<tr><td>"+info["item_name"]+"</td><td>"+ info["qty"]+"</td><td>" + info["points"] +"</td></tr>";
+                              total = total + info["points"];
                             }
                             console.log(resultString);
                             document.getElementById("items-table").innerHTML = resultString;
-                            document.getElementById("totals").innerHTML = total;
+                            document.getElementById("totals").innerHTML = total.toFixed(2) +" Points";
                           }
                       });
 
