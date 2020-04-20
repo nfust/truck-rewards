@@ -39,7 +39,7 @@
               let resultString = "<tr><th>Driver Username</th></tr>";
                       for(let i=0; i<data.length; i++){
                               let info  = data[i];
-                              resultString = resultString + "<tr><td><form action='AdminViewDriver.html' method='GET'><input type='hidden' name='user' value=" + info["username"] + "/><input type='submit' value=" + info["username"] + "></form></td></tr>";
+                              resultString = resultString + "<tr><td><form action='AdminViewDriver.html' method='GET'><input type='hidden' name='user' value=" + info["username"] + "><input type='submit' value=" + info["username"] + "></form></td></tr>";
               }
               console.log(resultString);
               document.getElementById("driverTable").innerHTML = resultString;

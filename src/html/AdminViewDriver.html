@@ -59,9 +59,18 @@
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  	<script type="text/javascript" src="getUser.js"></script>
   	<script type="text/javascript"charset="utf-8">
-  	let getURL = "http://3.83.252.232:3001/user/" + getUser();
+
+
+    const queryParamsString = window.location.search.substr(1);
+    console.log(queryParamsString);
+    const queryParams = queryParamsString.split('&').reduce((accumulator, singleQueryParam) => {
+        const [key, value] = singleQueryParam.split('=');
+        accumulator[key] = value;
+        return accumulator;
+        }, {})
+
+  	let getURL = "http://3.83.252.232:3001/user/" + queryParams.user;
   	$.ajax({
         type: "GET",
         url: getURL,
@@ -78,7 +87,7 @@
         }
     });
 
-  	getURL = "http://3.83.252.232:3001/points/" + getUser();
+  	getURL = "http://3.83.252.232:3001/points/" + queryParams.user;
     $.ajax({
         type: "GET",
         url: getURL,
