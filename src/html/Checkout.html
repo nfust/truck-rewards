@@ -57,19 +57,13 @@ $.ajax({
                             for (let i=0; i < data.length; i++) {
                               let info = data[i];
                               resultString = info["item_name "] + info["qty"] + info["points"];
+                              var total += info["points"];
                             }
                             console.log(resultString);
                             document.getElementById("items-table").innerHTML = resultString;
+                            document.getElementById("totals").innerHTML = total;
                           }
                       });
-        getURL = "http://3.83.252.232:3001/cartTotal/" + getCookie("username", document);
-                  type: "GET",
-                  url: getURL,
-                  success: function (data) {
-                  data = data[0];
-                    console.log(resultString);
-                    document.getElementById("items").innerHTML = resultString;
-                  }
 
 
         </script>
