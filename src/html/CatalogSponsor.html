@@ -4,18 +4,18 @@
     <meta charset="utf-8">
 
    
-    <link rel="stylesheet" href="catalog.css">
+    <link rel="stylesheet" href="profile.css">
 
     <title>Catalog</title>
   </head>
   <body>
     <nav>
       <a href="index.php">Home</a>
-      <a href="Catalog.php">Catalog</a>
+      <a href="Catalog.php" class="active">Catalog</a>
       <a href="DriverOrders.html">Orders</a>
       <a href="SponsorInfo.html">Sponsor Information</a>
       <a href="earnPoints.html">Earn Points</a>
-      <a href="DriverProfile.html" class="active">Account</a>
+      <a href="DriverProfile.html" >Account</a>
       <div class="logout">
         <form align="right" class="form" method="post" action="http://3.83.252.232:3001/logout">
           <button name="logout" type="submit">Log Out</button>
@@ -37,8 +37,11 @@
     </nav>	
 
 <div class="container">
-<p> Select sponsor's catalog </p>
-<table id="sponsortable"></table>
+<section id="sponsors">
+<br><br><br><br><br>
+<h3> Select sponsor's catalog </h3>
+<table id="sponsortable" align="center"></table>
+</section>
 </div>
 
     <script type="text/javascript">

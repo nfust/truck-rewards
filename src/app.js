@@ -185,6 +185,7 @@ app.post("/login", (req,res) =>{
         let driver_redirect = "http://3.83.252.232/index.php";
         let sponsor_redirect = "http://3.83.252.232/sponsor.php";
         let admin_redirect = "http://3.83.252.232/admin.php";
+	let manager_redirect = "http://3.83.252.232/manager.php"
 	console.log(result);
 	 res.cookie("username", logUser.username);
 	 res.cookie("type", result[0].type);
@@ -197,6 +198,10 @@ app.post("/login", (req,res) =>{
          if (result[0].type == "Admin") {
            res.redirect(admin_redirect);
          }
+
+	if (result[0].type == "Manager") {
+           res.redirect(manager_redirect);
+         }
       }
 
      if(result[0].hash!=null){
@@ -205,6 +210,7 @@ app.post("/login", (req,res) =>{
 	   let driver_redirect = "http://3.83.252.232/index.php";
            let sponsor_redirect = "http://3.83.252.232sponsor.php";
            let admin_redirect = "http://3.83.252.232/admin.php";
+	   let manager_redirect = "http://3.83.252.232/manager.php"
            console.log(result);
            res.cookie("username", logUser.username);
            res.cookie("type", result[0].type);
@@ -217,6 +223,10 @@ app.post("/login", (req,res) =>{
            else if (result[0].type == "Admin") {
              res.redirect(admin_redirect);
            }
+
+	   else if (result[0].type == "Manager") {
+           res.redirect(manager_redirect);
+         }
 	}
 	else{
 	res.cookie("message", "Incorrect Username or Password");

@@ -24,7 +24,7 @@
         <form id="cart-form" align="right" class="" action="" method="post">
           <button id="close-button" type="button" name="close-button" onclick="closeForm()">X</button>
           <h3>Shopping Cart</h3><hr>
-          <table id="items-table">
+	<table id="items-table" style="overflow-y:scroll;height:145px;display:block;">
             <tr>
               <td>Name</td>
               <td>ID</td>
@@ -37,7 +37,7 @@
             </tr>
           </table>
           <a id="checkout-button" href="Checkout.html">Checkout</a>
-          <button id="clear-button" type="button" name="button">Clear Cart</button>
+	  <a id="clear-button" href="http://3.83.252.232:3001/clearCart">Clear Cart</a>
         </form>
       </div>
     </nav>
@@ -60,6 +60,26 @@
         document.getElementById("cart-form").style.display = "none";
         document.getElementById("cart-button").style.background = "#444";
       }
+	</script>
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script type="text/javascript" src="getCookie.js"></script>
+        <script type="text/javascript"charset="utf-8">
+
+	let getURL = "http://3.83.252.232:3001/getCart/" + getCookie("username", document);
+        $.ajax({
+                type: "GET",
+                url: getURL,
+                success: function (data) {
+                let resultString = "<tr><th>Item</th><th>Price</th></tr>";
+                        for(let i=0; i<data.length; i++){
+                                let info  = data[i];
+                                resultString = resultString + "<tr><td>" + info["item_name"] + "</td><td>" + info["points"] + "</td></tr>";
+                }
+                console.log(resultString);
+                document.getElementById("items-table").innerHTML = resultString;
+                }
+            });
 
     </script>
   </body>

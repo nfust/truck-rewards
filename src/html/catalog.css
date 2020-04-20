@@ -25,13 +25,16 @@ ul.products item {
 	font-size: 20pt; 
  
 }
+
 nav {
-  list-style: none;
+  width: 100%;
+  height: 107px;;
   background-color: #444;
-  padding: 0;
-  margin: 0;
   text-align: center;
-}
+  position: fixed;
+  top: 0px;
+  z-index: 1;
+}}
 
 nav a {
   display: inline-block;
@@ -197,3 +200,92 @@ form input {
   text-align: center;
 }
 
+#apply-button {
+  margin-top: 12px;
+  background-color: #FFBD2E;
+  border: none;
+  height: 40px;
+  width: 80px;
+  border-radius: 3px;
+  font-size: 16px;
+  color: #444;
+}
+
+#apply-button:hover {
+  background-color: #ffde69
+}
+
+#apply-button:active {
+  color: white;
+  background-color: #444
+}
+
+
+#clear-button {
+  color: white;
+  font-size: 17px;
+  background-color: #ff6161;
+  text-decoration: none;
+  padding: 10px;
+  margin: 24px;
+  border: none;
+  margin-left: 0;
+}
+
+#clear-button:hover {
+  background-color: #ffb0b0;
+}
+
+#clear-button:active {
+  background-color: #821515;
+}
+
+.account-button {
+  text-decoration: none;
+  border-radius: 3px;
+  padding: 10px 24px;
+  display: inline-block;
+  margin-top: 14px;
+  background-color: #FFBD2E;
+  border: none;
+  color: #444;
+}
+
+.account-button:hover {
+  background-color: #ffde69
+}
+
+.account-button:active {
+  color: white;
+  background-color: #444
+}
+
+
+nav a:active {
+  background: #FFBD2E;
+  color: #444;
+}
+
+nav a:hover {
+  background: #FFBD2E;
+  color: #444;
+}
+
+#profile-img {
+  margin-top: 7%;
+  margin-bottom: 2%;
+  height: 150px;
+  width: 150px;
+}
+
+.active {
+  background: #FFBD2E;
+  color: #444;
+}
+
+
+#cart-img {
+  height: 21px;
+  width: 26px;
+  filter: invert(100%);
+}

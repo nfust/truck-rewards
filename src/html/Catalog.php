@@ -69,22 +69,38 @@ $output = json_decode(shell_exec($command));
       <input type="submit" value="Submit">
       </form>
 	<!--<a href="catalog.html"><?php echo $output->{'9URL'}; ?></a>-->
-      <a href="Catalog.php">Catalog</a> |
-      <a href="purchaseHistory.html">Purchase History</a> |
-      <a href="pendingOrders.html">Pending Orders</a> |
-	
-      <a href="sponsorInfo.html">Sponsor Info</a>
-      
-	    
+	<a href="index.php">Home</a>
+      <a href="Catalog.php" class="active">Catalog</a>
+      <a href="DriverOrders.html">Orders</a>
+      <a href="SponsorInfo.html">Sponsor Information</a>
+      <a href="earnPoints.html">Earn Points</a>
+      <a href="DriverProfile.html" >Account</a>
+
       <div class="logout">
         <form align="right" class="form" method="post" action="http://3.83.252.232:3001/logout">
           <button name="logout" type="submit">Log Out</button>
         </form>
       </div>
 	    
+	<div class="cart">
+        <button id="cart-button"type="button" name="cart" onclick="openForm()"><img id="cart-img" src="images/cart.png" alt="cart icon"></button>
+        <form id="cart-form" align="right" class="" action="" method="post">
+          <button id="close-button" type="button" name="close-button" onclick="closeForm()">X</button>
+          <h3>Shopping Cart</h3><hr>
+          <table id="items-table" style="overflow-y:scroll;height:145px;display:block;">
+	  </table>
+          <a id="checkout-button" href="Checkout.html">Checkout</a>
+          <a id="clear-button" href="http://3.83.252.232:3001/clearCart">Clear Cart</a>
+          </form>
+        </form>
+      </div>
+
+
+
     </nav>
-	<link rel="stylesheet" type="text/css" href="catalog.css">
 </head>
+
+<br><br><br><br><br>
 
 <ul class="products"> <item>
         <img src= "<?php echo $output->{'0URL'}; ?>" style="width:300px;height:300px;">
@@ -260,6 +276,19 @@ $output = json_decode(shell_exec($command));
         </form>
     </item>
 </ul>
+
+
+<script type="text/javascript">
+      function openForm() {
+        document.getElementById("cart-form").style.display = "block";
+        document.getElementById("cart-button").style.background = "#007BC4";
+      }
+      function closeForm() {
+        document.getElementById("cart-form").style.display = "none";
+        document.getElementById("cart-button").style.background = "#444";
+      }
+
+    </script>
     
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script type="text/javascript"charset="utf-8">
@@ -313,6 +342,23 @@ let pointval9 = <?php echo $output->{'9price'}; ?>;
           document.getElementById("9points").value = "" + finalPoints9;
         }
       });
+
+ getURL = "http://3.83.252.232:3001/getCart/" + queryParams.driver;
+        $.ajax({
+                type: "GET",
+                url: getURL,
+                success: function (data) {
+                let resultString = "<tr><th>Item</th><th>Price</th></tr>";
+                        for(let i=0; i<data.length; i++){
+                                let info  = data[i];
+                                resultString = resultString + "<tr><td>" + info["item_name"] + "</td><td>" + info["points"] + "</td></tr>";
+                }
+                console.log(resultString);
+                document.getElementById("items-table").innerHTML = resultString;
+                }
+            });
+
+        </script>
 
 </script>
 
