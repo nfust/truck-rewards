@@ -26,11 +26,11 @@
   </head>
   <body>
     <nav>
-      <a href="manager.php">Home</a>
-      <a href="Catalog.html">Catalog</a> |
-      <a href="CompanyInfo.html">Company Info</a> |
-      <a href="#">Sponsors</a> |
-      <a href="managerProfile.html">Account</a>
+      <a href="AllDrivers.html">Drivers</a> |
+      <a href="AllSponsors.html">Sponsors</a> |
+      <a href="#">Companies</a> |
+      <a href="#">Reports</a> |
+      <a href="AdminProfile.html">Account</a>
       <div class="logout">
         <form align="right" class="form" method="post" action="http://3.83.252.232:3001/logout">
           <button name="logout" type="submit">Log Out</button>
@@ -41,13 +41,10 @@
     <div class="profile-container">
       <img src="images/profile.png" alt="profile photo">
 
-      <p> Name: </p> <p id="first">[First name]</p> <p id="middle">[MI]</p> <p id="last">[last name]</p> <br>
-      <p> Company: </p> <p id="company">[Company]</p><br>
+      <p> Name:</p> <p id="first">[First name]</p> <p id="middle">[MI]</p> <p id="last">[last name]</p> <br>
       <p> Username: </p><p id="username">[username]</p><br>
       <p> E-Mail: </p><p id="email">[email]</p><br>
       <p> Phone: </p><p id="phone">[phone #]</p><br>
-      <p> Drivers: </p><br>
-      <table border="1" id="drivers"</table>
       <form action="UserChangeSponsor.html" method="GET">
         <input type="hidden" name="user" value="username"/>
         <input type="submit" value="Edit Profile"/>
@@ -70,29 +67,12 @@
        		  document.getElementById("first").innerHTML = "" + data["first"];
       			document.getElementById("middle").innerHTML = data["middle"];
       			document.getElementById("last").innerHTML = data["last"];
-            document.getElementById("company").innerHTML = data["company"];
       		  document.getElementById("username").innerHTML = data["username"];
       			document.getElementById("email").innerHTML = data["email"];
       			document.getElementById("phone").innerHTML = data["phone"];
             document.getElementById("username").value = data["username"];
         }
     });
-
-  	getURL = "http://3.83.252.232:3001/points/driver/" + getUser();
-    $.ajax({
-        type: "GET",
-        url: getURL,
-        success: function (data) {
-          let resultString = "<tr><th>Driver</th></tr>";
-                  for(let i=0; i<data.length; i++){
-                          let info  = data[i];
-                          resultString = resultString + "<tr><td><form action='ViewDriverProfile.html' method='GET'><input type='hidden' name='user' value=" + info["username"] + "/><input type='submit' value=" + info["username"] + "></form></td></tr>";
-          }
-          console.log(resultString);
-          document.getElementById("drivers").innerHTML = resultString;
-          }
-    });
-
 	</script>
   </body>
 </html>

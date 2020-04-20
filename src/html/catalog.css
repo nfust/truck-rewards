@@ -16,25 +16,35 @@ body {
 }
 
 ul.products item {
-	width: 700px; 
+	width: 700px;
 	display: inline-block;
 	border: 2px solid #000000;
-	border-radius: 10px;  
-	text-align: center; 
+	border-radius: 10px;
+	text-align: center;
 	font-family: "Times New Roman";
-	font-size: 20pt; 
- 
+	font-size: 20pt;
+
 }
 
 nav {
   width: 100%;
+<<<<<<< HEAD
   height: 107px;;
+=======
+  height: 90px;
+>>>>>>> 7813c96596a7a7793820b9286fd98c8ff3d1b3b1
   background-color: #444;
   text-align: center;
   position: fixed;
   top: 0px;
+<<<<<<< HEAD
   z-index: 1;
 }}
+=======
+  margin-right: 5%;
+  z-index: 1;
+}
+>>>>>>> 7813c96596a7a7793820b9286fd98c8ff3d1b3b1
 
 nav a {
   display: inline-block;
@@ -59,6 +69,57 @@ img {
   margin-top: 1%;
   height: 10%;
   width: 10%;
+}
+
+#cart-img {
+  height: 21px;
+  width: 26px;
+  filter: invert(100%);
+}
+
+#cart-button {
+  position:fixed;
+  right: 0;
+  top: 28px;
+  background-color: #444;
+  border: 0;
+  font-size: 10px;
+  font-weight: bold;
+  font-family: inherit;
+  padding: 8px;
+}
+
+#cart-button:hover {
+  background: #007BC4;
+  color: #444;
+  cursor: pointer;
+}
+
+#close-button {
+  border: none;
+  background: none;
+  font-weight: 250;
+  font-size: 22px;
+  transform: scaleX(1.2);
+  color: black;
+  margin-left: 260px;
+}
+
+#close-button:hover {
+  color: red;
+}
+
+.cart form {
+  display: none;
+  width: 20%;
+  height: 100%;
+  padding: 16px;
+  box-shadow: 0 0 10px 1px black;
+  margin-top: 15px;
+  margin-left: 75%;
+  text-align: center;
+  background-color: white;
+  border-radius: 5px;
 }
 
 .button {
@@ -96,6 +157,7 @@ img {
   cursor: pointer;
 }
 
+<<<<<<< HEAD
 nav a {
   display: inline-block;
   text-decoration: none;
@@ -154,6 +216,31 @@ nav a {
   text-align: center;
   background-color: white;
   border-radius: 5px;
+=======
+.active {
+  background: #FFBD2E;
+  color: #444;
+}
+
+#apply-button {
+  margin-top: 12px;
+  background-color: #FFBD2E;
+  border: none;
+  height: 40px;
+  width: 80px;
+  border-radius: 3px;
+  font-size: 16px;
+  color: #444;
+}
+
+#apply-button:hover {
+  background-color: #ffde69
+}
+
+#apply-button:active {
+  color: white;
+  background-color: #444
+>>>>>>> 7813c96596a7a7793820b9286fd98c8ff3d1b3b1
 }
 
 #checkout-button {
@@ -192,6 +279,7 @@ nav a {
 #clear-button:active {
   background-color: #821515;
 }
+<<<<<<< HEAD
 
 form input {
   margin-top: 10px;
@@ -289,3 +377,5 @@ nav a:hover {
   width: 26px;
   filter: invert(100%);
 }
+=======
+>>>>>>> 7813c96596a7a7793820b9286fd98c8ff3d1b3b1

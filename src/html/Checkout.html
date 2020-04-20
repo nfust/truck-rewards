@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="profile.css">
+  </head>
+  <body>
+    <div class="container">
+      <h2>User Information</h2>
+      <img id="profile-img" src="images/profile.png" alt="profile photo"><br>
+      <p> Name:</p> <p id="first"></p> <p id="middle"></p> <p id="last"></p> <br>
+      <p> Points: </p><br>
+      <p> Username: </p><p id="username"></p><br>
+      <p> E-Mail: </p><p id="email"></p><br>
+      <p> Phone: </p><p id="phone"></p><br>
+      <p> Shipping address: </p> <p id="address"></p><br>
+    </div>
+    <div class="container">
+      <h2>Items</h2>
+      <table id="items-table"></table>
+      <h2>Total: </h2><h2 id="totals"></h2>
+      <button id="apply-button" type="button" name="button">Confirm</button>
+      <button id="clear-button" type="button" name="button" onclick="goBack()">Cancel</button>
+    </div>
+
+    <script type="text/javascript">
+      function goBack() {
+        window.history.back();
+      }
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="getCookie.js"></script>
+<script type="text/javascript"charset="utf-8">
+let getURL = "http://3.83.252.232:3001/user/" + getCookie("username");
+$.ajax({
+            type: "GET",
+            url: getURL,
+            success: function (data) {
+  data = data[0];
+        document.getElementById("first").innerHTML = "" + data["first"];
+  document.getElementById("middle").innerHTML = data["middle"];
+  document.getElementById("last").innerHTML = data["last"];
+        document.getElementById("username").innerHTML = data["username"];
+  document.getElementById("email").innerHTML = data["email"];
+  document.getElementById("phone").innerHTML = data["phone"];
+  document.getElementById("address").innerHTML = data["address"];
+            }
+        });
+
+        getURL = "http://3.83.252.232:3001/cart/" + getCookie("username", document);
+          $.ajax({
+                          type: "GET",
+                          url: getURL,
+                          success: function (data) {
+                            for (let i=0; i < data.length; i++) {
+                              let info = data[i];
+                              resultString = info["item_name "] + info["qty"] + info["points"];
+                            }
+                            console.log(resultString);
+                            document.getElementById("items-table").innerHTML = resultString;
+                          }
+                      });
+        getURL = "http://3.83.252.232:3001/cartTotal/" + getCookie("username", document);
+                  type: "GET",
+                  url: getURL,
+                  success: function (data) {
+                  data = data[0];
+                    console.log(resultString);
+                    document.getElementById("items").innerHTML = resultString;
+                  }
+
+
+        </script>
+  </body>
+</html>
